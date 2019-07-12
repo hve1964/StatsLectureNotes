@@ -1,0 +1,999 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch7-Stats.tex
+%  Title:
+%  Version: 29.05.2019 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Discrete and continuous random variables]{\href{https://www.youtube.com/watch?v=1rEczO3Jh_Y}{Discrete and continuous random
+variables}}
+\lb{ch7}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Applications of \textbf{inferential statistical methods}
+rooted in the \textbf{frequentist approach} to \textbf{Probability
+Theory}, some of which are to be discussed in Chs.~\ref{ch12} and
+\ref{ch13} below, rest fundamentally on the concept of a
+probability-dependent quantity arising in the context of
+\textbf{random experiments} that is referred to as a \textbf{random
+variable}. The present chapter aims to provide a basic introduction
+to the general properties and characteristic features of random
+variables. We begin by stating the definition of this concept.
+
+\medskip
+\noindent
+\underline{\textbf{Def.:}} A real-valued one-dimensional
+\textbf{random variable} is defined as a one-to-one mapping
+%
+\be
+X: \boldsymbol{\Omega} \rightarrow D \subseteq \mathbb{R}
+\ee
+%
+of the sample space $\boldsymbol{\Omega}$ of some random 
+experiment with associated probability space 
+$\left(\boldsymbol{\Omega}, {\cal P}, P\right)$ into a subset $D$ 
+of the real numbers $\mathbb{R}$.
+
+\medskip
+\noindent
+Depending on the nature of the \textbf{spectrum of values} of $X$,
+we will distinguish in the following between random 
+variables of the \textbf{discrete} and \textbf{continuous} kinds.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Discrete random variables]{Discrete random variables}
+\lb{sec:diskretz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Discrete random variables} are signified by the existence
+of a finite or countably infinite
+
+\medskip
+\noindent
+\textbf{Spectrum of values:}
+%
+\be
+X \mapsto x \in \left\{x_{1}, \ldots, x_{n}\right\}
+\subset \mathbb{R} \ ,
+\quad\quad\text{with}\quad n \in \mathbb{N} \ .
+\ee
+%
+All values $x_{i}$ ($i=1,\ldots,n$) in this spectrum,
+referred to as possible \textbf{realisations} of $X$, are assigned 
+individual probabilities $p_{i}$ by a real-valued
+
+\medskip
+\noindent
+\textbf{Probability function:}
+%
+\be
+\fbox{$\displaystyle
+P(X=x_{i}) = p_{i} \quad\quad\text{for}\quad i=1, \dots, n \ ,
+$}
+\ee
+%
+with properties\\[-5mm]
+%
+\begin{center}
+\begin{itemize}
+\item[(i)] $0 \leq p_{i} \leq 1$, and
+\hfill (\textbf{non-negativity})\\[-5mm]
+
+\item[(ii)] $\displaystyle\sum_{i=1}^{n}p_{i}=1$.
+\hfill (\textbf{normalisability})\\[-5mm]
+\end{itemize}
+\end{center}
+%
+Specific distributional features of a discrete random variable $X$ 
+deriving from its probability function $P(X=x_{i})$ are encoded in 
+the associated theoretical
+
+\medskip
+\noindent
+\textbf{Cumulative distribution function (\texttt{cdf}):}
+%
+\be
+\fbox{$\displaystyle
+F_{X}(x) = \texttt{cdf}(x) := P(X \leq x)
+= \sum_{i|x_{i}\leq x}P(X=x_{i}) \ .
+$}
+\ee
+%
+The \texttt{cdf} exhibits the asymptotic behaviour
+%
+\be
+\lim_{x\to-\infty}F_{X}(x)=0 \ ,
+\qquad
+\lim_{x\to+\infty}F_{X}(x)=1 \ .
+\ee
+%
+Information on the central tendency and the variability of a 
+discrete random variable~$X$ is quantified in terms of its
+
+
+\medskip
+\noindent
+\textbf{Expectation value} and \textbf{variance:}
+%
+\bea
+\lb{eq:evdiscr}
+\mathrm{E}(X) & := & \sum_{i=1}^{n}x_{i}P(X=x_{i}) \\
+%
+\lb{eq:vardiscr}
+\mathrm{Var}(X) & := & \sum_{i=1}^{n}\left(x_{i}-\mathrm{
+E}(X)\right)^{2}P(X=x_{i}) \ .
+\eea
+%
+One of the first occurrences of the notion of the expectation 
+value of a random variable relates to the famous ``wager'' put 
+forward by the French mathematician
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Pascal.html}{Blaise Pascal (1623--1662)}; cf. Gilboa 
+(2009)~\ct[Sec.~5.2]{gil2009}.
+
+\medskip
+\noindent
+By the so-called \textbf{shift theorem} it holds that the variance 
+may alternatively be obtained from the computationally more 
+efficient formula 
+%
+\be
+\mathrm{Var}(X)=\mathrm{E}\left[(X-\mathrm{E}(X))^{2}\right]
+=\mathrm{E}(X^{2})-\left[\mathrm{E}(X)\right]^{2} \ .
+\ee
+%
+Specific values of $\mathrm{E}(X)$ and $\mathrm{ Var}(X)$ will be 
+denoted throughout by the Greek letters $\mu$ and $\sigma^{2}$, 
+respectively. The \textbf{standard deviation} of $X$ amounts to 
+$\sqrt{\mathrm{Var}(X)}$; its specific values will be denoted by 
+$\sigma$.
+
+\medskip
+\noindent
+The evaluation of \textbf{event probabilities} for a discrete
+random variable~$X$ with known probability function~$P(X=x_{i})$
+follows from the
+
+\medskip
+\noindent
+\textbf{Computational rules:}
+%
+\bea
+\lb{eq:comprulesdiscr1}
+P(X \leq d) & = & F_{X}(d) \\
+%
+P(X < d) & = & F_{X}(d) - P(X=d) \\
+%
+P(X \geq c) & = & 1 - F_{X}(c) + P(X=c) \\
+%
+P(X > c) & = &  1- F_{X}(c) \\
+%
+P(c \leq X \leq d) & = & F_{X}(d) - F_{X}(c) + P(X=c) \\
+%
+P(c < X \leq d) & = & F_{X}(d) - F_{X}(c) \\
+%
+P(c \leq X < d) & = & F_{X}(d) - F_{X}(c) - P(X=d) + P(X=c) \\
+%
+\lb{eq:comprulesdiscr8}
+P(c < X < d) & = & F_{X}(d) - F_{X}(c) - P(X=d) \ ,
+\eea
+%
+where $c$ and $d$ denote arbitrary lower and upper cut-off values 
+imposed on the spectrum of $X$.
+
+\medskip
+\noindent
+In applications it is frequently of interest to know the values of 
+a discrete \texttt{cdf}'s
+
+\medskip
+\noindent
+$\boldsymbol{\alpha}$\textbf{--quantiles:}\\
+These are realisations $x_{\alpha}$ of $X$ specifically
+determined by the condition that $X$ take values $x \leq 
+x_{\alpha}$ at least with probability $\alpha$ (for $0<\alpha<1$),
+i.e.,
+%
+\be
+F_{X}(x_{\alpha}) = P(X \leq x_{\alpha}) \stackrel{!}{\geq} \alpha
+\qquad\text{and}\qquad
+F_{X}(x) = P(X \leq x) < \alpha
+\quad\quad\text{for}\quad
+x < x_{\alpha} \ .
+\ee
+%
+Occasionally, $\alpha$--quantiles of a probability distribution 
+are also referred to as \textbf{percentile values}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Continuous random variables]{Continuous random variables}
+\lb{sec:stetigz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Continuous random variables} possess an uncountably
+infinite
+
+\medskip
+\noindent
+\textbf{Spectrum of values:}
+%
+\be
+X \mapsto x \in D \subseteq \mathbb{R} \ .
+\ee
+%
+It is, therefore, no longer meaningful to assign probabilities to 
+individual \textbf{realisations} $x$ of $X$, but only to 
+infinitesimally small intervals $\mathrm{d}x \in D$ instead, by
+means of a real-valued
+
+\medskip
+\noindent
+\textbf{Probability density function (\texttt{pdf}):}
+%
+\be
+\fbox{$\displaystyle
+f_{X}(x) = \texttt{pdf}(x) \ .
+$}
+\ee
+%
+Hence, approximately,
+%
+\[
+P(X \in \mathrm{d}x) \approx f_{X}(\xi)\,\mathrm{d}x \ ,
+\]
+%
+for some representative $\xi \in \mathrm{d}x$. The \texttt{pdf} of
+an arbitrary continuous random variable~$X$ has the defining 
+properties:\\[-5mm]
+%
+\begin{center}
+\begin{itemize}
+\item[(i)] $f_{X}(x) \geq 0$ for all $x \in D$,
+\hfill (\textbf{non-negativity})\\[-5mm]
+
+\item[(ii)] ${\displaystyle \int_{-\infty}^{+\infty}f_{X}(x)\,
+\mathrm{d}x = 1}$, and \hfill (\textbf{normalisability})\\[-5mm]
+
+\item[(iii)] $f_{X}(x) = F_{X}^{\prime}(x)$. \hfill (\textbf{link
+to} \texttt{cdf})\\[-5mm]
+
+\end{itemize}
+\end{center}
+%
+The evaluation of \textbf{event probabilities} for a continuous 
+random variable~$X$ rests on the associated theoretical
+
+\medskip
+\noindent
+\textbf{Cumulative distribution function (\texttt{cdf}):}
+%
+\be
+\fbox{$\displaystyle
+F_{X}(x) = \texttt{cdf}(x) := P(X \leq x)
+= \int_{-\infty}^{x}f_{X}(t)\,\mathrm{d}t \ .
+$}
+\ee
+%
+
+\pagebreak
+\noindent
+Event probabilities for~$X$ are then to be obtained from the
+
+\medskip
+\noindent
+\textbf{Computational rules:}
+%
+\bea
+\lb{eq:comprulescont1}
+P(X = d) & = & 0 \\
+%
+\lb{eq:comprulescont2}
+P(X \leq d) & = & F_{X}(d) \\
+%
+\lb{eq:comprulescont3}
+P(X \geq c) & = & 1 - F_{X}(c) \\
+%
+\lb{eq:comprulescont4}
+P(c \leq X \leq d) & = & F_{X}(d) - F_{X}(c) \ ,
+\eea
+%
+where $c$ and $d$ denote arbitrary lower and upper cut-off values 
+imposed on the spectrum of $X$. Note that, again, the \texttt{cdf}
+exhibits the asymptotic properties
+%
+\be
+\lim_{x\to-\infty}F_{X}(x)=0 \ ,
+\qquad
+\lim_{x\to+\infty}F_{X}(x)=1 \ .
+\ee
+%
+The central tendency and the variabilty of a continuous random 
+variable~$X$ are quantified by its
+
+\medskip
+\noindent
+\textbf{Expectation value} and \textbf{variance:}
+%
+\bea
+\lb{eq:expectcon}
+\mathrm{E}(X) & := & \int_{-\infty}^{+\infty}xf_{X}(x)\,
+\mathrm{d}x \\
+%
+\lb{eq:varcon}
+\mathrm{Var}(X) & := & \int_{-\infty}^{+\infty}
+\left(x-\mathrm{E}(X)\right)^{2}f_{X}(x)\,\mathrm{d}x \ .
+\eea
+%
+Again, by the \textbf{shift theorem} the variance may alternatively 
+be obtained from the computationally more efficient formula 
+$\displaystyle \mathrm{Var}(X)=\mathrm{E}
+\left[(X-\mathrm{E}(X))^{2}\right]
+=\mathrm{E}(X^{2})-\left[\mathrm{E}(X)\right]^{2}$. Specific values
+of $\mathrm{E}(X)$ and $\mathrm{Var}(X)$ will be denoted throughout
+by $\mu$ and $\sigma^{2}$, respectively. The \textbf{standard
+deviation} of $X$ amounts to $\sqrt{\mathrm{Var}(X)}$; its specific
+values will be denoted by $\sigma$.
+
+\medskip
+\noindent
+The construction of interval estimates for unknown distribution 
+parameters of continuous one-dimensional random variables~$X$ in 
+given target populations~$\boldsymbol{\Omega}$, and null hypothesis
+significance testing (to be discussed later in 
+Chs.~\ref{ch12} and \ref{ch13}), both require explicit knowledge of
+the $\boldsymbol{\alpha}$\textbf{--quantiles} associated with the
+\texttt{cdf}s of the~$X$s. Generally, these are defined as follows.
+
+\medskip
+\noindent
+$\boldsymbol{\alpha}$\textbf{--quantiles:} \\
+$X$ take values $x \leq x_{\alpha}$ with probability $\alpha$ 
+(for $0<\alpha<1$), i.e.,
+%
+\be
+P(X \leq x_{\alpha}) = F_{X}(x_{\alpha}) \stackrel{!}{=} 
+\alpha
+\qquad \overbrace{\Leftrightarrow}^{F_{X}(x)\ \text{is strictly
+monotonously increasing}}\qquad
+\fbox{$\displaystyle
+x_{\alpha}=F_{X}^{-1}(\alpha)$} \ .
+\ee
+%
+Hence, $\alpha$--quantiles of the probability distribution for a 
+continuous one-dimensional random variable~$X$ are determined by 
+the inverse \texttt{cdf}, $F_{X}^{-1}$. For given $\alpha$, the 
+spectrum of $X$ is thus naturally partitioned into domains $x \leq 
+x_{\alpha}$ and $x \geq x_{\alpha}$. Occasionally, 
+$\alpha$--quantiles of a probability distribution are also 
+referred to as \textbf{percentile values}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Skewness and excess kurtosis]{Skewness and excess 
+kurtosis}
+\lb{sec:skewkurt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In analogy to the descriptive case of Sec.~\ref{sec:distortion},
+dimensionless \textbf{measures of relative distortion}
+characterising the \textbf{shape} of the probability distribution
+for a discrete or a continuous one-dimensional random variable~$X$
+are defined by the
+
+\medskip
+\noindent
+\textbf{Skewness} and \textbf{excess kurtosis:}
+%
+\bea
+\lb{eq:skew2}
+\mathrm{Skew}(X) & := & \frac{\mathrm{E}\left[(X-\mathrm{
+E}(X))^{3}\right]}{\left[\mathrm{Var}(X)\right]^{3/2}} \\
+%
+\lb{eq:kurt2}
+\mathrm{Kurt}(X) & := & \frac{\mathrm{E}\left[(X-\mathrm{
+E}(X))^{4}\right]}{\left[\mathrm{Var}(X)\right]^{2}} - 3 \ ,
+\eea
+%
+given $\mathrm{Var}(X) > 0$; cf. Rinne (2008)~\ct[p~196]{rin2008}. 
+Specific values of $\mathrm{Skew}(X)$ and $\mathrm{Kurt}(X)$ may be 
+denoted by $\gamma_{1}$ and $\gamma_{2}$, respectively.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Lorenz curve for continuous random variables]{Lorenz 
+curve for continuous random variables}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+For a continuous one-dimensional random variable~$X$, the
+\textbf{Lorenz curve} expressing qualitatively the degree of
+concentration involved in its associated probability distribution
+of is defined by
+%
+\be
+\lb{lorcurve}
+\fbox{$\displaystyle
+L(x_{\alpha})
+= 
+\frac{{\displaystyle\int_{-\infty}^{x_{\alpha}}tf_{X}(t)\,
+\mathrm{d}t}}{{\displaystyle\int_{-\infty}^{+\infty}tf_{X}(t)\,
+\mathrm{d}t}} \ ,
+$}
+\ee
+%
+with $x_{\alpha}$ denoting a particular $\alpha$--quantile
+of the distribution in question.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Linear transformations of random variables]{Linear
+transformations of random variables}
+\lb{sec:lintransf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Linear transformations} of real-valued one-dimensional
+random variables $X$ are determined by the two-parameter relation
+%
+\be
+\lb{lintransf}
+\fbox{$\displaystyle
+Y = a+bX \quad\text{with}\quad a,b \in \mathbb{R}, b \neq 0 \ ,
+$}
+\ee
+%
+where $Y$ denotes the resultant new random variable. 
+Transformations of random variables of this kind have 
+the following effects on the computation of expectation values and 
+variances.
+
+%
+%------------------------------------------------------------------
+\subsection[Effect on expectation values]{Effect on expectation 
+values}
+%------------------------------------------------------------------
+%
+\begin{enumerate}
+\item $\mathrm{E}(a) = a$
+\item $\mathrm{E}(bX) = b\mathrm{E}(X)$
+\item $\mathrm{E}(Y) = \mathrm{E}(a+bX) = \mathrm{E}(a)
++ \mathrm{E}(bX)
+= a+b\mathrm{E}(X)$.
+\end{enumerate}
+%
+
+%------------------------------------------------------------------
+\subsection[Effect on variances]{Effect on variances}
+\lb{subsec:vartrans}
+%------------------------------------------------------------------
+%
+\begin{enumerate}
+\item $\mathrm{Var}(a) = 0$
+\item $\mathrm{Var}(bX) = b^{2}\mathrm{Var}(X)$
+\item $\mathrm{Var}(Y) = \mathrm{Var}(a+bX) = \mathrm{Var}(a)
++ \mathrm{Var}(bX) = b^{2}\mathrm{Var}(X)$.
+\end{enumerate}
+%
+
+%------------------------------------------------------------------
+\subsection[Standardisation]{Standardisation}
+\lb{subsec:standard}
+%------------------------------------------------------------------
+\textbf{Standardisation} of an arbitrary one-dimensional random 
+variable $X$, with $\sqrt{\mathrm{Var}(X)} > 0$, implies the 
+determination of a special linear transformation $X \mapsto Z$ 
+according to Eq.~(\ref{lintransf}) such that the expectation value 
+and variance of $X$ are re-scaled to their simplest values 
+possible, i.e., $\mathrm{E}(Z)=0$ and $\mathrm{Var}(Z)=1$. Hence,
+the two (in part non-linear) conditions
+%
+\[
+0 \stackrel{!}{=} \mathrm{E}(Z)= a+b\mathrm{E}(X)
+\quad\text{and}\quad
+1 \stackrel{!}{=} \mathrm{Var}(Z)= b^{2}\mathrm{Var}(X) \ ,
+\]
+%
+for unknowns $a$ and $b$, need to be satisfied simultaneously. 
+These are solved by, respectively,
+%
+\be
+a=-\frac{\mathrm{E}(X)}{\sqrt{\mathrm{Var}(X)}}
+\quad\text{and}\quad
+b=\frac{1}{\sqrt{\mathrm{Var}(X)}} \ ,
+\ee
+%
+and so
+%
+\be
+\lb{eq:standardisation}
+\fbox{$\displaystyle
+X \rightarrow Z = \frac{X-\mathrm{E}(X)}{\sqrt{\mathrm{Var}(X)}}
+\ , \qquad
+x \mapsto z = \frac{x-\mu}{\sigma} \in \bar{\mathbb{D}}
+\subseteq \mathbb{R} \ ,
+$}
+\ee
+%
+irrespective of whether the random variable $X$ is of the discrete 
+kind (cf. Sec.~\ref{sec:diskretz}) or of the continuous kind (cf. 
+Sec.~\ref{sec:stetigz}). It is essential for applications to 
+realise that under the process of standardisation 
+the values of event probabilities for a random variable $X$ 
+remain \textbf{invariant} (unchanged), i.e.,
+%
+\be
+P(X\leq x)
+= P\left(\frac{X-\mathrm{E}(X)}{\sqrt{\mathrm{Var}(X)}}
+\leq \frac{x-\mu}{\sigma}\right) = P(Z\leq z) \ .
+\ee
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Sums of random variables and reproductivity]{Sums of
+random variables and reproductivity}
+\lb{sec:sumvar}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\underline{\textbf{Def.:}} For a set of $n$ additive
+one-dimensional random variables~$X_{1}, \ldots, X_{n}$, one
+defines a \textbf{total sum} random variable~$Y_{n}$ and an
+associated \textbf{mean} random variable~$\bar{X}_{n}$ according to
+%
+\be
+\lb{eq:sumnmean}
+\fbox{$\displaystyle
+Y_{n} := \sum_{i=1}^{n}X_{i}
+\quad\quad\text{and}\quad\quad
+\bar{X}_{n} := \frac{1}{n}\,Y_{n} \ .
+$}
+\ee
+%
+
+\medskip
+\noindent
+By \textit{linearity} of the expectation value 
+operation,\footnote{That is: $\mathrm{E}(X_{1}+X_{2})
+= \mathrm{E}(X_{1})+\mathrm{E}(X_{2})$.} it then holds that
+%
+\be
+\lb{eq:sumexpv}
+\mathrm{E}(Y_{n})
+= \mathrm{E}\left(\sum_{i=1}^{n}X_{i}\right)
+= \sum_{i=1}^{n}\mathrm{E}(X_{i})
+\quad\quad\text{and}\quad\quad
+\mathrm{E}(\bar{X}_{n}) = \frac{1}{n}\,\mathrm{E}(Y_{n}) \ .
+\ee
+%
+If, in addition, the $X_{1}, \ldots, X_{n}$ are \textit{mutually 
+stochastically independent} according to 
+Eq.~(\ref{eq:stochindep1}) (see also 
+Sec.~\ref{subsec:2dcovtheoret} below), it follows from 
+Sec.~\ref{subsec:vartrans} that the variances of $Y_{n}$ and 
+$\bar{X}_{n}$ are given by
+%
+\be
+\lb{eq:sumvar}
+\mathrm{Var}(Y_{n})
+= \mathrm{Var}\left(\sum_{i=1}^{n}X_{i}\right)
+= \sum_{i=1}^{n}\mathrm{Var}(X_{i})
+\quad\quad\text{and}\quad\quad
+\mathrm{Var}(\bar{X}_{n})
+= \left(\frac{1}{n}\right)^{2}\mathrm{Var}(Y_{n}) \ ,
+\ee
+%
+respectively.
+
+\medskip
+\noindent
+\underline{\textbf{Def.:}} \textbf{Reproductivity} of a probability 
+distribution law (\texttt{cdf}) $F(x)$ is given when the total 
+sum~$Y_{n}$ of $n$ independent and identically distributed (in 
+short: ``i.i.d.'') additive one-dimensional random 
+variables~$X_{1}, \ldots, X_{n}$, which each individually satisfy 
+distribution laws $F_{X_{i}}(x) \equiv F(x)$, inherits \textit{this 
+very} distribution law $F(x)$ from its underlying $n$ random 
+variables. Examples of reproductive distribution laws, to be 
+discussed in the following Ch.~\ref{ch8}, are the binomial, the 
+Gau\ss ian normal, and the $\chi^{2}$--distributions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Two-dimensional random variables]{Two-dimensional random 
+variables}
+\lb{sec:2dvar}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The \textbf{empirical tests for association} between two 
+statistical variables $X$ and $Y$ of Ch.~\ref{ch13} require the 
+notions of \textbf{two-dimensional random variables} and their 
+bivariate \textbf{joint probability distributions}. Recommended 
+introductory literature on these matters are, e.g., Toutenburg 
+(2005)~\ct[p~57ff]{tou2005} and Kredler (2003)~\ct[Ch.~2]{kre2003}.
+
+\medskip
+\noindent
+\underline{\textbf{Def.:}} A real-valued two-dimensional
+\textbf{random variable} is defined as a one-to-one mapping
+%
+\be
+\left(X,Y\right): \boldsymbol{\Omega} \rightarrow D \subseteq 
+\mathbb{R}^{2}
+\ee
+%
+of the sample space $\boldsymbol{\Omega}$ of some random 
+experiment with associated probability space 
+$\left(\boldsymbol{\Omega}, {\cal P}, P\right)$ into a subset $D$ 
+of the two-dimensional Euclidian space $\mathbb{R}^{2}$.
+
+\medskip
+\noindent
+We proceed by sketching some important concepts relating to 
+two-dimensional random variables.
+
+%------------------------------------------------------------------
+\subsection[Joint probability distributions]{Joint probability 
+distributions}
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+\subsubsection[Discrete case]{\underline{Discrete case:}}
+%------------------------------------------------------------------
+Two-dimensional \textbf{discrete random variables} possess a
+
+\medskip
+\noindent
+\textbf{Spectrum of values:}
+%
+\be
+(X,Y) \mapsto (x,y) \in \left\{x_{1}, \ldots, x_{k}\right\} \times
+\left\{y_{1}, \ldots, y_{l}\right\}
+\subset \mathbb{R}^{2} \ ,
+\quad\quad\text{with}\quad k, l \in \mathbb{N} \ .
+\ee
+%
+All pairs of values $(x_{i},y_{j})_{i=1,\ldots,k; j=1,\ldots,l}$ 
+in this spectrum are assigned individual probabilities $p_{ij}$ by 
+a real-valued
+
+\medskip
+\noindent
+\textbf{Joint probability function:}
+%
+\be
+\fbox{$\displaystyle
+P(X=x_{i},Y=y_{j}) = p_{ij}
+\quad\quad\text{for}\quad i=1, \dots, k;
+j=1, \dots, l \ ,
+$}
+\ee
+%
+with properties\\[-5mm]
+%
+\begin{center}
+\begin{itemize}
+\item[(i)] $0 \leq p_{ij} \leq 1$, and
+\hfill (\textbf{non-negativity})\\[-5mm]
+
+\item[(ii)] ${\displaystyle\sum_{i=1}^{k}\sum_{j=1}^{l}p_{ij}=1}$.
+\hfill (\textbf{normalisability})\\[-5mm]
+\end{itemize}
+\end{center}
+%
+By analogy to the case of one-dimensional random variables, 
+specific \textbf{event probabilities} for $(X,Y)$ are obtained from 
+the associated
+
+\medskip
+\noindent
+\textbf{Joint cumulative distribution function (\texttt{cdf}):}
+%
+\be
+\fbox{$\displaystyle
+F_{XY}(x,y) = \texttt{cdf}(x,y) := P(X \leq x,Y \leq y)
+= \sum_{i|x_{i}\leq x}\sum_{j|y_{j}\leq y}p_{ij} \ .
+$}
+\ee
+%
+
+%------------------------------------------------------------------
+\subsubsection[Continous case]{\underline{Continuous case:}}
+%------------------------------------------------------------------
+For two-dimensional \textbf{continuous random variables} the range 
+can be represented by the
+
+\medskip
+\noindent
+\textbf{Spectrum of values:}
+%
+\be
+(X,Y) \mapsto (x,y) \in D = (x_\mathrm{min},x_\mathrm{max}) \times 
+(y_\mathrm{min},y_\mathrm{max}) \subseteq \mathbb{R}^{2} \ .
+\ee
+%
+Probabilities are now assigned to infinitesimally small areas
+$\mathrm{d}x \times \mathrm{d}y \in D$ by means of a real-valued
+
+\medskip
+\noindent
+\textbf{Joint probability density function (\texttt{pdf}):}
+%
+\be
+\fbox{$\displaystyle
+f_{XY}(x,y) = \texttt{pdf}(x,y) \ ,
+$
+}
+\ee
+%
+with properties:\\[-5mm]
+%
+\begin{center}
+\begin{itemize}
+\item[(i)] $f_{XY}(x,y) \geq 0$ for all $(x,y) \in D$, and
+\hfill (\textbf{non-negativity})\\[-5mm]
+
+\item[(ii)] ${\displaystyle\int_{-\infty}^{+\infty}
+\int_{-\infty}^{+\infty}
+f_{XY}(x,y)\,\mathrm{d}x\mathrm{d}y=1}$.
+\hfill (\textbf{normalisability})\\[-5mm]
+
+\end{itemize}
+\end{center}
+%
+Approximately, one now has
+%
+\[
+P(X \in \mathrm{d}x, Y \in \mathrm{d}y) \approx f_{XY}(\xi, \eta)\,
+\mathrm{d}x\mathrm{d}y \ ,
+\]
+%
+for representative $\xi \in \mathrm{d}x$ and $\eta \in
+\mathrm{d}y$. Specific \textbf{event probabilities} for $(X,Y)$ are
+obtained from the associated
+
+\medskip
+\noindent
+\textbf{Joint cumulative distribution function (\texttt{cdf}):}
+%
+\be
+\fbox{$\displaystyle
+F_{XY}(x,y) = \texttt{cdf}(x,y) := P(X \leq x,Y \leq y)
+= \int_{-\infty}^{x}\int_{-\infty}^{y}f_{XY}(t,u)\,
+\mathrm{d}t\mathrm{d}u \ .
+$}
+\ee
+%
+
+%------------------------------------------------------------------
+\subsection[Marginal and conditional distributions]{Marginal and 
+conditional probability distributions}
+%------------------------------------------------------------------
+%------------------------------------------------------------------
+\subsubsection[Discrete case]{\underline{Discrete case:}}
+%------------------------------------------------------------------
+The univariate \textbf{marginal probability functions} for $X$ and
+$Y$ induced by the joint probability function $P(X=x_{i},Y=y_{j}) 
+= p_{ij}$ are
+%
+\be
+\lb{eq:margxdiscr}
+p_{i+} := \sum_{j=1}^{l}p_{ij} = P(X=x_{i}) 
+\quad\quad\text{for}\quad i=1,\ldots,k \ ,
+\ee
+%
+and
+%
+\be
+\lb{eq:margydiscr}
+p_{+j} := \sum_{i=1}^{k}p_{ij} = P(Y=y_{j})
+\quad\quad\text{for}\quad j=1,\ldots,l \ .
+\ee
+%
+In addition, one defines \textbf{conditional probability functions} 
+for $X$ given $Y=y_{j}$, with $p_{+j}>0$, and for $Y$ given 
+$X=x_{i}$, with $p_{i+}>0$, by
+%
+\be
+\lb{eq:condxdiscr}
+p_{i|j} := \frac{p_{ij}}{p_{+j}} = P(X=x_{i}|Y=y_{j})
+\quad\quad\text{for}\quad i=1,\ldots,k \ ,
+\ee
+%
+respectively
+%
+\be
+\lb{eq:condydiscr}
+p_{j|i} := \frac{p_{ij}}{p_{i+}} = P(Y=y_{j}|X=x_{i})
+\quad\quad\text{for}\quad j=1,\ldots,l \ .
+\ee
+%
+
+%------------------------------------------------------------------
+\subsubsection[Continous case]{\underline{Continuous case:}}
+%------------------------------------------------------------------
+The univariate \textbf{marginal probability density functions} for
+$X$ and $Y$ induced by the joint probability density function 
+$f_{XY}(x,y)$ are
+%
+\be
+\lb{eq:margxcont}
+f_{X}(x) = \int_{-\infty}^{+\infty}f_{XY}(x,y)\,\mathrm{d}y \ ,
+\ee
+%
+and
+%
+\be
+\lb{eq:margycont}
+f_{Y}(y) = \int_{-\infty}^{+\infty}f_{XY}(x,y)\,\mathrm{d}x \ .
+\ee
+%
+Moreover, one defines \textbf{conditional probability density 
+functions} for $X$ given $Y$, and for $Y$ given $X$, by
+%
+\be
+\lb{eq:condxcont}
+f_{X|Y}(x|y) := \frac{f_{XY}(x,y)}{f_{Y}(y)}
+\quad\quad\text{for}\quad f_{Y}(y)>0 \ ,
+\ee
+%
+respectively
+%
+\be
+\lb{eq:condycont}
+f_{Y|X}(y|x) := \frac{f_{XY}(x,y)}{f_{X}(x)}
+\quad\quad\text{for}\quad f_{X}(x)>0 \ .
+\ee
+%
+
+%------------------------------------------------------------------
+\subsection[Bayes' theorem for two-dimensional random variables]{Bayes' theorem for two-dimensional random variables}
+%------------------------------------------------------------------
+The concept of a bivariate joint probability distribution is at 
+the heart of the formulation of Bayes' theorem, 
+Eq.~(\ref{eq:bayes}), for a real-valued two-dimensional random 
+variable $(X,Y)$.
+
+%------------------------------------------------------------------
+\subsubsection[Discrete case]{\underline{Discrete case:}}
+%------------------------------------------------------------------
+Let $P(X=x_{i}) = p_{i+} > 0$ be a \textbf{prior probability 
+function} for a discrete random variable $X$. Then, on the grounds 
+of a joint probability function $P(X=x_{i},Y=y_{j}) = p_{ij}$ and
+Eqs.~(\ref{eq:condxdiscr}) and (\ref{eq:condydiscr}), the
+\textbf{posterior probability function} for $X$ given $Y=y_{j}$,
+with$P(Y=y_{j}) = p_{+j} > 0$, is determined by
+%
+\be
+p_{i|j} = \frac{p_{j|i}}{p_{+j}}\,p_{i+}
+\quad\quad\text{for}\quad i=1,\ldots,k \ .
+\ee
+%
+By using Eqs.~(\ref{eq:margydiscr}) and (\ref{eq:condydiscr}) to 
+re-expressed the denominator $p_{+j}$, this may be given in the 
+standard form
+%
+\be
+\lb{eq:bayesdiscr2drandvars}
+\fbox{$\displaystyle
+p_{i|j} = \frac{p_{j|i}\,p_{i+}}{\displaystyle\sum_{i=1}^{k}p_{j|i}
+\,p_{i+}}
+\quad\quad\text{for}\quad i=1,\ldots,k \ .
+$}
+\ee
+%
+
+%------------------------------------------------------------------
+\subsubsection[Continous case]{\underline{Continuous case:}}
+%------------------------------------------------------------------
+Let $f_{X}(x) > 0$ be a \textbf{prior probability density function} 
+for a continuous random variable $X$. Then, on the grounds 
+of a joint probability density function $f_{XY}(x,y)$ and
+Eqs.~(\ref{eq:condxcont}) and (\ref{eq:condycont}), the
+\textbf{posterior probability density function} for $X$ given $Y$,
+with $f_{Y}(y)>0$, is determined by
+%
+\be
+f_{X|Y}(x|y) = \frac{f_{Y|X}(y|x)}{f_{Y}(y)}\,f_{X}(x) \ .
+\ee
+%
+By using Eqs.~(\ref{eq:margycont}) and (\ref{eq:condycont}) to 
+re-expressed the denominator $f_{Y}(y)$, this may be stated in the 
+standard form
+%
+\be
+\lb{eq:bayescont2drandvars}
+\fbox{$\displaystyle
+f_{X|Y}(x|y) = 
+\frac{f_{Y|X}(y|x)\,f_{X}(x)}{\displaystyle\int_{-\infty}^{+\infty}
+f_{Y|X}(y|x)\,f_{X}(x)\,\mathrm{d}x} \ .
+$}
+\ee
+%
+
+\medskip
+\noindent
+In practical applications, evaluation of the, at times intricate, 
+single and double integrals contained in this representation of 
+Bayes' theorem is managed by employing sophisticated numerical 
+approxi\-mation techniques; cf. Saha (2002)~\ct{sah2002},
+Sivia and Skilling (2006)~\ct{sivski2006}, Greenberg
+(2013)~\ct{gre2013}, Gelman \textit{et al} (2014)~\ct{geletal2014},
+or McElreath (2016)~\ct{mce2016}.
+
+%------------------------------------------------------------------
+\subsection[Covariance and correlation]{Covariance and correlation}
+\lb{subsec:2dcovtheoret}
+%------------------------------------------------------------------
+We conclude this section by reviewing the standard measures for 
+characterising the degree of \textbf{stochastic association}
+between two random variables $X$ and $Y$.
+
+\medskip
+\noindent
+The \textbf{covariance} of $X$ and $Y$ is defined by
+%
+\be
+\lb{eq:2dvarcov}
+\mathrm{Cov}(X,Y) := \mathrm{E}\left[\left(X-\mathrm{E}(X)\right)
+\left(Y-\mathrm{E}(Y)\right)\right] \ .
+\ee
+%
+It constitutes the off-diagonal component of the symmetric 
+$\boldsymbol{(2 \times 2)}$ \textbf{covariance matrix}
+%
+\be
+\lb{eq:2dcovmattheoret}
+\boldsymbol{\Sigma}(X,Y) :=
+\left(\begin{array}{cc}
+\mathrm{Var}(X) & \mathrm{Cov}(X,Y) \\
+\mathrm{Cov}(X,Y) & \mathrm{Var}(Y)
+\end{array}\right) \ ,
+\ee
+%
+which is regular and thus invertible as long as 
+$\det[\boldsymbol{\Sigma}(X,Y)] \neq 0$.
+
+\medskip
+\noindent
+By a suitable normalisation procedure, one defines from 
+Eq.~(\ref{eq:2dvarcov}) the \textbf{correlation coefficient} of $X$ 
+and $Y$ as
+%
+\be
+\lb{eq:2dvarcorrel}
+\rho(X,Y) := \frac{\mathrm{Cov}(X,Y)}{\sqrt{\mathrm{Var}(X)}
+\sqrt{\mathrm{Var}(Y)}} \ .
+\ee
+%
+This features as the off-diagonal component in the symmetric 
+$\boldsymbol{(2 \times 2)}$ \textbf{correlation matrix}
+%
+\be
+\lb{eq:2dcorrelmattheoret}
+\boldsymbol{R}(X,Y) :=
+\left(\begin{array}{cc}
+1 & \rho(X,Y) \\
+\rho(X,Y) & 1
+\end{array}\right) \ ,
+\ee
+%
+which is positive definite and thus invertible for $0 < 
+\det[\boldsymbol{R}(X,Y)] = 1-\rho^{2} \leq 1$.
+
+\medskip
+\noindent
+\underline{\textbf{Def.:}} Two random variables $X$ and $Y$ are 
+referred to as \textbf{mutually stochastically independent}
+provided that
+%
+\be
+\lb{eq:stochindep2}
+\mathrm{Cov}(X,Y) = 0
+\qquad\Leftrightarrow\qquad
+\rho(X,Y) = 0 \ .
+\ee
+%
+It then follows that
+%
+\be
+\lb{eq:stochindep3}
+P(X \leq x,Y \leq y) = P(X \leq x) \times P(Y\leq y)
+\quad\Leftrightarrow\quad
+F_{XY}(x,y) = F_{X}(x) \times F_{Y}(y)
+\ee
+%
+for $(x,y) \in D \subseteq \mathbb{R}^{2}$. Moreover, in this case 
+(i)~$\mathrm{E}(X \times Y) = \mathrm{E}(X) \times \mathrm{E}(Y)$,
+and (ii)~$\mathrm{Var}(aX+bY) = a^{2}\mathrm{Var}(X)+b^{2}
+\mathrm{Var}(Y)$.
+
+\vspace{5mm}
+\noindent
+In the next chapter we will highlight a number of standard 
+univariate probability distributions for discrete and continuous 
+one-dimensional random variables.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

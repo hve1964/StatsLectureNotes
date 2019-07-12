@@ -1,0 +1,507 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch11-Stats.tex
+%  Title:
+%  Version: 20.06.2019 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Null hypothesis significance testing]{\href{https://www.youtube.com/watch?v=jnLHSyYQ1LE}{Null hypothesis significance testing}}
+\lb{ch11}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Null hypothesis significance testing} by means of
+observable quantities is the centrepiece of the current body of
+inferential statistical methods in the \textbf{frequentist
+framework}. Its logic of an ongoing routine of systematic
+\textbf{falsification} of null hypotheses by empirical means is
+firmly rooted in the ideas of \textbf{critical rationalism} and
+\textbf{logical positivism}. The latter were expressed most
+emphatically by the Austro--British 
+philosopher \href{http://en.wikipedia.org/wiki/Karl_Popper}{Sir 
+Karl Raimund Popper CH FRS FBA (1902--1994)}; see, e.g., Popper 
+(2002)~\ct{pop2002}. The systematic procedure for null hypothesis
+significance testing on the grounds of observational
+\textbf{evidence}, as practiced today within the
+\textbf{frequentist framework} as a standardised method of
+probability-based \textbf{decision-making}, was developed during
+the first half of the $20^\mathrm{th}$ Century, predominantly by
+the English statistician, evolutionary biologist, 
+eugenicist and geneticist
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Fisher.html}{Sir
+Ronald Aylmer Fisher FRS (1890--1962)}, the 
+Polish--US-American mathematician and statistician
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Neyman.html}{Jerzy Neyman (1894--1981)}, the English mathematician and statistician
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Pearson.html}{Karl Pearson FRS (1857--1936)}, and his son, the English statistician
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Pearson_Egon.html}{Egon Sharpe Pearson CBE FRS (1895--1980)}; cf. Fisher
+(1935)~\ct{fis1935}, Neyman and Pearson (1933)~\ct{neypea1933},
+and Pearson (1900)~\ct{pea1900}.
+%, and Pearson (1920)~\ct{pea1920}. 
+We will describe the main steps of the systematic test procedure 
+in the following.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[General procedure]{General procedure}
+\lb{sec:testgen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The central aim of null hypothesis significance testing is to 
+separate, as reliably as possible, \textbf{true effects} in a
+\textbf{target population} $\boldsymbol{\Omega}$ of statistical
+units concerning distributional properties of, or relations
+between, selected \textbf{statistical variables} $X, Y, \ldots, Z$
+from \textbf{chance effects} potentially injected by the sampling
+approach to probing the nature of $\boldsymbol{\Omega}$. The
+sampling approach results in a, generally unavoidable, state of
+\textbf{incomplete information} on the part of the researcher.
+
+\medskip
+\noindent
+In an inferential statistical context, (null and/or research)
+\textbf{hypotheses} are formulated as assumptions on\\[-5mm]
+%
+\begin{itemize}
+\item[(i)] the \textbf{probability distribution function} $F$ of
+one or more \textbf{random variables} $X, Y, \ldots, Z$ in 
+$\boldsymbol{\Omega}$, or on\\[-5mm]
+
+\item[(ii)] one or more \textbf{parameters} $\theta$ of this
+probability distribution function.\\[-5mm]
+\end{itemize}
+%
+Generically, statistical hypotheses need to be viewed as 
+probabilistic statements. As such the researcher will always have 
+to deal with a fair amount of \textbf{uncertainty} in deciding 
+whether an observed, potentially only apparent effect is
+\textbf{statistically significant} and/or \textbf{practically
+significant} in $\boldsymbol{\Omega}$ or not. Bernstein
+(1998)~\ct[p~207]{ber1998} summarises the circumstances relating to
+the test of a specific hypothesis as follows:
+%
+\begin{quotation}
+``Under conditions of uncertainty, the choice is not between 
+rejecting a hypothesis and accepting it, but between reject and 
+not--reject.''
+\end{quotation}
+%
+
+\medskip
+\noindent
+The question arises as to \textit{which kinds of quantitative 
+problems can be efficiently settled by statistical means}?
+With respect to a given target population $\boldsymbol{\Omega}$, 
+in the simplest kinds of applications of null hypothesis
+significance testing, one may (a)~\textbf{test for differences} in
+the distributional properties of a single one-dimensional
+statistical variable $X$ between a number of subgroups of
+$\boldsymbol{\Omega}$, necessitating \textbf{univariate methods} of
+data analysis, or one may (b)~\textbf{test for association} for a
+two-dimensional statistical variable $(X,Y)$, thus requiring
+\textbf{bivariate methods} of data analysis. The standardised
+procedure for \textbf{null hypothesis significance testing},
+practiced within the \textbf{frequentist framework} for the purpose
+of assessing statistical significance of an observed, potentially
+apparent effect, takes the following six steps on the way to making
+a \textbf{decision}:
+
+\medskip
+\noindent
+\textbf{Six-step procedure for null hypothesis significance
+testing}%\\[-5mm]
+%
+\begin{enumerate}
+
+\item Formulation, with respect to the target population 
+$\boldsymbol{\Omega}$, of a pair of mutually exclusive
+\textbf{hypotheses}:%\\[-5mm]
+%
+\begin{enumerate}
+\item the \textbf{null hypothesis} $H_{0}$ conjectures that ``there 
+exists \textit{no} effect in $\boldsymbol{\Omega}$ of the kind 
+envisaged by the researcher,'' while%\\[-5mm]
+
+\item the \textbf{research hypothesis} $H_{1}$ conjectures  that 
+``there \textit{does} exist a true effect in $\boldsymbol{\Omega}$ 
+of the kind envisaged by the researcher.''%\\[-5mm]
+\end{enumerate}
+%
+The starting point of the test procedure is the \textit{assumption 
+(!)} that it is the content of the $H_{0}$ conjecture which is 
+realised in $\boldsymbol{\Omega}$. The objective is to try to 
+refute $H_{0}$ empirically on the basis of random sample data 
+drawn from $\boldsymbol{\Omega}$, to a level of significance which 
+needs to be specified in advance. In this sense it is $H_{0}$ 
+which is being subjected to a statistical test.\footnote{Bernstein 
+(1998)~\ct[p~209]{ber1998} refers to the statistical test of a 
+(null) hypothesis as a ``mathematical stress test.''} The striking 
+\textit{asymmetry} regarding the roles of $H_{0}$ and $H_{1}$ in 
+the test procedure embodies the notion of a \textbf{falsification}
+of hypotheses, as advocated by critical rationalism.%\\[-5mm]
+
+\item Specification of a \textbf{significance level} $\alpha$ prior
+to the performance of the test, where, by convention, $\alpha \in 
+[0.01,0.05]$. The parameter $\alpha$ is synonymous with the 
+probability of committing a Type~I error (to be defined below) in 
+making a test decision.%\\[-5mm]
+
+\item Construction of a suitable continuous real-valued measure 
+for quantifying deviations of the data in a random sample 
+$\boldsymbol{S_{\Omega}}$:~$(X_{1}, \ldots, X_{n})$ of size~$n$ 
+from the initial ``no effect in $\boldsymbol{\Omega}$'' conjecture
+of $H_{0}$, a \textbf{test statistic} $T_{n}(X_{1},\ldots, X_{n})$ 
+that is perceived as a one-dimensional random variable with (under 
+the $H_{0}$ assumption) \textit{known (!)} associated
+\textbf{theoretical probability distribution} for computing related
+event probabilities. The latter is referred to as the \textbf{test
+distribution}.\footnote{Within the frequentist framework of
+null hypothesis significance testing the test statistic and its
+partner test distribution form an intimate pair of decision-making
+devices.}%\\[-5mm]
+
+\item Determination of the \textbf{rejection region}
+$B_{\alpha}$ for $H_{0}$ within the spectrum of values of 
+the test statistic $T_{n}(X_{1},\ldots, X_{n})$ from re-arranging 
+the conditional probability condition
+%
+\be
+P\left(T_{n}(X_{1}, \ldots, X_{n}) \in B_{\alpha}|H_{0}\right)
+\stackrel{!}{\leq} \alpha \ ,
+\ee
+%
+where $P(\ldots)$ and the threshold
+$\alpha$--quantile(s)~$P^{-1}(\alpha)$ demarking the boundary(ies)
+of $B_{\alpha}$ are to be calculated from the assumed (continuous)
+test distribution.
+
+\item Computation of a specific \textbf{realisation}
+$t_{n}(x_{1}, \ldots, x_{n})$ of the test statistic
+$T_{n}(X_{1}, \ldots, X_{n})$ from the data $x_{1}, 
+\ldots, x_{n}$ in a \textbf{random sample} 
+$\boldsymbol{S_{\Omega}}$:~$(X_{1}, \ldots, X_{n})$, the latter of 
+which constitutes the required observational
+\textbf{evidence}.%\\[-5mm]
+
+\item Derivation a \textbf{test decision} on the basis of the 
+following alternative criteria: when for the realisation 
+$t_{n}(x_{1}, \ldots, x_{n})$ of the test statistic $T_{n}(X_{1}, 
+\ldots, X_{n})$, resp.~the $p$--value (to be defined in 
+Sec.~\ref{sec:pvalue} below) associated with this 
+realisation,\footnote{The statistical software packages \R{}\ and
+SPSS provide $p$--values as a means for making decisions in null
+hypothesis significance testing.} it holds that%\\[-5mm]
+%
+\begin{itemize}
+\item[(i)]\ $t_{n} \in B_{\alpha}$, resp.
+$\boldsymbol{p}\text{{\bf--value}} < \alpha, \text{then}
+\quad\Rightarrow\quad
+\text{reject}~H_{0}$,\\[-5mm]
+\item[(ii)]\ $t_{n} \notin B_{\alpha}$, resp.
+$\boldsymbol{p}\text{{\bf--value}} \geq \alpha, \text{then}
+\quad\Rightarrow\quad\text{not\ reject}~H_{0}$.%\\[-5mm]
+\end{itemize}
+%
+\end{enumerate}
+%
+
+\medskip
+\noindent
+A fitting metaphor for the six-step procedure for null hypothesis significance testing just described is that of a statistical long
+jump competition. The issue here is to find out whether actual
+empirical data deviates sufficiently strongly from the
+``no effect'' reference state conjectured in the
+given \textbf{null hypothesis}~$H_{0}$, so as to land in the 
+corresponding \textbf{rejection region}~$B_{\alpha}$ within the 
+spectrum of values of the \textbf{test 
+statistic}~$T_{n}(X_{1}, \ldots, X_{n})$. Steps~1 to~4 prepare the 
+long jump facility (the test stage), while the evaluation of the 
+outcome of the jump attempt takes place in steps~5 and~6. Step~4 
+necessitates the direct application of \textbf{Probability Theory}
+within the \textbf{frequentist framework} in that the determination
+of the \textbf{rejection region}~$B_{\alpha}$ for~$H_{0}$ entails
+the calculation of a conditional event probability from an
+\textit{assumed} \textbf{test distribution}.
+
+\medskip
+\noindent
+When an effect observed on the basis of random sample data proves 
+to possess \textbf{statistical signifi\-cance} (to a predetermined 
+significance level), this means that most likely it has come about 
+\textit{not by chance} due to the sampling methodology. A different 
+matter altogether is whether such an effect also possesses
+\textbf{practical significance}, so that, for instance, management 
+decisions ought to be adapted to it. Practical significance of
+an observed effect can be evaluated, e.g., with the standardised
+and scale-invariant \textbf{effect size} measures proposed by Cohen
+(1992, 2009)~\ct{coh1992,coh2009}. Addressing the \textbf{practical
+significance} of an observed effect should be commonplace in any
+report on inferential statistical data analysis; see also Sullivan
+and R Feinn (2012)~\ct{sulfei2012}.
+
+\medskip
+\noindent
+When performing \textbf{null hypothesis significance testing}, the
+researcher is always at \textbf{risk} of making a wrong 
+decision. Hereby, one distinguishes between the following two 
+kinds of potential error:
+%
+\begin{itemize}
+\item \textbf{Type I error:} reject an $H_{0}$ which, however,
+is true, with conditional probability $P(H_{1}|H_{0}\ 
+\text{true})=\alpha$; this case is also referred to as a ``false 
+positive,'' and %\\
+
+\item \textbf{Type II error:} not reject an $H_{0}$ which, however,
+is false, with conditional probability $P(H_{0}|H_{1}\ 
+\text{true})=\beta$; this case is also referred to as a ``false 
+negative.''
+
+\end{itemize}
+%
+By fixing the significance level $\alpha$ prior to running 
+a statistical test, one controls the risk of committing a Type~I 
+error in the decision process. We condense the different possible 
+outcomes when making a test decision in
+%the following table:
+Tab.~\ref{tab:decerrors}.
+%\pagebreak
+%\medskip
+%\noindent
+%
+\begin{table}
+%\textbf{Consequences of test decisions:}% \nopagebreak
+%
+\begin{center}
+    \begin{tabular}[!h]{c|ccc}
+    	\hline
+    	 & & & \\
+    	 & $H_{0}$: \textit{no effect} & \fbox{Decision for:} & 
+    	 $H_{1}$: \textit{effect} \\
+    	 & & & \\
+    	\hline
+    	 & & & \\
+    	$H_{0}$: \textit{no effect} & correct decision: & &
+			\textbf{Type I error}: \\
+    	true & $P(H_{0}|H_{0}\ \text{true})=1-\alpha$ & & 
+    	$P(H_{1}|H_{0}\ \text{true})=\alpha$ \\
+    	 & & & \\
+    	\fbox{Reality / $\boldsymbol{\Omega}$:} & & & \\
+    	 & & & \\
+    	$H_{1}$: \textit{effect} & \textbf{Type II error}: & &
+			correct decision: \\
+    	true & $P(H_{0}|H_{1}\ \text{true})=\beta$ & & 
+    	$P(H_{1}|H_{1}\ \text{true})=1-\beta$ \\
+    	 & & & \\
+      \hline
+    \end{tabular}
+\end{center}
+\caption{Consequences of test decisions in null hypothesis
+significance testing.}
+\lb{tab:decerrors}
+\end{table}
+%
+
+\medskip
+\noindent
+While the probability $\alpha$ is required to be specified
+\textit{a priori} to a statistical test, the probability $\beta$ is 
+typically computed \textit{a posteriori}. One refers to the 
+probability $1-\beta$ associated with the latter as the
+\textbf{power} of a statistical test. Its magnitude is determined
+in particular by the parameters \textbf{sample size}~$n$,
+\textbf{significance level}~$\alpha$, and the \textbf{effect size}
+of the phenomenon to be investigated; see, e.g., Cohen 
+(2009)~\ct{coh2009} and Hair \textit{et al} 
+(2010)~\ct[p~9f]{haietal2010}.
+
+%\textbf{[hve: Zielscheibenmetapher zum Prinzip des Signifikanztests:
+%\"au\ss ere 95\% zu treffen ist recht wahrscheinlich (entspricht
+%Stichproben bedingten Schwankungen), innere 5\% zu treffen ist
+%sehr unwahrscheinlich (entspricht systematischen/signifikanten
+%Schwankungen)]}
+
+\medskip
+\noindent
+As emphasised at the beginning of this chapter, \textbf{null
+hypothesis significance testing} is at the heart of
+quantitative--empirical research rooted in the
+\textbf{frequentist framework}. To foster scientific progress in
+this context, it is essential that the scientific community, in an
+act of self-control, aims at repeated \textbf{replication} of
+specific test results in independent investigations. An interesting
+article in this respect was published by the weekly magazine
+\texttt{The Economist} on Oct 19, 2013, see Ref.~\ct{eco2013},
+which points out that, when subjected to such scrutiny, in general
+negative empirical results ($H_{0}$ not rejected) prove much more
+reliable than positive ones ($H_{0}$ rejected), though scientific
+journals tend to have a bias towards publication of the latter.
+A similar viewpoint is expressed in the paper by Nuzzo
+(2014)~\ct{nuz2014}. Rather critical accounts of the conceptual
+foundations of null hypothesis significance testing are given in
+the works by Gill (1999)~\ct{gil1999} and by Kruschke and Liddell
+(2017)~\ct{krulid2017}.
+
+\medskip
+\noindent
+The complementary \textbf{Bayes--Laplace approach} to 
+\textbf{statistical data analysis} (cf. Sec. \ref{subsec:bayes}) 
+does neither require the prior specification of a significance 
+level~$\alpha$, nor the introduction of a test statistic 
+$T_{n}(X_{1}, \ldots, X_{n})$ with a partner test distribution for
+the empirical testing of a (null) hypothesis. As described in
+detail by Jaynes (2003)~\ct{jay2003}, Sivia and Skilling 
+(2006)~\ct{sivski2006}, Gelman \textit{et al}
+(2014)~\ct{geletal2014} or McElreath (2016)~\ct{mce2016}, here
+\textbf{statistical inference} is practiced entirely on the basis
+of a \textbf{posterior probability distribution}
+$P(\text{hypothesis}|\text{data}, I)$ for
+the (research) hypothesis to be tested, conditional on the
+empirical data that was analysed for this purpose, and on the
+``relevant background information~$I$'' available to the researcher 
+beforehand. By employing \textbf{Bayes' theorem} [cf. 
+Eq.~(\ref{eq:bayes})], this \textbf{posterior probability 
+distribution} is computed in particular from the product between 
+the \textbf{likelihood function} $P(\text{data}|\text{hypothesis}, 
+I)$ of the data, given the hypothesis and $I$, and the
+\textbf{prior probability distribution} $P(\text{hypothesis}, I)$ 
+encoding the researcher's initial \textbf{degree-of-belief} in the 
+truth content of the hypothesis on the backdrop of $I$. That is 
+(see Sivia and Skilling (2006)~\ct[p~6]{sivski2006}),
+%
+\be
+P(\text{hypothesis}|\text{data}, I) \propto 
+P(\text{data}|\text{hypothesis}, I) \times P(\text{hypothesis}, I) 
+\ .
+\ee
+%
+%This procedure thus requires information on (i)~the \textbf{joint 
+%probability distribution} for distribution parameters and random 
+%variables (with parameters treated as random variables) and the 
+%distribution of random sample data underlying the probability 
+%$P(\text{data}|\text{hypothesis}, I)$, as well as specification of 
+%(ii)~a prior probability  $P(\text{hypothesis}, I)$. The latter can
+%be interpreted as a representation of a researcher's
+%\textbf{state of knowledge} concerning the plausibility of the
+%hypothesis to be tested.
+
+\medskip
+\noindent
+The \textbf{Bayes--Laplace approach} can be viewed as a proposal to 
+the formalisation of the process of \textbf{learning}. Note that
+the posterior probability distribution of one round of data
+generation and analysis can serve as the prior probability
+distribution for a subsequent round of generation and analysis of
+new data. Further details on the principles within the
+\textbf{Bayes--Laplace framework} underlying the estimation of
+distribution parameters, the optimal curve-fitting to a given set
+of empirical data points, and the related selection of an adequate mathematical model are given in, e.g., Greenberg
+(2013)~\ct[Chs.~3~and~4]{gre2013}, Saha (2002)~\ct[p~8ff]{sah2002},
+Lupton (1993)~\ct[p~50ff]{lup1993}, and in Ref.~\ct{hve2018}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Definition of a $p$--value]{Definition of a 
+$\boldsymbol{p}$--value}
+\lb{sec:pvalue}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\underline{\textbf{Def.:}} Let $T_{n}(X_{1}, \ldots, X_{n})$ be
+the \textbf{test statistic} of a particular \textbf{null hypothesis
+significance test} in the \textbf{frequentist framework}. The
+\textbf{test distribution} associated with $T_{n}(X_{1}, \ldots,
+X_{n})$ \textit{be known} under the assumption that the null
+hypothesis $H_{0}$ holds true in the target
+population~$\boldsymbol{\Omega}$. 
+%If $t_{n}(x_{1}, \ldots, x_{n})$ is the \textbf{realisation} of 
+%$T_{n}(X_{1}, \ldots, X_{n})$ computed from the data $x_{1}, 
+%\ldots, x_{n}$ of a random sample 
+%$\boldsymbol{S_{\Omega}}$:~$(X_{1}, \ldots, X_{n})$, then the 
+%$\boldsymbol{p}${\bf--value} associated with $t_{n}(x_{1}, %\ldots, 
+%x_{n})$ is defined as the conditional probability of obtaining a 
+%value of $T_{n}(X_{1}, \ldots, X_{n})$ which is {\em more 
+%extreme\/} than the given $t_{n}(x_{1}, \ldots, x_{n})$, given 
+%that the null hypothesis applies.
+The $\boldsymbol{p}${\bf--value} associated with a \textbf{
+realisation} $t_{n}(x_{1}, \ldots, x_{n})$ of the test statistic 
+$T_{n}(X_{1}, \ldots, X_{n})$ is defined as the conditional 
+probability of finding a value for $T_{n}(X_{1}, \ldots, X_{n})$  
+which is \textit{equal to or more extreme} than the actual 
+realisation $t_{n}(x_{1}, \ldots, x_{n})$, given that the null 
+hypothesis $H_{0}$ applies in the target 
+population~$\boldsymbol{\Omega}$. This conditional probability is
+to be computed from the test distribution.
+
+\vspace{5mm}
+\noindent
+Specifically, using the computational rules 
+(\ref{eq:comprulescont2})--(\ref{eq:comprulescont4}), one obtains 
+for a
+%
+\begin{itemize}
+\item two-sided statistical test,
+%
+\begin{eqnarray}
+\lb{eq:pvaluetwo}
+p & := & P(T_{n}<-\left.|t_{n}|\right|H_{0})
++ P(T_{n}>\left.|t_{n}|\right|H_{0}) \nonumber\\
+& = & P(T_{n}<-\left.|t_{n}|\right|H_{0})
++ 1 - P(T_{n}\leq\left.|t_{n}|\right|H_{0}) \nonumber\\
+& = & F_{T_{n}}(-|t_{n}|) + 1 - F_{T_{n}}(|t_{n}|) \ .
+\end{eqnarray}
+%
+This result specialises to $p=2\left[1 - F_{T_{n}}(|t_{n}|)\right]$
+if the respective \texttt{pdf} of the test distribution exhibits
+\textbf{reflection symmetry} with respect to a vertical axis at
+$t_{n}=0$, i.e., when 
+$F_{T_{n}}(-|t_{n}|)=1 - F_{T_{n}}(|t_{n}|)$ holds.
+
+\item left-sided statistical test,
+%
+\be
+\lb{eq:pvalueleft}
+p := P(T_{n}<t_{n}|H_{0})
+= F_{T_{n}}(t_{n}) \ ,
+\ee
+%
+
+\item right-sided statistical test,
+%
+\be
+\lb{eq:pvalueright}
+p := P(T_{n}>t_{n}|H_{0})
+= 1 - P(T_{n}\leq t_{n}|H_{0})
+= 1 - F_{T_{n}}(t_{n}) \ .
+\ee
+%
+\end{itemize}
+%
+With respect to the \textbf{test decision criterion} of rejecting 
+an $H_{0}$ whenever $p < \alpha$, one refers to (i)~cases with 
+$p<0.05$ as \textbf{significant} test results, and to (ii)~cases
+with $p<0.01$ as \textbf{highly significant} test
+results.\footnote{Lakens (2017)~\ct{lak2017} posted a stimulating
+blog entry on the potential traps associated with the
+interpretation of a $p$--value in statistical data analysis. His
+remarks come along with illustrative demonstrations in \R{},
+including the underlying codes.}
+
+\medskip
+\noindent
+\underline{Remark:} User-friendly routines for the computation of 
+$p$--values are available in \R{}, SPSS, EXCEL and OpenOffice, and 
+also on some GDCs.
+
+\vspace{5mm}
+\noindent
+In the following two chapters, we will turn to discuss a number of 
+standard problems in \textbf{Inferential Statistics} within the 
+\textbf{frequentist framework}, in association with the 
+quantitative--empirical tools that have been developed in this
+context to tackle them. In Ch.~\ref{ch12} we will be concerned with
+problems of a \textbf{univariate} nature, in particular,
+\textbf{testing for statistical differences} in the distributional
+properties of a single one-dimensional statistical variable~$X$
+between two of more subgroups of some target
+population~$\boldsymbol{\Omega}$, while in Ch.~\ref{ch13} the
+problems at hand will be of a \textbf{bivariate} nature,
+\textbf{testing for statistical association} in
+$\boldsymbol{\Omega}$ for a two-dimensional statistical
+variable~$(X,Y)$. An entertaining exhaustive account of the history
+of statistical methods of data analysis prior to the year 1900 is
+given by Stigler (1986)~\ct{sti1986}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

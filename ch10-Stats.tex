@@ -1,0 +1,414 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch10-Stats.tex
+%  Title:
+%  Version: 19.06.2019 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Random sampling of target populations]{\href{https://www.youtube.com/watch?v=ApHx0GE3zQI}{Random sampling of target populations}}
+\lb{ch10}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Quantitative--empirical research methods} may be employed
+for \textbf{exploratory} as well as for \textbf{confirmatory data
+analysis}. Here we will focus on the latter, in the context of a
+\textbf{frequentist viewpoint} of \textbf{Probability Theory} and
+\textbf{statistical inference}. To investigate \textbf{research
+questions} systematically by statistical means, with the objective
+to make inferences about the distributional properties of a set of
+\textbf{statistical variables} in a specific \textbf{target 
+population}~$\boldsymbol{\Omega}$ of study objects, on the basis 
+of analysis of data from just a few units in a \textbf{sample} 
+$\boldsymbol{S_{\Omega}}$, the following three issues have to be 
+addressed in a clearcut fashion:
+%
+\begin{itemize}
+\item[(i)] the \textbf{target population} $\boldsymbol{\Omega}$ of 
+the research activity needs to be defined in an unambiguous way,
+
+\item[(ii)] an adequate \textbf{random 
+sample}~$\boldsymbol{S_{\Omega}}$ needs to be drawn from an 
+underlying \textbf{sampling frame}~$\boldsymbol{L_{\Omega}}$ 
+associated with $\boldsymbol{\Omega}$, and
+
+\item[(iii)] a reliable mathematical procedure for
+\textbf{estimating quantitative population parameters} from random
+sample data needs to be employed.
+\end{itemize}
+%
+We will briefly discuss these issues in turn, beginning with a 
+review in Tab.~\ref{tab:notation} of conventional \textbf{notation} 
+for distinguishing specific statistical measures relating to target
+populations $\boldsymbol{\Omega}$ on the one-hand side from the 
+corresponding ones relating to random samples 
+$\boldsymbol{S_{\Omega}}$ on the other.
+%
+\begin{table}
+\begin{center}
+\begin{tabular}[!h]{c|c}
+    	\hline \\
+      \textbf{Target population} $\boldsymbol{\Omega}$ &
+      \textbf{Random sample} $\boldsymbol{S_{\Omega}}$ \\ \\
+      \hline \\
+      population size $N$ & sample size $n$ \\ \\
+%      proportion $\pi$ & sample proportion
+%      ${\displaystyle p_{n} = \frac{O_{n}}{n}}$, with \\
+%       & standard error
+%      ${\displaystyle \sqrt{\frac{p_{n}(1-p_{n})}{n}}}$ \\ \\
+      arithmetical mean $\mu$ & sample mean $\bar{X}_{n}$
+%, with \\
+%      & standard error ${\displaystyle \frac{S_{n}}{\sqrt{n}}}$
+      \\ \\
+      standard deviation $\sigma$ & sample standard deviation
+      $S_{n}$ \\ \\
+      median $\tilde{x}_{0.5}$ & sample median
+      $\tilde{X}_{0.5,n}$ \\ \\
+      correlation coefficient $\rho$ & sample correlation
+      coefficient $r$ \\ \\
+      rank correlation coefficient $\rho_{S}$ & sample rank
+      correl. coefficient $r_{S}$ \\ \\
+      regression coefficient (intercept) $\alpha$ & sample 
+      regression intercept $a$ %\\
+%      & standard error ${\displaystyle n}$
+      \\ \\
+      regression coefficient (slope) $\beta$ & sample regression 
+      slope $b$ %\\
+%      & standard error ${\displaystyle n}$
+      \\ \\
+      \hline
+\end{tabular}
+\end{center}
+\caption{Notation for distinguishing between statistical 
+measures relating to a target population~$\boldsymbol{\Omega}$ on 
+the one-hand side, and to the corresponding quantities and 
+unbiased maximum likelihood point estimator functions obtained 
+from a random sample~$\boldsymbol{S_{\Omega}}$ on the other.}
+\lb{tab:notation}
+\end{table}
+%
+
+\medskip
+\noindent
+One-dimensional \textbf{random variables} in a target population 
+$\boldsymbol{\Omega}$ (of size $N$), as what \textbf{statistical 
+variables} will be understood to constitute subsequently, will be
+denoted by capital Latin letters such as $X$, $Y$, \ldots, $Z$,
+while their \textbf{realisations} in random samples
+$\boldsymbol{S_{\Omega}}$ (of size $n$) will be denoted by lower
+case Latin letters such as $x_{i}$, $y_{i}$, \ldots, $z_{i}$
+($i=1,\ldots,n$). In addition, one denotes \textbf{population
+parameters} by lower case Greek letters, while for their
+corresponding \textbf{point estimator functions} relating to random
+samples, which are also perceived as random variables, again
+capital Latin letters are used for representation. The ratio $n/N$
+will be referred to as the \textbf{sampling fraction}. As is
+standard in the statistical literature, we will denote a
+particular \textbf{random sample} of size $n$ for a one-dimensional
+random variable $X$ by a set $\boldsymbol{S_{\Omega}}$:~$(X_{1},
+\ldots, X_{n})$, with $X_{i}$ representing any arbitrary random
+variable associated with $X$ in this sample.
+
+\medskip
+\noindent
+In actual practice, it is often not possible to acquire access for 
+the purpose of enquiry to every single statistical unit belonging 
+to an identified target population $\boldsymbol{\Omega}$, not 
+even in principle. For example, this could be due to the fact that 
+$\boldsymbol{\Omega}$'s size $N$ is far too large to be determined 
+accurately. In this case, to ensure a reliable investigation, one 
+needs to resort to using a \textbf{sampling frame} 
+$\boldsymbol{L_{\Omega}}$ for $\boldsymbol{\Omega}$. By this one 
+understands a representative list of  elements in 
+$\boldsymbol{\Omega}$ to which access can actually be obtained one
+way or another. Such a list will have to be compiled by some
+authority of scientific integrity. In an attempt to avoid a
+notational overflow in the following, we will continue to use~$N$
+to denote \textit{both}: the size of the \textbf{target 
+population}~$\boldsymbol{\Omega}$ and the  size of its associated 
+\textbf{sampling frame}~$\boldsymbol{L_{\Omega}}$ (even though this 
+is not entirely accurate). As regards the specific sampling
+process, one may distinguish \textbf{cross-sectional} one-off
+sampling at a fixed instant from \textbf{longitudinal} multiple
+sampling over a finite time interval.\footnote{In a sense,
+cross-sectional sampling will yield a ``snapshot'' of a target
+population of interest in a particular state, while longitudinal
+sampling is the basis for producing a ``film'' featuring a
+particular evolutionary aspect of a target population of interest.}
+
+\medskip
+\noindent
+We now proceed to introduce the three most commonly practiced 
+methods of drawing \textbf{random samples} from given fixed target
+populations~$\boldsymbol{\Omega}$ of statistical units.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Random sampling methods]{Random sampling methods}
+\lb{sec:sampling}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------
+\subsection[Simple random sampling]{Simple random sampling}
+\lb{subsec:einfzustich}
+%------------------------------------------------------------------
+The \textbf{simple random sampling} technique can be best
+understood in terms of the \textbf{urn model} of
+\textbf{combinatorics} introduced in Sec.~\ref{sec:comb}. Given a
+target population~$\boldsymbol{\Omega}$ (or sampling frame 
+$\boldsymbol{L_{\Omega}}$) of $N$ distinguishable statistical 
+units, there is a total of $\left(\begin{array}{c} N \\ n 
+\end{array}\right)$ distinct possibilities of drawing samples of 
+size $n$ from $\boldsymbol{\Omega}$ (or 
+$\boldsymbol{L_{\Omega}}$), given the order of selection is 
+\textit{not} being accounted for and \textit{excluding
+repetitions}, see Sec.~\ref{subsec:combvar}. A \textbf{simple
+random sample} is then defined by the property that its
+probability of selection is equal to
+%
+\be
+\frac{1}{\left(\begin{array}{c} N \\ n \end{array}\right)} \ ,
+\ee
+%
+according to the Laplacian principle of Eq.~(\ref{eq:classprob}). 
+This has the immediate consequence that the \textit{a priori} 
+probability of selection of any single statistical unit is given 
+by\footnote{In the statistical literature this particular property 
+of a random sample is referred to as ``epsem'': equal probability 
+of selection method.}
+%
+\be
+1 - \frac{\left(\begin{array}{c} N-1 \\ n \end{array}\right)}{
+\left(\begin{array}{c} N \\ n \end{array}\right)}
+= 1 - \frac{N-n}{N} = \frac{n}{N} \ .
+\ee
+%
+On the other hand, the probability that two statistical units $i$ 
+and $j$ will be members of the \textit{same} sample of size~$n$
+amounts to
+%
+\be
+\frac{n}{N} \times \frac{n-1}{N-1} \ .
+\ee
+%
+As such, by Eq.~(\ref{eq:stochindep1}), this type of a selection 
+procedure of two statistical units proves \textit{not} to yield two 
+stochastically independent units (in which case the joint 
+probability of selection would be $n/N \times n/N$). However, for 
+sampling fractions $n/N \leq 0.05$, stochastic independence of the 
+selection of statistical units generally holds to a reasonably 
+good approximation. When, in addition, $n \geq 50$, likewise the 
+conditions for the \textbf{central limit theorem} in the variant of 
+Lindeberg and L\'{e}vy (cf. Sec.~\ref{sec:zentrgrenz}) to apply 
+hold to a rather good degree.
+
+%------------------------------------------------------------------
+\subsection[Stratified random sampling]{Stratified random sampling}
+\lb{subsec:stratsampling}
+%------------------------------------------------------------------
+\textbf{Stratified random sampling} adapts the sampling process to
+a known intrinsic structure of the target 
+population~$\boldsymbol{\Omega}$ (and its associated sampling 
+frame $\boldsymbol{L_{\Omega}}$), as provided by the $k$ mutually 
+exclusive and exhaustive categories of some qualitative (nominal 
+or ordinal) variable; these thus define a set of $k$
+\textbf{strata} (layers) of $\boldsymbol{\Omega}$ (or
+$\boldsymbol{L_{\Omega}}$). By construction, there are $N_{i}$
+statistical units belonging to the $i$th stratum ($i=1, \ldots,
+k$). Simple random samples of sizes $n_{i}$ are drawn from each
+stratum according to the principles outlined in
+Sec.~\ref{subsec:einfzustich}, yielding a total sample of size
+$n=n_{1}+\ldots+n_{k}$. Frequently applied variants of this
+sampling technique are (i)~\textbf{proportionate allocation} of
+statistical units, defined by the condition\footnote{Note that,
+thus, this also has the ``epsem'' property.}
+%
+\be
+\frac{n_{i}}{n} \stackrel{!}{=} \frac{N_{i}}{N}
+\qquad\Rightarrow\qquad
+\frac{n_{i}}{N_{i}} = \frac{n}{N} \ ;
+\ee
+%
+in particular, this allows for a fair representation of minorities 
+in $\boldsymbol{\Omega}$, and (ii)~\textbf{optimal allocation} of 
+statistical units which aims at a minimisation of the resultant 
+sampling errors of the variables investigated. Further details on 
+the stratified random sampling technique can be found, e.g., in 
+Bortz and D\"{o}ring (2006)~\ct[p~425ff]{bordoe2006}.
+
+%------------------------------------------------------------------
+\subsection[Cluster random sampling]{Cluster random sampling}
+\lb{subsec:clustersampling}
+%------------------------------------------------------------------
+When the target population~$\boldsymbol{\Omega}$ (and its 
+associated sampling frame $\boldsymbol{L_{\Omega}}$) naturally 
+subdivides into an exhaustive set of $K$ mutually exclusive
+\textbf{clusters} of statistical units, a convenient sampling
+strategy is given by selecting $k < K$ clusters from this set at
+random and perform complete surveys within each of the chosen
+clusters. The probability of selection of any particular
+statistical unit from $\boldsymbol{\Omega}$ (or
+$\boldsymbol{L_{\Omega}}$) thus amounts to $k/K$. This
+\textbf{cluster random sampling} method has the practical advantage
+of being less contrived. However, in general it entails sampling
+errors that are greater than for the previous two sampling methods.
+Further details on the cluster random sampling technique can be
+found, e.g., in Bortz and D\"{o}ring
+(2006)~\ct[p~435ff]{bordoe2006}.
+
+\vspace{5mm}
+\noindent
+We emphasise at this point that empirical data gained from
+\textbf{convenience samples} (in contrast to random samples) is
+\textit{not} amenable to \textbf{statistical inference}, in that
+its information content \textit{cannot} be generalised to the
+target population~$\boldsymbol{\Omega}$ from which it was drawn;
+see, e.g., Bryson (1976)~\ct[p~185]{bry1976}, or Schnell \textit{et
+al} (2013)~\ct[p~289]{schetal2013}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Point estimator functions]{Point estimator functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Many \textbf{inferential statistical methods of data analysis} in
+the \textbf{frequentist framework} revolve around the
+\textbf{estimation} of unknown \textbf{distribution parameters}
+$\theta$ with respect to some target
+population~$\boldsymbol{\Omega}$ by means of corresponding
+\textbf{maximum likelihood point estimator functions}
+$\hat{\theta}_{n}(X_{1},\ldots,X_{n})$ (or: 
+\textbf{statistics}), the values of which are computed from the
+data of \textbf{random samples}~$\boldsymbol{S_{\Omega}}$:~$(X_{1}, 
+\ldots, X_{n})$. Owing to the stochastic nature of the random 
+sampling process, any point estimator function 
+$\hat{\theta}_{n}(X_{1},\ldots,X_{n})$ is subject to a
+\textbf{random sampling error}. One can show that this estimation
+procedure becomes reliable provided that a point estimator function 
+satisfies the following two important criteria of quality:
+%
+\begin{itemize}
+\item[(i)] \textbf{Unbiasedness:}
+$\mathrm{E}(\hat{\theta}_{n})=\theta$, and
+
+\item[(ii)] \textbf{Consistency:}
+$\displaystyle\lim_{n\to\infty}\mathrm{Var}(\hat{\theta}_{n})=0$.
+\end{itemize}
+%
+For metrically scaled one-dimensional random variables $X$, 
+defining for a given random sample 
+$\boldsymbol{S_{\Omega}}$:~$(X_{1}, \ldots, X_{n})$ of size $n$ a 
+\textbf{sample total sum} by
+%
+\be
+\lb{eq:samptot}
+Y_{n} := \sum_{i=1}^{n}X_{i} \ ,
+\ee
+%
+the two most prominent \textbf{maximum likelihood point estimator 
+functions} satisfying the \textbf{unbiasedness} and
+\textbf{consistency} conditions are the \textbf{sample mean} and
+\textbf{sample variance}, defined by
+%
+\bea
+\lb{eq:sampmean}
+\bar{X}_{n} & := & \frac{1}{n}\,Y_{n} \\
+%
+\lb{eq:sampvar}
+S_{n}^{2} & := & 
+\frac{1}{n-1}\,\sum_{i=1}^{n}(X_{i}-\bar{X}_{n})^{2} \ .
+\eea
+%
+These will be frequently employed in subsequent considerations in 
+Ch.~\ref{ch12} for point-estimating the values of the
+\textbf{location and dispersion parameters}~$\mu$ and 
+$\sigma^{2}$ of the distribution for a one-dimensional random 
+variable~$X$ in a target population~$\boldsymbol{\Omega}$.
+\textbf{Sampling theory} in the \textbf{frequentist framework}
+holds it that the \textbf{standard errors (SE)} associated with the 
+maximum likelihood point estimator functions $\bar{X}_{n}$ and 
+$S_{n}^{2}$, defined in Eqs.~(\ref{eq:sampmean}) and 
+(\ref{eq:sampvar}), amount to the standard deviations of the 
+underlying theoretical \textbf{sampling distributions} for these 
+functions; see, e.g., Cram\'{e}r (1946)~\ct[Chs.~27 to 
+29]{cra1946}. For a given target population~$\boldsymbol{\Omega}$ 
+(or sampling frame $\boldsymbol{L_{\Omega}}$) of size $N$, imagine 
+drawing all possible $\left(\begin{array}{c} N \\ n 
+\end{array}\right)$ mutually independent random samples of a fixed 
+size $n$ (no order accounted for and repetitions excluded), from 
+each of which individual realisations of $\bar{X}_{n}$ and 
+$S_{n}^{2}$ are obtained. The theoretical distributions 
+for all such realisations of $\bar{X}_{n}$ resp.~$S_{n}^{2}$ for 
+given $N$ and $n$ are referred to as their corresponding
+\textbf{sampling distributions}. A useful simulation illustrating
+the concept of a sampling distribution is available at the website 
+\href{http://onlinestatbook.com/stat_sim/sampling_dist/index.html}
+{\texttt{onlinestatbook.com}}. In the limit that $N \to \infty$
+while keeping $n$ fixed, the theoretical \textbf{sampling
+distributions} of $\bar{X}_{n}$ and $S_{n}^{2}$ become normal (cf. 
+Sec.~\ref{sec:normverteil}) resp.~$\chi^{2}$ with $n-1$ degrees of 
+freedom (cf. Sec.~\ref{sec:chi2verteil}), with standard deviations
+%
+\bea
+\lb{eq:sesammean}
+\text{SE}\bar{X}_{n} & := & \frac{S_{n}}{\sqrt{n}} \\
+%
+\lb{eq:sesamvar}
+\text{SE}S_{n}^{2} & := & \sqrt{\frac{2}{n-1}}\,S_{n}^{2} \ ;
+\eea
+%
+cf., e.g., Lehman and Casella (1998)~\ct[p~91ff]{lehcas1998},
+and Levin \textit{et al} (2010)~\ct[Ch.~6]{levetal2009}. 
+Thus, for a \textit{finite} sample standard deviation $S_{n}$, 
+these two \textbf{standard errors} decrease with the sample 
+size~$n$ in proportion to the inverse of $\sqrt{n}$ resp.~the 
+inverse of $\sqrt{n-1}$. It is a main criticism of proponents of 
+the \textbf{Bayes--Laplace approach} to \textbf{Probability Theory}
+and \textbf{statistical inference} that the concept of a
+\textbf{sampling distribution} for a maximum likelihood point
+estimator function is based on \textit{unobserved data}; cf.
+Greenberg (2013)~\ct[p~31f]{gre2013}.
+
+\medskip
+\noindent
+There are likewise unbiased maximum likelihood point estimators 
+for the \textbf{shape} parameters $\gamma_{1}$ and $\gamma_{2}$ of 
+the probability distribution for a one-dimensional random 
+variable~$X$ in a target population~$\boldsymbol{\Omega}$, as 
+given in Eqs.~(\ref{eq:skew2}) and (\ref{eq:kurt2}). For $n>2$ 
+resp.~$n>3$, the \textbf{sample skewness} and \textbf{sample excess 
+kurtosis} in, e.g., their implementation in the software packages 
+\R\ (package: \texttt{e1071}, by Meyer \textit{et al}
+(2019)~\ct{meyetal2019}) or SPSS are defined by (see, e.g.,
+Joanes and Gill (1998)~\ct[p~184]{joagil1998})
+%
+\bea
+\lb{eq:sampskew}
+G_{1} & := & 
+\frac{\sqrt{(n-1)n}}{n-2}\,\frac{\frac{1}{n}\,\sum_{i=1}^{n}(X_{i}
+-\bar{X}_{n})^{3}}{\left(\frac{1}{n}\,\sum_{j=1}^{n}(X_{j}
+-\bar{X}_{n})^{2}\right)^{3/2}}\\
+%
+\lb{eq:sampkurt}
+G_{2} & := & 
+\frac{n-1}{(n-2)(n-3)}\,\left[(n+1)\left(\frac{\frac{1}{n}
+\,\sum_{i=1}^{n}(X_{i}-\bar{X}_{n})^{4}}{\left(\frac{1}{n}
+\,\sum_{j=1}^{n}(X_{j}-\bar{X}_{n})^{2}\right)^{2}}-3\right)
++6\right] \ ,
+\eea
+%
+with associated standard errors (cf. Joanes and Gill 
+(1998)~\ct[p~185f]{joagil1998})
+%
+\bea
+\lb{eq:sesamskew}
+\text{SE}G_{1} & := & \sqrt{\frac{6(n-1)n}{(n-2)(n+1)(n+3)}} \\
+%
+\lb{eq:sesamkurt}
+\text{SE}G_{2} & := & 
+2\,\sqrt{\frac{6(n-1)^{2}n}{(n-3)(n-2)(n+3)(n+5)}} \ .
+\eea
+%
+
+%A major strength of inferential statistical tools of data 
+%analysis, based on the random sampling of populations, is that 
+%they (i)~make explicit \textbf{sampling errors}, and (ii)~provide 
+%appropriate quantitative means to \textbf{estimate their size};
+%the basis of their derivation is the respective \textbf{sampling 
+%distribution}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

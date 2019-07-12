@@ -1,0 +1,818 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch6-Stats.tex
+%  Title:
+%  Version: 26.06.2019 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Elements of probability theory]{Elements of probability
+theory}
+\lb{ch6}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+All examples of \textbf{inferential statistical methods of data 
+analysis} to be presented in Chs.~\ref{ch12} and \ref{ch13} have 
+been developed in the context of the so-called \textbf{frequentist 
+approach} to \textbf{Probability Theory}.\footnote{The origin of
+the term ``probability'' is traced back to the Latin word 
+\textit{probabilis}, which the Roman philosopher 
+\href{https://en.wikipedia.org/wiki/Cicero}{Cicero (106 BC--43 
+BC)} used to capture a notion of plausibility or likelihood; see 
+Mlodinow (2008)~\ct[p~32]{mlo2008}.} The issue in
+\textbf{Inferential Statistics} is to estimate the plausibility or
+likelihood of hypotheses given the observational \textbf{evidence}
+for them. The \textbf{frequentist approach} was pioneered by the
+Italian mathematician, physician, astrologer, philosopher and
+gambler 
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Cardan.html}{Girolamo Cardano (1501--1576)}, the French lawyer and amateur mathematician  
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Fermat.html}{Pierre
+de Fermat (1601--1665)}, the French mathematician, 
+physicist, inventor, writer and Catholic philosopher 
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Pascal.html}{Blaise Pascal (1623--1662)}, the Swiss mathematician
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Bernoulli_Jacob.html}{Jakob Bernoulli (1654--1705)}, and the French 
+mathematician and astronomer
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Laplace.html}{Marquis Pierre Simon de Laplace (1749--1827)}. It is deeply 
+rooted in the two fundamental assumptions that any particular 
+\textbf{random experiment} can be repeated arbitrarily often 
+(i)~under the ``same conditions,'' and (ii)~completely 
+``independent of one another,'' so that a theoretical basis is 
+given for defining ``\textit{objective probabilities}'' for random 
+events and hypotheses via the \textbf{relative frequencies} of very
+long sequences of repetition of the same random
+experiment.\footnote{A special role in the context of the
+frequentist approach to Probability Theory is assumed by Jakob
+Bernoulli's law of large numbers, as well as the concept of
+independently and identically distributed 
+(in short: ``i.i.d.'') random variables; we will discuss these 
+issues in Sec.~\ref{sec:zentrgrenz} below.} This is a highly 
+idealised viewpoint, however, which shares only a limited degree 
+of similarity with the actual conditions pertaining to an 
+observer's resp.~experimentor's reality. Renowned textbooks 
+adopting the \textbf{frequentist viewpoint} of \textbf{Probability
+Theory} and  \textbf{Inferential Statistics} are, e.g., Cram\'{e}r 
+(1946)~\ct{cra1946} and Feller (1968)~\ct{fel1968}.
+
+\medskip
+\noindent
+Not everyone in \textbf{Statistics} is entirely happy, though, with 
+the philosophy underlying the frequentist approach to introducing 
+the concept of \textbf{probability}, as a number of its central
+ideas rely on unobserved data (information). A complementary
+viewpoint is taken by the framework which originated from the work
+of the English mathematician and Presbyterian minister
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Bayes.html}{Thomas Bayes (1702--1761)}, and later of Laplace, and so is 
+commonly referred to as the \textbf{Bayes--Laplace approach}; cf. 
+Bayes (1763)~\ct{bay1763} and Laplace (1812)~\ct{lap1812}. A 
+striking conceptual difference to the frequentist approach 
+consists in its use of prior ``\textit{subjective probabilities}'' 
+for random events and hypotheses, quantifying a persons's
+individual \textbf{degree-of-belief} in their likelihood, which are subsequently updated by analysing relevant empirical
+data.\footnote{Anscombe and Aumann (1963)~\ct{ansaum1963} in their
+seminal paper refer to ``objective probabilities'' as associated
+with ``roulette lotteries,'' and to ``subjective probabilities'' as
+associated with ``horse lotteries.'' Savage (1954)~\ct{sav1954}
+employs the alternative terminology of distinguishing between
+``objectivistic probabilities'' and ``personalistic
+probabilities.''}
+Renowned textbooks adopting the \textbf{Bayes--Laplace viewpoint}
+of \textbf{Probability Theory} and \textbf{Inferential Statistics}
+are, e.g., Jeffreys (1939)~\ct{jef1939} and Jaynes 
+(2003)~\ct{jay2003}, while general information regarding the 
+Bayes--Laplace approach is available from the website 
+\href{http://bayes.wustl.edu/}{\texttt{bayes.wustl.edu}}. More
+recent textbooks, which assist in the implementation of advanced
+computational routines, have been issued by Gelman
+\textit{et al} (2014)~\ct{geletal2014} and by McElreath
+(2016)~\ct{mce2016}. A discussion of the pros and cons of either of
+these two competing approaches to \textbf{Probability Theory} can
+be found, e.g., in Sivia and Skilling (2006)
+\ct[p~8ff]{sivski2006}, or in Gilboa (2009) \ct[Sec.~5.3]{gil2009}.
+%(conceptual problems attached to both viewpoints)
+
+\medskip
+\noindent
+A common denominator of both frameworks, \textbf{frequentist} and 
+\textbf{Bayes--Laplace}, is the attempt to quantify a notion of 
+\textbf{uncertainty} that can be related to in formal treatments of 
+\textbf{decision-making}. In the following we turn to discuss the 
+general principles on which \textbf{Probability Theory} is built.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Random events]{Random events}
+\lb{sec:zufall}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We begin by introducing some basic formal constructions and 
+corresponding terminology used in the \textbf{frequentist 
+approach} to \textbf{Probability Theory}:
+%
+\begin{itemize}
+
+\item \textbf{Random experiments}: Random experiments are
+experiments which can be repeated arbitrarily often under identical 
+conditions, with \textbf{events} --- also called \textbf{outcomes}
+--- that cannot be predicted with certainty. Well-known simple 
+examples are found amongst games of chance such as tossing a coin, 
+rolling dice, or playing roulette.
+
+\item \textbf{Sample space} $\boldsymbol{\Omega} =\{\omega_{1},
+\omega_{2},\ldots\}$: The sample space associated with a random 
+experiment is constituted by the set of all possible
+\textbf{elementary events} (or elementary outcomes) $\omega_{i}$
+($i=1, 2, \ldots$), which are signified by their property of
+\textit{mutual exclusivity}. The sample space~$\boldsymbol{\Omega}$
+of a random experiment may contain either
+%
+\begin{itemize}
+\item[(i)] a finite number $n$ of elementary events; then
+$|\boldsymbol{\Omega}|=n$, or
+\item[(ii)] countably many elementary events in the sense of a 
+one-to-one correspondence with the set of natural numbers 
+$\mathbb{N}$, or
+\item[(iii)] uncountably may elements in the sense of a 
+one-to-one correspondence with the set of real numbers 
+$\mathbb{R}$, or an open or closed subset thereof.\footnote{For
+reasons of definiteness, we will assume in this case
+%throughout these  lecture notes
+that the sample space $\boldsymbol{\Omega}$ 
+associated with a random experiment is compact.}
+\end{itemize}
+%
+The essential concept of the sample space associated with a random 
+experiment was introduced to \textbf{Probability Theory} by the 
+Italian mathematician 
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Cardan.html}{Girolamo Cardano (1501--1576)}; see Cardano (1564)~\ct{car1564}, 
+Mlodinow (2008)~\ct[p~42]{mlo2008}, and Bernstein 
+(1998)~\ct[p~47ff]{ber1998}.
+
+\item \textbf{Random events} $A, B, \ldots \subseteq 
+\boldsymbol{\Omega}$: Random events are formally defined as any 
+kind of subsets of $\boldsymbol{\Omega}$ that can be formed from 
+the elementary events $\omega_{i} \in \boldsymbol{\Omega}$.
+
+\item \textbf{Certain event} $\boldsymbol{\Omega}$: The certain
+event is synonymous with the sample space itself. When a particular 
+random experiment is conducted, ``something will happen for sure.''
+
+\item \textbf{Impossible event} $\emptyset=\{\}
+= \bar{\boldsymbol{\Omega}}$: The impossible event is the natural 
+complement to the certain event. When a particular random 
+experiment is conducted, ``it is not possible that nothing will 
+happen at all.''
+
+\item \textbf{Event space} ${\cal P}(\boldsymbol{\Omega}) := \{A|A 
+\subseteq \boldsymbol{\Omega}\}$: The event space, also referred 
+to as the \textbf{power set} of~$\boldsymbol{\Omega}$, is the set
+of all possible subsets (random events!) that can be formed from 
+elementary events $\omega_{i} \in \boldsymbol{\Omega}$. Its size 
+(or cardinality) is given by $|{\cal P}(\boldsymbol{\Omega})| = 
+2^{|\boldsymbol{\Omega}|}$. The event space 
+${\cal P}(\boldsymbol{\Omega})$ constitutes a so-called
+\textbf{$\boldsymbol{\sigma}$--algebra} associated with the sample
+space $\boldsymbol{\Omega}$; cf. Rinne (2008)~\ct[p~177]{rin2008}.
+When $|\boldsymbol{\Omega}|=n$, i.e., when $\boldsymbol{\Omega}$ is 
+finite, then $|{\cal P}(\boldsymbol{\Omega})|=2^{n}$.
+
+\end{itemize}
+%
+In the formulation of probability theoretical laws and 
+computational rules, the following set operations and identities 
+prove useful.
+
+%------------------------------------------------------------------
+\subsection*{Set operations}
+%------------------------------------------------------------------
+%
+\begin{enumerate}
+\item $\bar{A} = \boldsymbol{\Omega}\backslash A$
+--- \textbf{complementation} of a set (or event) $A$ (``not $A$'')
+
+\item $A\backslash B=A\cap\bar{B}$ --- formation of the
+\textbf{difference} of sets (or events) $A$ and $B$ (``$A$, but not
+$B$'')
+
+\item $A \cup B$ --- formation of the union of sets (or events) 
+$A$ and $B$, otherwise referred to as the \textbf{disjunction} of
+$A$ and $B$ (``$A$ or $B$'')
+
+\item $A \cap B$ --- formation of the intersection of sets (or 
+events) $A$ and $B$, otherwise referred to as the
+\textbf{conjunction} of $A$ and $B$ (``$A$ and $B$'')
+
+\item $A \subseteq B$ --- \textbf{inclusion} of a set (or event)
+$A$ in a set (or event) $B$ (``$A$ is a subset of or equal
+to~$B$'')
+
+\end{enumerate}
+%
+%------------------------------------------------------------------
+\subsection*{Computational rules and identities}
+%------------------------------------------------------------------
+%
+\begin{enumerate}
+\item $A \cup B=B\cup A$ and $A \cap B=B\cap A$
+\hfill (\textbf{commutativity})
+
+\item $(A \cup B)\cup C=A\cup (B\cup C)$ and \\
+$(A \cap B)\cap C=A\cap (B\cap C)$
+\hfill (\textbf{associativity})
+
+\item $(A \cup B)\cap C=(A\cap C)\cup(B\cap C)$ and \\
+$(A \cap B)\cup C=(A\cup C)\cap(B\cup C)$
+\hfill (\textbf{distributivity})
+
+\item $\overline{A\cup B}=\bar{A}\cap\bar{B}$ and
+$\overline{A\cap B}=\bar{A}\cup\bar{B}$
+\hfill (\textbf{de Morgan's laws})
+
+\end{enumerate}
+%
+
+\medskip
+\noindent
+Before addressing the central axioms of \textbf{Probability
+Theory}, we first provide the following important definition.
+
+\medskip
+\noindent
+\underline{\textbf{Def.:}} Suppose given a \textbf{compact} sample
+space $\boldsymbol{\Omega}$ of some random experiment. Then one 
+understands by a finite \textbf{complete partition} of 
+$\boldsymbol{\Omega}$ a set of $n \in \mathbb{N}$ random events 
+$\{A_{1}, \ldots, A_{n}\}$ such that
+%
+\begin{itemize}
+\item[(i)] $A_{i} \cap A_{j} = \emptyset$ for $i \neq j$, i.e., 
+they are \textbf{pairwise disjoint} (mutually exclusive), and 
+\item[(ii)] $\displaystyle\bigcup_{i=1}^{n}A_{i} = 
+\boldsymbol{\Omega}$, i.e., their union is identical to the full 
+\textbf{sample space}.
+\end{itemize}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Kolmogorov's axioms of probability theory]{Kolmogorov's
+axioms of probability theory}
+\lb{sec:kolaxiom}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+It took a fairly long time until, in 1933, a unanimously accepted 
+basis of \textbf{Probability Theory} was established. In part the 
+delay was due to problems with providing a unique definition 
+of \textbf{probability}, and how it could be measured and
+interpreted in practice. The situation was resolved only when the
+Russian mathematician
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Kolmogorov.html}{Andrey Nikolaevich Kolmogorov (1903--1987)} proposed to discard 
+the intention of providing a unique definition of
+\textbf{probability} altogether, and to restrict the issue instead
+to merely prescribing in an axiomatic fashion a minimum set of 
+properties any \textbf{probability measure} needs to have 
+in order to be coherent and consistent. We now recapitulate the 
+axioms that Kolmogorov put forward; cf. Kolmogoroff 
+(1933)~\ct{kol1933}.
+% in 1933.
+
+\medskip
+\noindent
+For a given \textbf{random experiment}, let $\boldsymbol{\Omega}$
+be its \textbf{sample space} and ${\cal P}(\boldsymbol{\Omega})$
+the associated \textbf{event space}. Then a mapping
+%
+\be
+P: {\cal P}(\boldsymbol{\Omega}) \rightarrow \mathbb{R}_{\geq 0}
+\ee
+%
+defines a \textbf{probability measure} with the following
+properties:
+%
+\begin{enumerate}
+\item for all \textbf{random events} $A \in {\cal 
+P}(\boldsymbol{\Omega})$, 
+\hfill (\textbf{non-negativity})
+%
+\be
+P(A) \geq 0 \ ,
+\ee
+%
+
+\item for the \textbf{certain event} $\boldsymbol{\Omega} \in 
+{\cal P}(\boldsymbol{\Omega})$, \hfill (\textbf{normalisability})
+%
+\be
+P(\boldsymbol{\Omega}) = 1 \ ,
+\ee
+%
+
+\item for all \textbf{pairwise disjoint random events} $A_{1},
+A_{2}, \ldots \in {\cal P}(\boldsymbol{\Omega})$, i.e., $A_{i}
+\cap A_{j} = \emptyset$ for all $i \neq j$,\\
+\mbox{} \hfill ($\boldsymbol{\sigma}$\textbf{--additivity})
+%
+\be
+P\left(\bigcup_{i=1}^{\infty}A_{i}\right)
+= P(A_{1} \cup A_{2} \cup \ldots)
+= P(A_{1}) + P(A_{2}) + \ldots
+= \sum_{i=1}^{\infty}P(A_{i}) \ .
+\ee
+%
+
+\end{enumerate}
+%
+The first two axioms imply the property
+%
+\be
+\lb{eq:pleqone}
+0 \leq P(A) \leq 1 \ ,
+\quad\text{for all}\quad
+A \in {\cal P}(\boldsymbol{\Omega}) \ ;
+\ee
+%
+the expression $P(A)$ itself is referred to as the
+\textbf{probability} of a random event $A \in {\cal 
+P}(\boldsymbol{\Omega})$. A less strict version of the third axiom
+is given by requiring only \textbf{finite additivity} of a
+probability measure. This means it shall possess the property
+%
+\be
+P(A_{1} \cup A_{2}) = P(A_{1}) + P(A_{2}) \ ,
+\quad\text{for any two }\quad
+A_{1}, A_{2} \in {\cal P}(\boldsymbol{\Omega})
+\quad\text{with}\quad A_{1} \cap A_{2} = \emptyset \ .
+\ee
+%
+
+\medskip
+\noindent
+The triplet
+%
+\[
+\left(\boldsymbol{\Omega}, {\cal P}, P\right)
+\]
+%
+constitutes a special case of a so-called \textbf{probability
+space}.
+
+\medskip
+\noindent
+The following consequences for random events $A, B, A_{1}, A_{2}, 
+\ldots \in {\cal P}(\boldsymbol{\Omega})$ can be derived from 
+Kolmogorov's three axioms of probability theory; cf., e.g., 
+Toutenburg (2005) \ct[p~19ff]{tou2005}. Their implications can be 
+convienently visualised by means of \textbf{Venn diagrams}, 
+named in honour of the English logician and philosopher 
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Venn.html}{John
+Venn FRS FSA (1834--1923)}; see Venn (1880)~\ct{ven1880}, and also,
+e.g., Wewel (2014)~\ct[Ch.~5]{wew2014}.
+
+%\pagebreak
+\medskip
+\noindent
+\textbf{Consequences}
+%
+\begin{enumerate}
+
+\item $P(\bar{A}) = 1-P(A)$
+
+\item $P(\emptyset) = P(\bar{\boldsymbol{\Omega}}) = 0$
+
+\item If $A \subseteq B$, then $P(A) \leq P(B)$.
+
+\item $P(A_{1} \cup A_{2}) = P(A_{1})+P(A_{2})-P(A_{1} \cap 
+A_{2})$.
+
+\item $\displaystyle P(B) = \sum_{i=1}^{n}P(B \cap A_{i})$,
+provided the $n \in \mathbb{N}$ random events $A_{i}$ constitute a 
+finite \textbf{complete partition} of the sample space 
+$\boldsymbol{\Omega}$.
+
+\item $P(A\backslash B) = P(A) - P(A \cap B)$.
+
+\end{enumerate}
+%
+
+\vspace{5mm}
+\noindent
+Employing its \textbf{complementation}~$\bar{A}$ and the first of
+the consequences stated above, one defines by the ratio
+%
+\be
+\lb{eq:odds}
+O(A) := \frac{P(A)}{P(\bar{A})} = \frac{P(A)}{1-P(A)}
+\ee
+%
+the so-called \textbf{odds} of a random event
+$A \in {\cal P}(\boldsymbol{\Omega})$.
+
+\medskip
+\noindent
+The renowned Israeli--US-American experimental psychologists 
+Daniel Kahneman and Amos Tversky (the latter of which deceased in 
+1996, aged fifty-nine) refer to the third of the consequences
+stated above as the \textbf{extension rule}; see Tversky and
+Kahneman (1983)~\ct[p~294]{tvekah1983}. It provides a cornerstone
+to their remarkable investigations on the ``intuitive statistics''
+applied by Humans in everyday \textbf{decision-making}, which focus
+in particular on the \textbf{conjunction rule},
+%
+\be
+\lb{eq:conjrule}
+P(A \cap B) \leq P(A)
+\quad\text{and}\quad
+P(A \cap B) \leq P(B) \ ,
+\ee
+%
+and the associated \textbf{disjunction rule},
+%
+\be
+\lb{eq:disjrule}
+P(A \cup B) \geq P(A)
+\quad\text{and}\quad
+P(A \cup B) \geq P(B) \ .
+\ee
+%
+Both may be perceived as subcases of the fourth law above, which 
+is occasionally referred to as the \textbf{convexity} property of a 
+probability measure; cf. Gilboa (2009) \ct[p~160]{gil2009}. By 
+means of their famous ``Linda the bank teller'' example in 
+particular, Tversky and Kahneman (1983)~\ct[p~297ff]{tvekah1983} 
+were able to demonstrate the startling empirical fact that the 
+conjunction rule is frequently violated in everyday (intuitive)
+decision-making; in their view, in consequence of decision-makers 
+often resorting to a so-called \textit{representativeness
+heuristic} as an aid; see also Kahneman
+(2011)~\ct[Sec.~15]{kah2011}. In recognition of their as much
+intriguing as groundbreaking work, which sparked the discipline of
+\textbf{Behavioural Economics}, Daniel Kahneman was awarded the  
+\href{http://www.nobelprize.org/nobel_prizes/economics/laureates/2002/}{Sveriges
+Riksbank Prize in Economic Sciences in Memory of Alfred Nobel}
+in 2002.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Laplacian random experiments]{Laplacian random
+experiments}
+\lb{sec:laplace}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Games of chance with a \textit{finite} number $n$ of possible 
+mutually exclusive elementary outcomes, such as tossing a single 
+coin once, rolling a single dye once, or selecting a single 
+playing card from a deck of 32, belong to the simplest kinds of 
+random experiments. In this context, there exists a clear-cut 
+frequentist notion of a unique ``\textit{objective probability}'' 
+associated with any kind of possible random event (outcome) that 
+may occur.
+Such probabilities can be computed according to a straightforward 
+prescription due to the French mathematician and astronomer
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Laplace.html}{Marquis Pierre Simon de Laplace (1749--1827)}. The prescription
+rests on the assumption that the device generating the random 
+events is a ``fair'' (i.e., unbiased) one.
+
+\medskip
+\noindent
+Consider a random experiment, the $n$ \textbf{elementary events} 
+$\omega_{i}$ ($i=1,\ldots,n$) of which that constitute the 
+associated sample space $\boldsymbol{\Omega}$ are supposed to 
+be ``equally likely,'' meaning they are assigned \textbf{equal 
+probability}:
+%
+\be
+P(\omega_{i}) = \frac{1}{|\boldsymbol{\Omega}|}
+= \frac{1}{n} \ ,
+\quad\text{for all}\quad \omega_{i}\in\boldsymbol{\Omega}
+\ (i=1,\ldots,n) \ .
+\ee
+%
+All random experiments of this nature are referred to as 
+\textbf{Laplacian random experiments}.
+
+\medskip
+\noindent
+\underline{\textbf{Def.:}} For a Laplacian random experiment,
+the probability of an arbitrary random event $A \in 
+{\cal P}(\boldsymbol{\Omega})$ can be computed according to the 
+rule
+%
+\be
+\lb{eq:classprob}
+\fbox{$\displaystyle
+P(A) := \frac{|A|}{|\boldsymbol{\Omega}|}
+= \frac{\text{Number of cases favourable to event}\ A}{\text{Number
+of all possible cases}} \ .
+$}
+\ee
+%
+Any probability measure $P$ which can be constructed in this 
+fashion is called a \textbf{Laplacian probability measure}.
+
+\medskip
+\noindent
+The systematic counting of the numbers of possible outcomes of 
+random experiments in general is the central theme of
+\textbf{combinatorics}. We now briefly address its main
+considerations.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Combinatorics]{Combinatorics}
+\lb{sec:comb}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+At the heart of combinatorical considerations is the well-known 
+\textbf{urn model}. This supposes given an urn containing $N \in 
+\mathbb{N}$ balls that are either
+%
+\begin{itemize}
+\item[(a)] all different, and thus can 
+be uniquely distinguished from one another, or
+\item[(b)] there are $s \in 
+\mathbb{N}$ ($s \leq N$) subsets of indistinguishable
+like balls, of sizes $n_{1},\ldots,n_{s}$ resp., such that 
+$n_{1}+\ldots+n_{s}=N$.
+\end{itemize}
+%
+The first systematic developments in \textbf{Combinatorics} date
+back to the Italian astronomer, physicist, engineer, philosopher,
+and mathematician 
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Galileo.html}{Galileo Galilei (1564--1642)} and the French mathematician
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Pascal.html}{Blaise Pascal (1623--1662)}; cf. Mlodinow 
+(2008)~\ct[p~62ff]{mlo2008}.
+
+%------------------------------------------------------------------
+\subsection{Permutations}
+%------------------------------------------------------------------
+\textbf{Permutations} relate to the number of distinguishable 
+possibilities of arranging $N$ balls in an ordered sequences. 
+Altogether, for cases (a) resp.\ (b) one finds that there are a 
+total number of
+
+%
+\begin{center}
+    \begin{tabular}[h!]{c|c}
+    (a)~all balls different & (b)~$s$ subsets of like balls \\
+    \hline
+     & \\
+    $N!$ & $\displaystyle \frac{N!}{n_{1}!n_{2}!\cdots n_{s}!}$
+    \\
+     & \\
+    \end{tabular}
+\end{center}
+%
+different possibilities. Remember that the \textbf{factorial} of a 
+natural number $N \in \mathbb{N}$ is defined by
+%
+\be
+N! := N\times(N-1)\times(N-2)\times\cdots\times 3 \times 2 
+\times 1 \ .
+\ee
+%
+\underline{\R:} \texttt{factorial($N$)}
+
+%------------------------------------------------------------------
+\subsection{Combinations and variations}
+\lb{subsec:combvar}
+%------------------------------------------------------------------
+\textbf{Combinations} and \textbf{variations} ask for the total
+number of distinguishable possibilities of selecting from a
+collection of $N$ balls a sample of size $n \leq N$, while
+differentiating between cases when
+%
+\begin{itemize}
+\item[(a)] the order in which balls were selected is either 
+neglected or instead accounted for, and
+
+\item[(b)] a ball that was selected once either cannot be selected 
+again or indeed can be selected again as often as a ball is being 
+drawn.
+
+\end{itemize}
+%
+These considerations result in the following cases of different 
+possibilities:
+%
+\begin{center}
+    \begin{tabular}[h!]{c|c|c}
+     & no repetition & with repetition \\
+    \hline
+     & & \\
+    combinations (order neglected) & $\left(\begin{array}{c}
+    N \\ n \end{array}\right)$ & $\left(\begin{array}{c}
+    N+n-1 \\ n \end{array}\right)$ \\
+     & & \\
+    \hline
+     & & \\
+    variations (order accounted for) & $\left(\begin{array}{c}
+    N \\ n \end{array}\right)n!$ & $N^{n}$ \\
+     & & \\
+    \end{tabular}
+\end{center}
+%
+Note that, herein, the \textbf{binomial coefficient} for two
+natural numbers $n, N \in \mathbb{N}$, $n \leq N$, introduced by
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Pascal.html}{Blaise Pascal (1623--1662)}, is defined by
+%
+\be
+\lb{eq:binomcoeff}
+\left(\begin{array}{c}
+N \\ n \end{array}\right) := \frac{N!}{n!(N-n)!} \ .
+\ee
+%
+For fixed value of $N$ and running value of $n \leq N$, it 
+generates the positive integer entries of Pascal's well-known 
+numerical triangle; see, e.g., Mlodinow 
+(2008)~\ct[p~72ff]{mlo2008}. The binomial coefficient satisfies 
+the identity
+%
+\be
+\left(\begin{array}{c}
+N \\ n \end{array}\right) \equiv \left(\begin{array}{c}
+N \\ N-n \end{array}\right) \ .
+\ee
+%
+\underline{\R:} \texttt{choose($N$, $n$)}
+
+\medskip
+\noindent
+To conclude this chapter, we turn to discuss the essential concept 
+of \textbf{conditional probabilities} of random events.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Conditional probabilities]{Conditional probabilities}
+\lb{sec:bedwahr}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Consider some random experiment with sample space 
+$\boldsymbol{\Omega}$, event space ${\cal 
+P}(\boldsymbol{\Omega})$, and a well-defined, unique probability 
+measure $P$ over ${\cal P}(\boldsymbol{\Omega})$.
+
+\medskip
+\noindent
+\underline{\textbf{Def.:}} For random events $A, B \in
+{\cal P}(\boldsymbol{\Omega})$, with $P(B) > 0$,
+%
+\be
+\lb{condprob}
+\fbox{$\displaystyle
+P(A|B) := \frac{P(A \cap B)}{P(B)}
+$}
+\ee
+%
+defines the \textbf{conditional probability} of $A$
+to occur, given that $B$ occurred before. Analogously, one defines 
+a conditional probability  $P(B|A)$ with the roles of random 
+events $A$ and $B$ switched, provided $P(A) > 0$. Note that since, 
+by Eq.~(\ref{eq:pleqone}), $0 \leq P(A|B), P(B|A) \leq 1$, the 
+implication of definition~(\ref{condprob}) is that the conjunction 
+rule~(\ref{eq:conjrule}) must \textit{always} be satisfied.
+
+\medskip
+\noindent
+\underline{\textbf{Def.:}} Random events $A, B \in 
+{\cal P}(\boldsymbol{\Omega})$ are called \textbf{mutually 
+stochastically independent}, if, simultaneously, the conditions
+%
+\be
+\lb{eq:stochindep1}
+\fbox{$\displaystyle
+P(A|B) \stackrel{!}{=} P(A) \ ,\quad P(B|A) \stackrel{!}{=} P(B)
+\quad\stackrel{\text{Eq.~\ref{condprob}}}{\Leftrightarrow}\quad
+P(A \cap B) = P(A)P(B)
+$}
+\ee
+%
+are satisfied, i.e., when for both random events $A$ and $B$ the 
+{\bf\textit{a posteriori} probabilities} $P(A|B)$ and $P(B|A)$ 
+coincide with the respective {\bf\textit{a priori} probabilities} 
+$P(A)$ and $P(B)$.
+
+\medskip
+\noindent
+For applications, the following two prominent laws of
+\textbf{Probability Theory} prove essential.
+
+%------------------------------------------------------------------
+\subsection[Law of total probability]{Law of total probability}
+%------------------------------------------------------------------
+For a random experiment with probability space 
+$\left(\boldsymbol{\Omega}, {\cal P}, P\right)$, it holds by the 
+\textbf{law of total probability} that for any random event $B \in 
+{\cal P}(\boldsymbol{\Omega})$
+%
+\be
+\lb{eq:totalprob}
+\fbox{$\displaystyle
+P(B)=\sum_{i=1}^{m}P(B|A_{i})P(A_{i}) \ ,
+$}
+\ee
+%
+provided the random events $A_{1}, \ldots, A_{m} \in 
+{\cal P}(\boldsymbol{\Omega})$ constitute a finite \textbf{complete 
+partition} of $\boldsymbol{\Omega}$ into $m \in \mathbb{N}$
+\textbf{pairwise disjoint events}.
+
+\medskip
+\noindent
+The content of this law may be conveniently visualised by means of 
+a Venn diagram.
+
+%------------------------------------------------------------------
+\subsection[Bayes' theorem]{Bayes' theorem}
+\lb{subsec:bayes}
+%------------------------------------------------------------------
+This important result is due to the English mathematician and
+Presbyterian minister 
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Bayes.html}{Thomas Bayes (1702--1761)}; see the posthumous publication Bayes 
+(1763)~\ct{bay1763}. For a random experiment with probability space
+$\left(\boldsymbol{\Omega}, {\cal P}, P\right)$, it states that for
+any random event $B \in {\cal P}(\boldsymbol{\Omega})$
+%
+\be
+\lb{eq:bayes}
+\fbox{$\displaystyle
+P(A_{i}|B)=\frac{P(B|A_{i})P(A_{i})}{
+{\displaystyle\sum_{j=1}^{m}P(B|A_{j})P(A_{j})}} \ ,
+$}
+\ee
+%
+provided the random events $A_{1}, \ldots, A_{m} \in 
+{\cal P}(\boldsymbol{\Omega})$ constitute a finite \textbf{complete 
+partition} of $\boldsymbol{\Omega}$ into $m \in \mathbb{N}$
+\textbf{pairwise disjoint events}, and $\displaystyle 
+P(B)\stackrel{\text{Eq.~\ref{eq:totalprob}}}{=}\sum_{i=1}^{m}
+P(B|A_{i})P(A_{i})>0$.
+
+\medskip
+\noindent
+Again, the content of this law may be conveniently visualised by 
+means of a Venn diagram.
+
+\medskip
+\noindent
+Some of the different terms appearing in Eq.~(\ref{eq:bayes}) have 
+been given special names:
+%
+\begin{itemize}
+\item $P(A_{i})$ is referred to as the \textbf{prior probability}
+of random event, or hypothesis, $A_{i}$,
+\item $P(B|A_{i})$ is the \textbf{likelihood} of random event,
+or empirical evidence, $B$, given random event, or hypothesis,
+$A_{i}$, and
+\item $P(A_{i}|B)$ is called the \textbf{posterior probability} of 
+random event, or hypothesis, $A_{i}$, given random event,
+or empirical evidence, $B$.
+\end{itemize}
+%
+
+\medskip
+\noindent
+The most common interpretation of \textbf{Bayes' theorem} is 
+that it essentially provides a means for computing the
+\textbf{posterior probability} of a random event, or hypothesis,
+$A_{i}$, given information on the factual realisation of an
+associated random event, or evidence, $B$, in terms of the product
+of the \textbf{likelihood} of $B$, given $A_{i}$, and the
+\textbf{prior probability} of~$A_{i}$,
+%
+\be
+\lb{eq:bayes2}
+P(A_{i}|B) \propto P(B|A_{i}) \times P(A_{i}) \ .
+\ee
+%
+This result
+%forms the basis of the frequently encountered practice 
+is at the heart of the interpretation that \textbf{empirical 
+learning} amounts to updating the prior ``\textit{subjective 
+probability}'' one has assigned to a specific random 
+event, or hypothesis, $A_{i}$, in order to quantify one's initial
+\textbf{degree-of-belief} in its occurrence resp. in its truth
+content, by means of adequate experimental or observational data
+and corresponding theoretical considerations; see, e.g., Sivia and
+Skilling (2006)~\ct[p~5ff]{sivski2006}, Gelman \textit{et al}
+(2014)~\ct[p~6ff]{geletal2014}, or McElreath
+(2016)~\ct[p~4ff]{mce2016}.
+%Caveats concerning the
+%\textbf{Bayes--Laplace approach} to evaluating probabilities of
+%random events are its often rather high computational costs, and
+%the occasional unavailability of useful priors or, more seriously,
+%adequate likelihoods.
+
+\medskip
+\noindent
+The \textbf{Bayes--Laplace approach} to tackling 
+quantitative--statistical problems in \textbf{Econometrics} was 
+pioneered by Zellner in the early 1970ies; see the 1996 reprint of 
+his renowned 1971 monograph~\ct{zel1996}. A recent thorough 
+introduction into its main considerations is provided by the 
+graduate textbook by Greenberg (2013)~\ct{gre2013}.
+
+\medskip
+\noindent
+A particularly prominent application of this framework in
+\textbf{Econometrics} is given by proposals to the mathematical
+modelling of economic agents' \textbf{decision-making} (in the
+sense of choice behaviour) under conditions of
+\textbf{uncertainty}, which, fundamentally, assume \textit{rational
+behaviour} on the part of the agents; see, e.g., the graduate
+textbook by Gilboa (2009)~\ct{gil2009}, and the brief reviews by
+Svetlova and van Elst (2012, 2014)~\ct{svehve2012,svehve2014}, as
+well as references therein. \textit{Psychological dimensions} of 
+\textbf{decision-making}, on the other hand, such as the
+empirically established existence of reference points, loss
+aversion, and distortion of probabilities into corresponding
+decision weights, have been accounted for in Kahneman and Tversky's 
+(1979)~\ct{kahtve1979} \textbf{Prospect Theory}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

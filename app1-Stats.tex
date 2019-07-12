@@ -1,0 +1,155 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: app1-Stats.tex
+%  Title:
+%  Version: 01.05.2019
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+\chapter[Simple principal component analysis]{Principal component 
+analysis of a $\boldsymbol{(2 \times 2)}$ correlation matrix}
+\lb{app1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Consider a real-valued
+$\boldsymbol{(2 \times 2)}$ {\bf correlation matrix} expressed by
+%
+\be
+\boldsymbol{R} =
+\left(\begin{array}{cc}
+1 & r \\
+r & 1
+\end{array}\right) \ , \qquad
+-1 \leq r \leq +1 \ ,
+\ee
+%
+which, by construction, is symmetric.
+Its {\bf trace} amounts to $\mathrm{Tr}(\boldsymbol{R})=2$, while
+its {\bf determinant} is $\det(\boldsymbol{R}) = 1-r^{2}$. 
+Consequently, $\boldsymbol{R}$ is regular
+%and positive definite
+as long as $r \neq \pm 1$. We seek to determine the {\bf 
+eigenvalues} and corresponding 
+{\bf eigenvectors} (or {\bf principal components}) of 
+$\boldsymbol{R}$, i.e., real numbers~$\lambda$ and real-valued 
+vectors~$\vec{v}$ such that the condition
+%
+\be
+\lb{eq:eigenv}
+\boldsymbol{R}\,\vec{v} \stackrel{!}{=} \lambda\,\vec{v}
+\qquad\Leftrightarrow\qquad
+(\boldsymbol{R}-\lambda\boldsymbol{1})\,\vec{v}
+\stackrel{!}{=} \boldsymbol{0}
+\ee
+%
+applies. The determination of non-trivial solutions of this 
+algebraic problem leads to the {\bf characteristic equation}
+%
+\be
+0 \stackrel{!}{=} \det(\boldsymbol{R}-\lambda\boldsymbol{1})
+= (1-\lambda)^{2} - r^{2} = (\lambda-1)^{2} - r^{2} \ .
+\ee
+%
+Hence, by completing squares, it is clear that $\boldsymbol{R}$ 
+possesses the two {\bf eigenvalues}
+%
+\be
+\lambda_{1} = 1+r \qquad\text{and}\qquad
+\lambda_{2} = 1-r \ ,
+\ee
+%
+showing that $\boldsymbol{R}$ is {\bf positive-definite} whenever
+$|r| < 1$. The normalised {\bf eigenvectors} associated with 
+$\lambda_{1}$ and $\lambda_{2}$, obtained from 
+Eq.~(\ref{eq:eigenv}), then are
+%
+\be
+\vec{v}_{1} = \frac{1}{\sqrt{2}}
+\left(\begin{array}{c}
+1 \\ 1
+\end{array}\right) \qquad\text{and}\qquad
+\vec{v}_{2} = \frac{1}{\sqrt{2}}
+\left(\begin{array}{r}
+- 1\\ 1
+\end{array}\right) \ ,
+\ee
+%
+and constitute a right-handedly oriented basis of the 
+two-dimensional {\bf eigenspace} of $\boldsymbol{R}$. 
+Note that due to the symmetry of $\boldsymbol{R}$ it holds that 
+$\vec{v}_{1}^{T}\cdot\vec{v}_{2}=0$, i.e., the eigenvectors are 
+mutually orthogonal.
+
+\medskip
+\noindent
+The normalised eigenvectors of $\boldsymbol{R}$ define a regular
+orthogonal {\bf transformation matrix} $\boldsymbol{M}$, and an
+inverse $\boldsymbol{M}^{-1}=\boldsymbol{M}^{T}$, given by resp.
+%
+\be
+\boldsymbol{M} =
+\frac{1}{\sqrt{2}}\left(\begin{array}{cr}
+1 & -1 \\
+1 &  1
+\end{array}\right)
+\qquad\text{and}\qquad
+\boldsymbol{M}^{-1} =
+\frac{1}{\sqrt{2}}\left(\begin{array}{rc}
+ 1 & 1 \\
+-1 & 1
+\end{array}\right)
+= \boldsymbol{M}^{T} \ ,
+\ee
+%
+where $\mathrm{Tr}(\boldsymbol{M})=\sqrt{2}$ and 
+$\det(\boldsymbol{M})=1$. The correlation matrix $\boldsymbol{R}$ 
+can now be {\bf diagonalised} by means of a rotation with 
+$\boldsymbol{M}$ according to\footnote{Alternatively one 
+can write
+%
+\[
+\boldsymbol{M} = \left(\begin{array}{cr}
+\cos(\pi/4) & -\sin(\pi/4) \\
+\sin(\pi/4) & \cos(\pi/4)
+\end{array}\right) \ ,
+\]
+%
+thus emphasising the character of a rotation of $\boldsymbol{R}$ 
+by an angle $\varphi=\pi/4$.
+}
+%
+\bea
+\boldsymbol{R}_\mathrm{diag} & = & \boldsymbol{M}^{-1}\boldsymbol{R}
+\boldsymbol{M} \nonumber \\
+& = & \frac{1}{\sqrt{2}}\left(\begin{array}{rc}
+ 1 & 1 \\
+-1 & 1
+\end{array}\right)
+\left(\begin{array}{cc}
+1 & r \\
+r & 1
+\end{array}\right)
+\frac{1}{\sqrt{2}}\left(\begin{array}{cr}
+1 & -1 \\
+1 &  1
+\end{array}\right)
+= \left(\begin{array}{cc}
+1+r &  0 \\
+0        &  1-r
+\end{array}\right) \ .
+\eea
+%
+Note that $\mathrm{Tr}(\boldsymbol{R}_\mathrm{diag})=2$ and
+$\det(\boldsymbol{R}_\mathrm{diag}) = 1-r^{2}$, i.e., the trace 
+and determinant of $\boldsymbol{R}$ remain {\bf invariant} under 
+the diagonalising transformation.
+
+\medskip
+\noindent
+The concepts of eigenvalues and 
+eigenvectors (principal components), as well as of diagonalisation 
+of symmetric matrices, generalise in a straightforward though 
+computationally more demanding fashion to arbitrary real-valued 
+{\bf correlation matrices} $\boldsymbol{R} \in \mathbb{R}^{m 
+\times m}$, with $m \in \mathbb{N}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

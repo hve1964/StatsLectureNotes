@@ -1,0 +1,302 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch1-Stats.tex
+%  Title:
+%  Version: 27.05.2019 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Statistical variables]{\href{https://www.youtube.com/watch?v=DXkHcaiRcd4}{Statistical variables}}
+\lb{ch1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A central task of an empirical scientific discipline is the
+\textbf{observation} of a  finite set of characteristic
+\textbf{variable features} of a given  \textbf{system of objects}
+chosen for study. The hope is to be able to recognise in a sea of
+data, typically guided by \textbf{randomness}, meaningful patterns
+and regularities that provide evidence for possible
+\textbf{associations}, or, stronger still, \textbf{causal
+relationships} between these variable features. Based on a 
+combination of \textbf{inductive} and \textbf{deductive methods of
+data analysis}, one aims at gaining insights of a qualitative
+and/or quantitative nature into the intricate and often complex 
+interdependencies of such variable features for the purpose of 
+(i)~obtaining explanations for phenomena that have been observed, 
+and (ii)~making predictions which, subsequently, can be tested. 
+The acceptance of the validity of a particular empirical 
+scientific framework generally increases with the number of 
+successful \textbf{replications} of its predictions.\footnote{A 
+particularly sceptical view on the ability of making reliable
+predictions in certain empirical scientific disciplines is voiced 
+in Taleb (2007)~\ct[pp~135--211]{tal2007}.} It is the interplay of 
+observation, experimentation and theoretical modelling, 
+systematically coupled to one another by a number of 
+feedback loops, which gives rise to progress in learning and 
+understanding in all empirical scientific activities. This 
+procedure is referred to as the \textbf{scientific method}.
+
+\medskip
+\noindent
+More specifically, the general intention of empirical 
+scientific activities is to modify or strengthen the
+\textbf{theoretical foundations} of an empirical scientific
+discipline by means of observational and/or experimental
+\textbf{testing} of sets of \textbf{hypotheses}; see
+Ch.~\ref{ch11}. This is generally 
+achieved by employing the quantitative--empirical techniques that 
+have been developed in \textbf{Statistics}, in particular in the 
+course of the $20^\mathrm{th}$ Century. At the heart of these 
+techniques is the concept of a \textbf{statistical variable} $X$ as 
+an entity which represents a single common aspect of the system of 
+objects selected for analysis --- the \textbf{target population} 
+$\boldsymbol{\Omega}$ of a \textbf{statistical investigation}. In
+the ideal case, a variable entertains a one-to-one correspondence
+with an \textbf{observable}, and thus is directly amenable to
+\textbf{measurement}. In the \textbf{Social Sciences},
+\textbf{Humanities}, and \textbf{Economics}, however, one needs to
+carefully distinguish between \textbf{manifest variables}
+corresponding to observables on the one-hand side, and
+\textbf{latent variables} representing in general unobservable
+``social constructs'' on the other. It is this latter kind of
+variables which is commonplace in the fields mentioned. Hence, it
+becomes an unavoidable task to thoroughly address the issue of a
+reliable, valid and objective \textbf{operationalisation} of any
+given latent variable one has identified as providing essential
+information on the objects under investigation. A standard approach
+to dealing with the important matter of rendering latent variables
+measurable is reviewed in Ch.~\ref{ch9}.
+
+\medskip
+\noindent
+In \textbf{Statistics}, it has proven useful to classify variables
+on the basis of their intrinsic information content into one of
+three hierachically ordered categories, referred to as
+\textbf{scale levels of measurement}; cf. Stevens
+(1946)~\ct{ste1946}. We provide the definition of these scale
+levels next.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Scale levels of measurement]{Scale levels of measurement}
+\lb{merkskal}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\underline{\textbf{Def.:}} Let $X$ be a one-dimensional
+\textbf{statistical variable} with $k \in \mathbb{N}$ (countably
+many) resp.\ $k \in \mathbb{R}$ (uncountably many) possible
+\textbf{values}, \textbf{attributes}, or \textbf{categories}
+$a_{j}$ ($j=1,\ldots,k$). Statistical variables
+are classified as belonging into one of three hierachically ordered 
+\textbf{scale levels of measurement}. This is done on the basis of 
+three criteria for distinguishing information contained in the 
+values of actual \textbf{data} for these variables. One thus
+defines:
+
+\begin{itemize}
+
+\item \textbf{Metrically scaled variables} $X$ \hfill
+\textbf{(quantitative/numerical)}\\
+Possible values can be distinguished by
+%
+\begin{itemize}
+\item[(i)] their \textit{names}, $a_{i} \neq a_{j}$,
+\item[(ii)] they allow for a \textit{natural rank order}, $a_{i} < 
+a_{j}$, and
+\item[(iii)] \textit{distances} between them, $a_{i}-a_{j}$,
+are uniquely determined.
+\end{itemize}
+%
+	\begin{itemize}
+	\item \textbf{Ratio scale}: $X$ has an \textit{absolute zero
+	point} and otherwise only non-negative values;	analysis of both 
+	differences	$a_{i}-a_{j}$ and ratios $a_{i}/a_{j}$ is meaningful.
+	
+	\underline{Examples:} body height, monthly net income, \ldots.
+	
+	\item \textbf{Interval scale}: $X$ has no \textit{absolute
+	zero point}; only differences $a_{i}-a_{j}$
+	are meaningful.
+	
+	\underline{Examples:} year of birth, temperature in centigrades,
+	Likert scales (cf. Ch.~\ref{ch9}), \ldots.
+	\end{itemize}
+	
+Note that the values obtained for a metrically scaled variable 
+(e.g. in a survey) always constitute definite numerical 
+multiples of a specific \textbf{unit of measurement}.
+
+\item \textbf{Ordinally scaled variables} $X$ \hfill
+\textbf{(qualitative/categorical)}\\
+Possible values, attributes, or categories can be distinguished by
+%
+\begin{itemize}
+\item[(i)] their \textit{names}, $a_{i} \neq a_{j}$, and
+\item[(ii)] they allow for a \textit{natural rank order}, $a_{i} 
+< a_{j}$.
+\end{itemize}
+%
+\underline{Examples:} Likert item rating scales (cf. 
+Ch.~\ref{ch9}), grading of commodities, \ldots.
+
+\item \textbf{Nominally scaled variables} $X$ \hfill
+\textbf{(qualitative/categorical)}\\
+Possible values, attributes, or categories can be distinguished 
+only by
+%
+\begin{itemize}
+\item[(i)] their \textit{names}, $a_{i} \neq a_{j}$.
+\end{itemize}
+%
+\underline{Examples:} first name, location of birth, \ldots.
+
+\end{itemize}
+
+\noindent
+\underline{\textbf{Remark:}} As we will see later in Ch.~\ref{ch12}
+and~\ref{ch13}, the applicability of specific methods of
+\textbf{statistical data analysis} crucially depends on the
+\textbf{scale level of measurement} of the variables involved in
+the respective procedures. Metrically scaled data offers the
+largest variety of powerful methods for this purpose!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Raw data sets and data matrices]{Raw data sets and data
+matrices}
+\lb{urlist}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+To set the stage for subsequent considerations, we here introduce
+some formal representations of entities which assume central roles
+in statistical data analyses.
+
+\medskip
+\noindent
+Let $\boldsymbol{\Omega}$ denote the \textbf{target population} of 
+study objects of interest (e.g., human individuals forming a 
+particular social system) relating to some \textbf{statistical 
+investigation}. This set~$\boldsymbol{\Omega}$ shall comprise a 
+total of $N \in \mathbb{N}$ \textbf{statistical units}, i.e., its 
+size be $|\boldsymbol{\Omega}|=N$.
+
+\medskip
+\noindent
+Suppose one intends to determine the \textbf{frequency
+distributional properties} in $\boldsymbol{\Omega}$ of a portfolio
+of $m \in \mathbb{N}$ \textbf{statistical variables} $X$, $Y$,
+\ldots, and $Z$, with \textbf{spectra of values} $a_{1}, a_{2},
+\ldots, a_{k}$, $b_{1}, b_{2}, \ldots, b_{l}$, \ldots, and $c_{1},
+c_{2}, \ldots, c_{p}$, respectively ($k,l,p \in \mathbb{N}$). A
+\textbf{survey} typically obtains from~$\boldsymbol{\Omega}$ a
+\textbf{statistical sample} $\boldsymbol{S_{\Omega}}$ of size 
+$|\boldsymbol{S_{\Omega}}|=n$ ($n \in \mathbb{N}$, $n < N$), 
+unless one is given the rare opportunity to conduct a proper
+\textbf{census} on $\boldsymbol{\Omega}$ (in which case $n=N$).
+The \textbf{data} thus generated consists of \textbf{observed 
+values}~$\{x_{i}\}_{i=1,\ldots,n}$, 
+$\{y_{i}\}_{i=1,\ldots,n}$, \ldots, and $\{z_{i}\}_{i=1,\ldots,n}$.
+It constitutes the \textbf{raw data set} $\{(x_{i}, y_{i}, \ldots, 
+z_{i})\}_{i=1,\ldots,n}$ of a statistical investigation and may be 
+conveniently assembled in the form of an $\boldsymbol{(n \times 
+m)}$ \textbf{data matrix} $\boldsymbol{X}$ given by
+%
+\begin{center}
+\begin{tabular}[h]{|c||c|c|c|c|}
+\hline
+ & & & & \\
+\textbf{sampling} & \textbf{variable} & \textbf{variable} &
+\ldots & \textbf{variable} \\
+\textbf{unit} & $X$ & $Y$ & & $Z$ \\
+ & & & & \\
+\hline\hline
+ & & & & \\
+$1$ & $x_{1}=a_{5}$ & $y_{1}=b_{9}$ & \ldots & $z_{1}=c_{3}$ \\
+ & & & & \\
+\hline
+ & & & & \\
+$2$ & $x_{2}=a_{2}$ & $y_{2}=b_{12}$ & \ldots & $z_{2}=c_{8}$ \\
+ & & & & \\
+\hline
+ & & & & \\
+\vdots & \vdots & \vdots & \vdots & \vdots \\
+ & & & & \\
+\hline
+ & & & & \\
+$n$ & $x_{n}=a_{8}$ & $y_{n}=b_{9}$ & \ldots & $z_{n}=c_{15}$ \\
+ & & & & \\
+\hline
+\end{tabular}
+\end{center}
+%
+To systematically record the information obtained from measuring 
+the values of a portfolio of statistical variables in a 
+statistical sample $\boldsymbol{S_{\Omega}}$, in the 
+$\boldsymbol{(n \times m)}$~\textbf{data matrix} 
+$\boldsymbol{X}$ every one of the $n$~\textbf{sampling units} 
+investigated is assigned a particular \textit{row}, while every one 
+of the $m$~\textbf{statistical variables} measured is assigned a 
+particular \textit{column}. In the following, $X_{ij}$ denotes the 
+data entry in the $i$th row ($i=1,\ldots,n$) and the $j$th column 
+($i=1,\ldots,m$) of $\boldsymbol{X}$. To clarify standard 
+terminology used in \textbf{Statistics}, a \textbf{raw data set} is 
+referred to as
+%
+\begin{itemize}
+\item[(i)] \textbf{univariate}, when $m=1$,
+\item[(ii)] \textbf{bivariate}, when $m=2$, and
+\item[(iii)] \textbf{multivariate}, when $m \geq 3$.
+\end{itemize}
+%
+According to Hair \textit{et al} (2010) 
+\ct[pp~102, 175]{haietal2010}, a rough rule of thumb concerning an 
+adequate \textbf{sample size} $|\boldsymbol{S_{\Omega}}|=n$ for 
+\textbf{multivariate data analysis} is given 
+by
+%
+\be
+\lb{eq:samplesize}
+n \geq 10m \ .
+\ee
+%
+Considerations of \textbf{statistical power} of particular methods
+of data analysis lead to more refined recommendations; cf. 
+Sec.~\ref{sec:testgen}.
+
+\medskip
+\noindent
+\textbf{``Big data''} scenarios apply when $n, m 
+\gg 1$ (i.e., when $n$ is typically on the order of $10^{4}$, or
+very much larger still, and $m$ is on the order of $10^{2}$, or
+larger).
+
+\medskip
+\noindent
+In general, an $(n \times m)$ data matrix $\boldsymbol{X}$ is the 
+starting point for the application of a \textbf{statistical
+software package} such as \R{}, SPSS, GNU PSPP, or other for the
+purpose of systematic data analysis. When the sample comprises
+exclusively \textbf{metrically scaled data}, the data matrix is
+real-valued, i.e.,
+%
+\be
+\lb{eq:metrdatamatrix}
+\boldsymbol{X} \in \mathbb{R}^{n \times m} \ ;
+\ee
+%
+cf. Ref.~\ct[Sec.~2.1]{hve2009}. Then the information contained in 
+$\boldsymbol{X}$ uniquely positions a collection of $n$ sampling 
+units according to $m$ quantitative characteristic variable 
+features in (a subset of) an $m$-dimensional \textbf{Euclidian
+space}~$\mathbb{R}^{m}$.
+
+\medskip
+\noindent
+\underline{\R:} \texttt{datMat <- data.frame(x = c($x_{1}$,\ldots,$x_{n}$),
+y = c($y_{1}$,\ldots,$y_{n}$), \ldots, \\
+z = c($z_{1}$,\ldots,$z_{n}$))} 
+
+\vspace{5mm}
+\noindent
+We next turn to describe phenomenologically the \textbf{univariate 
+frequency distribution} of a single one-dimensional statistical 
+variable $X$ in a specific statistical sample 
+$\boldsymbol{S_{\Omega}}$ of size $n$,  drawn in the context of a 
+survey from some target population of study objects 
+$\boldsymbol{\Omega}$ of size $N$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

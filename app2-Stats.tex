@@ -1,0 +1,70 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: app2-Stats.tex
+%  Title:
+%  Version: 11.07.2019
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\appendix
+\chapter[Distance measures in Statistics]{Distance measures in 
+Statistics}
+\lb{app2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bf Statistics} employs a number of different measures of {\bf 
+distance} $d_{ij}$ to quantify the separation in an $m$--D space 
+of metrically scaled statistical variables $X, Y, \ldots, Z$ of
+two statistical units $i$ and $j$ ($i, j = 1, \ldots, n$). Note 
+that, by construction, these measures $d_{ij}$ exhibit the 
+properties $d_{ij} \geq 0$, $d_{ij} = d_{ji}$ and $d_{ii} = 0$. In 
+the following, $X_{ik}$ is the entry of the data matrix 
+$\boldsymbol{X} \in \mathbb{R}^{n \times m}$ 
+relating to the $i$th statistical unit and the $k$th statistical 
+variable, etc. The $d_{ij}$ define the elements of a
+$\boldsymbol{(n \times n)}$ {\bf proximity matrix} $\boldsymbol{D} 
+\in \mathbb{R}^{n \times n}$.
+
+%------------------------------------------------------------------
+\subsection*{Euclidian distance \hfill (dimensionful)}
+%------------------------------------------------------------------
+This most straightforward, dimensionful distance measure is named 
+after the ancient Greek (?) mathematician 
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Euclid.html}{Euclid of Alexandria (ca.~325BC--ca.~265BC)}. It is defined by
+%
+\be
+\lb{eq:eucliddist}
+\fbox{$\displaystyle
+d_{ij}^{E} := 
+\sqrt{\sum_{k=1}^{m}\sum_{l=1}^{m}(X_{ik}-X_{jk})\delta_{kl}
+(X_{il}-X_{jl})} \ ,
+$}
+\ee
+%
+where $\delta_{kl}$ denotes the elements of the unit matrix 
+$\boldsymbol{1} \in \mathbb{R}^{m \times m}$; cf. 
+Ref.~\ct[Eq.~(2.2)]{hve2009}.
+
+%------------------------------------------------------------------
+\subsection*{Mahalanobis distance \hfill (dimensionless)}
+%------------------------------------------------------------------
+A more sophisticated, {\bf scale-invariant} distance measure in 
+{\bf Statistics} was devised by the Indian applied statistician 
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Mahalanobis.html}{Prasanta Chandra Mahalanobis (1893--1972)}; cf. Mahalanobis 
+(1936)~\ct{mah1936}. It is defined by
+%
+\be
+\lb{eq:mahaladist}
+\fbox{$\displaystyle
+d_{ij}^{M} := 
+\sqrt{\sum_{k=1}^{m}\sum_{l=1}^{m}(X_{ik}-X_{jk})(S^{2})^{-1}_{kl}
+(X_{il}-X_{jl})} \ ,
+$}
+\ee
+%
+where $(S^{2})^{-1}_{kl}$ denotes the elements of the inverse
+covariance matrix $(\boldsymbol{S^{2}})^{-1} \in
+\mathbb{R}^{m \times m}$ relating to $X, Y, \ldots, Z$; cf.
+Sec.~\ref{subsec:covar}. The Mahalanobis distance thus accounts for
+inter-variable correlations and so eliminates a potential source of
+bias.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

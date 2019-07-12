@@ -1,0 +1,240 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch9-WSt.tex
+%  Title:
+%  Version: 04.06.2019 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Likert's scaling method of summated item 
+ratings]{\href{https://www.youtube.com/watch?v=_IJJ_D6UOaQ}{Operationalisation 
+of latent variables: Likert's scaling method of summated item
+ratings}}
+\lb{ch9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section[Likert's scaling method of summated item 
+%ratings]{Likert's scaling method of summated item ratings}
+%\lb{sec:likertscale}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A sound \textbf{operationalisation} of ones's portfolio of
+\textbf{statistical variables} in quantitative--empirical research
+is key to a successful and effective application of
+\textbf{statistical methods of data analysis}, particularly in the
+\textbf{Social Sciences} and \textbf{Humanities}. The most
+frequently practiced method to date for operationalising
+\textbf{latent variables} (such as unobservable ``social
+constructs'') is due to the US-American psychologist 
+\href{http://en.wikipedia.org/wiki/Rensis_Likert}{Rensis Likert's 
+(1903--1981)}. In his 1932 paper \ct{lik1932}, which completed his 
+thesis work for a Ph.D., he expressed the idea that \textbf{latent 
+statistical variables}~$X_{L}$, when they may be perceived as 
+\textit{one-dimensional} in nature, can be rendered measurable in a 
+\textit{quasi-metrical} fashion by means of the \textbf{summated 
+ratings} over an extended set of suitable and observable
+\textbf{indicator items} $X_{i}$ ($i=1,2,\ldots$), which, in order
+to ensure effectiveness, ought to be (i)~\textit{highly
+interdependent} and possess (ii)~\textit{high discriminatory
+power}. Such indicator items are often formulated as specific
+statements relating to the theoretical concept a particular
+one-dimensional latent variable~$X_{L}$ is supposed to capture,
+with respect to which test persons need to express their subjective
+level of agreement or, in different settings, indicate a specific
+subjective degree of intensity. A typical \textbf{item rating
+scale} for the indicator items~$X_{i}$, 
+providing the necessary item ratings, is given for instance by the 
+5--level ordinally ranked attributes of agreement\\[-5mm]
+%
+\begin{itemize}
+\item[1:] strongly disagree/strongly unfavourable\\[-5mm]
+\item[2:] disagree/unfavourable\\[-5mm]
+\item[3:] undecided\\[-5mm]
+\item[4:] agree/favourable\\[-5mm]
+\item[5:] strongly agree/strongly favourable.\\[-5mm]
+\end{itemize}
+%
+In the research literature, one also encounters 7--level or 
+10--level item rating scales, which offer more flexibility. Note 
+that it is \textit{assumed} fom the outset that the items~$X_{i}$, 
+and thus their ratings, can be treated as \textbf{additive}, so
+that the conceptual principles of Sec.~\ref{sec:sumvar} relating to 
+sums of random variables can be relied upon. When forming the sum 
+over the ratings of all the indicator items one selected, it is 
+essential to carefully pay attention to the \textbf{polarity} of
+the items involved. For the resultant \textbf{total sum} 
+${\displaystyle\sum_{i}X_{i}}$ to be consistent, the polarity of 
+all items used needs to be uniform.\footnote{For a questionnaire, 
+however, it is strongly recommended to include also indicator 
+items of reversed polarity. This will improve the overall 
+construct validity of the measurement tool.}
+
+\medskip
+\noindent
+The construction of a consistent and coherent \textbf{Likert scale} 
+for a one-dimensional latent statistical variable~$X_{L}$ involves 
+four basic steps (see, e.g., Trochim (2006)~\ct{tro2006}):\\[-5mm]
+%
+\begin{itemize}
+\item[(i)] the compilation of an initial list of 80 to 100 
+potential \textbf{indicator items} $X_{i}$ for the one-dimensional 
+latent variable of interest,\\[-5mm]
+
+\item[(ii)] the draw of a \textbf{gauge random sample} from the 
+target population~$\boldsymbol{\Omega}$,\\[-5mm]
+
+\item[(iii)] the computation of the \textbf{total sum} 
+${\displaystyle\sum_{i}X_{i}}$ of item ratings, and, most 
+importantly, \\[-5mm]
+
+\item[(iv)] the performance of an \textbf{item analysis} based on
+the sample data and the associated total sum 
+${\displaystyle\sum_{i}X_{i}}$ of item ratings.\\[-5mm]
+\end{itemize}
+%
+The item analysis, in particular, consists of the consequential 
+application of two exclusion criteria, which aim at establishing 
+the scientific quality of the final \textbf{Likert scale}. Items
+are being discarded from the list when either\\[-6mm]
+%
+\begin{itemize}
+\item[(a)] they show a weak \textbf{item-to-total 
+correlation} with the total sum ${\displaystyle\sum_{i}X_{i}}$ (a 
+rule of thumb is to exclude items with correlations less than 
+$0.5$), or\\[-6mm]
+  
+\item[(b)] it is possible to increase the value of
+\textbf{Cronbach's}\footnote{Named 
+after the US-American educational psychologist
+\href{http://en.wikipedia.org/wiki/Lee_Cronbach}{Lee Joseph 
+Cronbach (1916--2001)}. The range of the normalised real-valued
+$\alpha$--coefficient is the interval $[0,1]$.} 
+$\boldsymbol{\alpha}$\textbf{--coefficient} (see Cronbach (1951) 
+\ct{cro1951}), a measure of the scale's \textbf{internal
+consistency reliability}, by excluding a particular item from the
+list (the objective being to attain $\alpha$-values greater than
+$0.8$).\\[-6mm]
+\end{itemize}
+%
+For a set of $m \in \mathbb{N}$ indicator items $X_{i}$, 
+Cronbach's $\alpha$--coefficient is defined by
+%
+\be
+\lb{eq:cronbachalpha}
+\fbox{$\displaystyle
+\alpha := \left(\frac{m}{m-1}\right)\left(1 - 
+\frac{{\displaystyle\sum_{i=1}^{m}S_{i}^{2}}}{S_\mathrm{total}^{2}}
+\right) \ ,
+$}
+\ee
+%
+where $S_{i}^{2}$ denotes the sample variance associated with the 
+$i$th indicator item,
+%which here is {\em assumed\/} to be measured on a 5--point 
+%interval scale,
+and $S_\mathrm{total}^{2}$ is the sample variance of the total sum 
+${\displaystyle\sum_{i}X_{i}}$.
+
+\medskip
+\noindent
+\underline{\R:} \texttt{alpha({\it items\/})} (package:
+\texttt{psych}, by Revelle (2019)~\ct{rev2019}) \\
+\underline{SPSS:} Analyze $\rightarrow$ Scale $\rightarrow$ 
+Reliability Analysis \ldots (Model: Alpha) $\rightarrow$ 
+Statistics \ldots: Scale if item deleted
+
+\medskip
+\noindent
+The outcome of the item analysis is a drastic reduction of the 
+initial list to a set of just $k \in \mathbb{N}$ indicator items 
+$X_{i}$ ($i=1,\ldots,k$) of high discriminatory power, where $k$ 
+is typically in the range of $10$ to $15$.\footnote{However, in 
+many research papers one finds Likert scales with a minimum of 
+just four indicator items.} The associated \textbf{total sum}
+%
+\be 
+X_{L} := \sum_{i=1}^{k}X_{i}
+\ee
+%
+thus operationalises the one-dimensional latent statistical 
+variable~$X_{L}$ in a quasi-metrical fashion, since it is to be 
+measured on an \textbf{interval scale} with a \textit{discrete} 
+spectrum of values given (for a 5--level item rating scale) by
+%
+\be
+X_{L} \mapsto \sum_{i=1}^{k}x_{i} \in \left[1k,5k\right] \ .
+\ee
+%
+The structure of a finalised discrete $k$-indicator-item Likert 
+scale for some one-dimensional latent statistical variable~$X_{L}$ 
+with an equidistant graphical 5--level item rating scale is 
+displayed in Tab.~\ref{tab:likert}.
+%
+\begin{table}
+
+\underline{\textbf{One-dimensional latent statistical
+variable}~$\boldsymbol{X_{L}}$:}
+%
+\begin{center}
+\begin{tabular}[!htb]{cccccccc}
+% & \textbf{strongly disagree} & & & & \textbf{strongly agree} \\ \\
+$\bullet$\ \textbf{Item} $X_{1}$: &
+strongly disagree & $\bigcirc$\quad\quad\mbox{} 
+& $\bigcirc$\quad\quad\mbox{} & $\bigcirc$\quad\quad\mbox{} & 
+$\bigcirc$\quad\quad\mbox{} & $\bigcirc$ & strongly agree \\ \\
+$\bullet$\ \textbf{Item} $X_{2}$: &
+strongly disagree & $\bigcirc$\quad\quad\mbox{} 
+& $\bigcirc$\quad\quad\mbox{} & $\bigcirc$\quad\quad\mbox{} & 
+$\bigcirc$\quad\quad\mbox{} & $\bigcirc$ & strongly agree \\ \\
+\vdots & \vdots & \vdots\quad\quad\mbox{} & 
+\vdots\quad\quad\mbox{} & \vdots\quad\quad\mbox{} & 
+\vdots\quad\quad\mbox{} & \vdots & \vdots\\ \\
+$\bullet$\ \textbf{Item} $X_{k}$: & 
+strongly disagree & $\bigcirc$\quad\quad\mbox{} 
+& $\bigcirc$\quad\quad\mbox{} & $\bigcirc$\quad\quad\mbox{} & 
+$\bigcirc$\quad\quad\mbox{} & $\bigcirc$ & strongly agree
+\end{tabular}
+\end{center}
+\caption{Structure of a discrete $k$-indicator-item Likert scale 
+for some one-dimensional latent statistical variable~$X_{L}$, 
+based on a visualised equidistant 5--level item rating scale.}
+\lb{tab:likert}
+\end{table}
+%
+
+\medskip
+\noindent
+Likert's scaling method of aggregating information from a set of  
+$k$ highly interdependent ordinally scaled items to form an 
+effectively quasi-metrical, one-dimensional total sum 
+${\displaystyle X_{L}=\sum_{i}X_{i}}$ draws its legitimisation to 
+a large extent from a generalised version of the \textbf{central 
+limit theorem} (cf. Sec.~\ref{sec:zentrgrenz}), wherein the 
+precondition of mutually stochastically independent variables 
+contributing to the sum is relaxed. In practice it is found that 
+for many cases of interest in the samples one has available for 
+research the total sum  ${\displaystyle X_{L}=\sum_{i}X_{i}}$ is 
+normally distributed in to a very good approximation. 
+Nevertheless, the normality property of Likert scale data needs to 
+be established on a case-by-case basis. The main shortcoming of 
+Likert's approach is its dependency of the gauging process of the 
+scale on the target population.
+
+\medskip
+\noindent
+In the \textbf{Social Sciences} there is available a broad variety
+of operationalisation procedures alternative to the discrete
+\textbf{Likert scale}. We restrict ourselves here to mention but
+one example, namely the \textit{continuous} psychometric
+\textbf{visual analogue scale (VAS)} developed by Hayes and
+Paterson (1921)~\ct{haypat1921} and by Freyd (1923)~\ct{fre1923}.
+Further measurement scales for latent statistical variables can be 
+obtained from the websites 
+\href{http://zis.gesis.org/ZisApplication/}{\texttt{zis.gesis.org}},
+German Social Sciences measurement scales (ZIS), 
+and \href{http://www.ssrn.com}{\texttt{ssrn.com}}, Social Science 
+Research Network (SSRN). On a historical note: one of the first 
+systematically designed \textbf{questionnaires} as a measurement
+tool for collecting socio-economic data (from workers on strike at
+the time in Britain) was published by the Statistical Society of 
+London in 1838; see Ref.~\ct{ssl1838}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

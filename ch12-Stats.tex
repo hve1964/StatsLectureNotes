@@ -1,0 +1,2138 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch12-Stats.tex
+%  Title:
+%  Version: 20.06.2019 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Univariate methods of statistical data
+analysis]{Univariate methods of statistical data analysis: 
+confidence intervals and testing for differences}
+\lb{ch12}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In this chapter we present a selection of standard inferential 
+statistical techniques within the \textbf{frequentist framework}
+that, based upon the random sampling of some target 
+population~$\boldsymbol{\Omega}$, were developed for the purpose 
+of (a)~range-estimating unknown distribution parameters by means 
+of \textbf{confidence intervals}, (b)~\textbf{testing for
+differences} between a given empirical distribution of a
+one-dimensional statistical variable and its \textit{a priori}
+assumed theoretical distribution, and (c)~\textbf{comparing}
+distributional properties and parameters of a one-dimensional
+statistical variable between two or more subgroups of
+$\boldsymbol{\Omega}$. Since the methods to be introduced relate to considerations on distributions of a single one-dimensional
+statistical variable only, they are thus referred to as
+\textbf{univariate}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Confidence intervals]{Confidence intervals}
+\lb{sec:konfintv}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Assume given a continuous one-dimensional statistical variable~$X$ 
+which satisfies in some target population~$\boldsymbol{\Omega}$ a 
+\textbf{Gau\ss ian normal distribution} with \textit{unknown}
+\textbf{distribution parameters} $\theta \in \{\mu, \sigma^{2}\}$
+(cf. Sec.~\ref{sec:normverteil}). The issue is to determine, using 
+empirical data from a random sample 
+$\boldsymbol{S_{\Omega}}$:~$(X_{1}, \ldots, X_{n})$, a two-sided 
+ \textbf{confidence interval} estimate for any one of these unknown distribution parameters~$\theta$
+%which can be relied on
+at (as one says) a \textbf{confidence level} $1-\alpha$, where, by
+convention, $\alpha \in [0.01,0.05]$.
+
+\medskip
+\noindent
+Centred on a suitable unbiased and consistent maximum likelihood 
+point estimator function~$\hat{\theta}_{n}(X_{1},\ldots,X_{n})$
+for $\theta$, the aim of the estimation process is to explicitly
+account for the \textbf{sampling error} $\delta_{K}$ arising due to
+the random selection process. This approach yields a two-sided
+confidence interval
+%
+\be
+K_{1-\alpha}(\theta) = \left[\hat{\theta}_{n}-\delta_{K},
+\hat{\theta}_{n}+\delta_{K}\right] \ ,
+\ee
+%
+such that $P(\theta \in K_{1-\alpha}(\theta))=1-\alpha$ applies.
+The interpretation of the confidence interval $K_{1-\alpha}$ is
+that upon arbitrarily many independent repetitions of the
+random sampling process, in $(1-\alpha)\times$100\% of all cases
+the unknown distribution parameter~$\theta$ will fall inside the
+boundaries of $K_{1-\alpha}$ and in $\alpha\times$100\% of all
+cases it will not.\footnote{In actual reality, for a given
+fixed confidence interval $K_{1-\alpha}$, the unknown distribution
+parameter~$\theta$ either takes its value inside $K_{1-\alpha}$, or
+not, but the researcher cannot say which case applies.} In the
+following we will consider the two cases which result when choosing
+$\theta \in \{\mu, \sigma^{2}\}$.
+
+%------------------------------------------------------------------
+\subsection[Confidence intervals for a mean]{Confidence
+intervals for a population mean}
+%------------------------------------------------------------------
+When $\theta=\mu$, and $\hat{\theta}_{n}=\bar{X}_{n}$ by 
+Eq.~(\ref{eq:sampmean}), the \textbf{two-sided confidence interval 
+for a population mean} $\mu$ at significance level $1-\alpha$ 
+becomes
+%
+\be
+K_{1-\alpha}(\mu) = \left[\bar{X}_{n}-\delta_{K},
+\bar{X}_{n}+\delta_{K}\right] \ ,
+\ee
+%
+with a \textbf{sampling error} amounting to
+%
+\be
+\lb{eq:samplerrcimu}
+\delta_{K} = t_{n-1;1-\alpha/2}\,\frac{S_{n}}{\sqrt{n}} \ ,
+\ee
+%
+where $S_{n}$ is the positive square root of the \textbf{sample 
+variance} $S_{n}^{2}$ according to Eq.~(\ref{eq:sampvar}), and
+$t_{n-1;1-\alpha/2}$ denotes the value of the 
+$(1-\alpha/2)$--quantile of a $t$--distribution with $df=n-1$ 
+degrees of freedom; cf. Sec.~\ref{sec:tverteil}. The ratio 
+$\displaystyle\frac{S_{n}}{\sqrt{n}}$ represents the
+\textbf{standard error}~$\text{SE}\bar{X}_{n}$ associated with
+$\bar{X}_{n}$; cf. Eq.~(\ref{eq:sesammean}).
+
+\medskip
+\noindent
+\underline{GDC:} mode \texttt{STAT} $\rightarrow$ \texttt{TESTS} 
+$\rightarrow$ \texttt{TInterval}
+
+\medskip
+\noindent
+Equation~(\ref{eq:samplerrcimu}) may be inverted to obtain the 
+\textbf{minimum sample size} necessary to construct a two-sided 
+confidence interval for $\mu$ to a prescribed accuracy 
+$\delta_\mathrm{max}$, maximal sample variance
+$\sigma_\mathrm{max}^{2}$, and fixed confidence level $1-\alpha$.
+Thus,
+%
+\be
+n \geq \left(\frac{t_{n-1;1-\alpha/2}}{\delta_\mathrm{max}}
+\right)^{2}\sigma_\mathrm{max}^{2} \ .
+\ee
+%
+
+%------------------------------------------------------------------
+\subsection[Confidence intervals for a variance]{Confidence
+intervals for a population variance}
+%------------------------------------------------------------------
+When $\theta=\sigma^{2}$, and $\hat{\theta}_{n}=S_{n}^{2}$ by 
+Eq.~(\ref{eq:sampvar}), the associated point estimator function
+%
+\be
+\frac{(n-1)S_{n}^{2}}{\sigma^{2}} \sim
+\chi^{2}(n-1) \ ,
+\quad\text{with}\quad n \in \mathbb{N} \ ,
+\ee
+%
+satisfies a $\chi^{2}$--distribution with $df=n-1$ degrees of 
+freedom; cf. Sec.~\ref{sec:chi2verteil}. By inverting the 
+condition
+%
+\be
+P\left(\chi^{2}_{n-1;\alpha/2} \leq
+\frac{(n-1)S_{n}^{2}}{\sigma^{2}} \leq
+\chi^{2}_{n-1;1-\alpha/2}\right) \stackrel{!}{=} 1-\alpha \ ,
+\ee
+%
+one derives a \textbf{two-sided confidence interval for a
+population variance} $\sigma^{2}$ at significance level $1-\alpha$
+given by
+%
+\be
+\left[\frac{(n-1)S_{n}^{2}}{\chi^{2}_{n-1;1-\alpha/2}},
+\frac{(n-1)S_{n}^{2}}{\chi^{2}_{n-1;\alpha/2}}\right] \ .
+\ee
+%
+$\chi^{2}_{n-1;\alpha/2}$ and $\chi^{2}_{n-1;1-\alpha/2}$ again 
+denote the values of particular quantiles of a 
+$\chi^{2}$--distribution.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[One-sample $\chi^{2}$--goodness--of--fit--test]{\href{https://www.youtube.com/watch?v=EjMZdii62Fk}{One-sample
+$\boldsymbol{\chi}^{2}$--goodness--of--fit--test}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A standard research question in quantitative--empirical 
+investigations deals with the issue whether or not, with respect 
+to some target population~$\boldsymbol{\Omega}$ of sample units, 
+the \textbf{distribution law} for a specific one-dimensional 
+statistical variable~$X$ may be assumed to comply with a 
+particular theoretical reference distribution. This question can 
+be formulated in terms of the corresponding \texttt{cdf}s,
+$F_{X}(x)$ and $F_{0}(x)$, presupposing that for practical reasons
+the spectrum of values of $X$ is subdivided into a set of $k$
+mutually exclusive \textbf{categories} (or \textbf{bins}), with $k$
+a judiciously chosen positive integer which depends in the first
+place on the size $n$ of the random sample
+$\boldsymbol{S_{\Omega}}$:~$(X_{1}, \ldots, X_{n})$ to be
+investigated.
+
+\medskip
+\noindent
+The non-parametric \textbf{one-sample 
+$\boldsymbol{\chi}^{2}$--goodness--of--fit--test} takes 
+as its starting point the pair of
+
+\medskip
+\noindent
+\textbf{Hypotheses:}
+%
+\be
+\begin{cases}
+H_{0}: F_{X}(x) = F_{0}(x)
+\quad\Leftrightarrow\quad
+O_{i}-E_{i} = 0 \\
+H_{1}: F_{X}(x) \neq F_{0}(x)
+\quad\Leftrightarrow\quad
+O_{i}-E_{i} \neq 0
+\end{cases} \ ,
+\ee
+%
+where $O_{i}$ ($i=1,\ldots,k$) denotes the actually
+\textbf{observed frequency} of category $i$ in a random sample of
+size $n$, $E_{i}:=np_{i}$ denotes the, under $H_{0}$ (and so
+$F_{0}(x)$), theoretically \textbf{expected frequency} of
+category~$i$ in the same random sample, and $p_{i}$ is the
+\textbf{probability} of finding a value of $X$ in category~$i$
+under $F_{0}(x)$.
+
+\medskip
+\noindent
+The present procedure, devised by Pearson (1900)~\ct{pea1900}, 
+employs the \textbf{residuals} $O_{i}-E_{i}$ ($i=1\ldots,k$) to 
+construct a suitable 
+
+\medskip
+\noindent
+\textbf{Test statistic:}
+%
+\be
+\lb{eq:chisqgofteststat}
+\fbox{$\displaystyle
+T_{n}(X_{1}, \ldots, X_{n})
+= \sum_{i=1}^{k}\frac{(O_{i}-E_{i})^{2}}{E_{i}}
+\ \stackrel{H_{0}}{\approx}\ \chi^{2}(k-1-r)
+$}
+\ee
+%
+in terms of a sum of rescaled squared residuals 
+$\displaystyle\frac{(O_{i}-E_{i})^{2}}{E_{i}}$, which, under 
+$H_{0}$, approximately follows a
+$\boldsymbol{\chi^{2}}$\textbf{--test distribution} with 
+$df=k-1-r$ degrees of freedom (cf. Sec.~\ref{sec:chi2verteil}); 
+$r$ denotes the number of free parameters of the reference 
+distribution $F_{0}(x)$ which need to be estimated from the random 
+sample data. For this test procedure to be reliable, it is 
+\textit{important (!)} that the size $n$ of the random sample be 
+chosen such that the condition
+%
+\be
+E_{i} \stackrel{!}{\geq} 5
+\ee
+%
+holds for all categories $i=1,\ldots,k$, due to the fact that the 
+$E_{i}$ appear in the denominator of the test statistic in 
+Eq.~(\ref{eq:chisqgofteststat}) (and so would artifically inflate 
+the magnitudes of the summed ratios when the denominators become 
+too small).
+
+\medskip
+\noindent
+\textbf{Test decision:} The rejection region for $H_{0}$ at 
+significance level $\alpha$ is given by (right-sided test)
+%
+\be
+t_{n}>\chi^{2}_{k-1-r;1-\alpha} \ .
+\ee
+%
+By Eq.~(\ref{eq:pvalueright}), the $p$--value associated with a 
+realisation $t_{n}$ of (\ref{eq:chisqgofteststat}), which is to be
+calculated from the
+$\boldsymbol{\chi^{2}}$\textbf{--test distribution}, amounts to
+%
+\be
+p = P(T_{n}>t_{n}|H_{0}) = 1-P(T_{n}\leq t_{n}|H_{0})
+= 1-\chi^{2}\texttt{cdf}(0,t_{n},k-1-r) \ .
+\ee
+%
+
+\medskip
+\noindent
+\underline{\R:} \texttt{chisq.test(table(\textit{variable}))} \\
+\underline{SPSS:} Analyze $\rightarrow$ Nonparametric Tests
+$\rightarrow$ Legacy Dialogs $\rightarrow$ Chi-square \ldots
+
+\medskip
+\noindent
+\textbf{Effect size:} In the present context, the practical
+significance of the phenomenon investigated can be estimated
+from the realisation $t_{n}$ and the sample size~$n$ by
+%
+\be
+\fbox{$\displaystyle
+\lb{eq:eschisq}
+w := \sqrt{\frac{t_{n}}{n}} \ .
+$}
+\ee
+%
+For the interpretation of its strength Cohen 
+(1992)~\ct[Tab.~1]{coh1992} recommends the
+
+\medskip
+\noindent
+\underline{\textbf{Rule of thumb:}}\\
+$0.10 \leq w < 0.30$: small effect\\
+$0.30 \leq w < 0.50$: medium effect\\
+$0.50 \leq w$: large effect.
+
+\medskip
+\noindent
+Note that in the spirit of \textbf{critical rationalism} the 
+one-sample $\chi^{2}$--goodness--of--fit--test provides a tool for 
+empirically \textit{excluding} possibilities of distribution laws 
+for $X$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[One-sample $t$-- and $Z$--tests for a population 
+mean]{One-sample $\boldsymbol{t}$-- and $\boldsymbol{Z}$--tests 
+for a population mean}
+\lb{sec:onesampttest}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The idea here is to test whether the unknown population mean $\mu$ 
+of some continuous one-dimensional statistical variable~$X$ is 
+equal to, less than, or greater than some reference value 
+$\mu_{0}$, to a given significance level~$\alpha$. To this end, it 
+is required that $X$ satisfy in the target 
+population~$\boldsymbol{\Omega}$ a \textbf{Gau\ss ian normal 
+distribution}, i.e., $X \sim N(\mu;\sigma^{2})$; cf. 
+Sec.~\ref{sec:normverteil}. The quantitative--analytical tool to 
+be employed in this case is the parametric \textbf{one-sample 
+$\boldsymbol{t}$--test for a population mean} developed by Student 
+[Gosset] (1908)~\ct{stu1908}, or, when the sample size $n \geq 
+50$, in consequence of the \textbf{central limit theorem} discussed 
+in Sec.~\ref{sec:zentrgrenz}, the corresponding
+\textbf{one-sample $\boldsymbol{Z}$--test}.
+
+\medskip
+\noindent
+For a random sample~$\boldsymbol{S_{\Omega}}$:~$(X_{1}, \ldots, 
+X_{n})$ of size $n \geq 50$, the validity of the \textit{assumption 
+(!)} of \textbf{normality} for the $X$-distribution can be tested
+by a procedure due to the Russian mathematicians
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Kolmogorov.html}{Andrey Nikolaevich Kolmogorov (1903--1987)} 
+and 
+\href{http://en.wikipedia.org/wiki/Nikolai_Smirnov_(mathematician)}
+{Nikolai Vasilyevich Smirnov (1900--1966)}. This tests the null 
+hypothesis $H_{0}$: ``There is no difference between the 
+distribution of the sample data and the associated reference 
+normal distribution'' against the alternative $H_{1}$: ``There is 
+a difference between the distribution of the sample data and the 
+associated reference normal distribution;''
+cf. Kolmogorov (1933)~\ct{kol1933b} and Smirnov 
+(1939)~\ct{smi1939}. This procedure is referred to as the
+\textbf{Kolmogorov--Smirnov--test} (or, for short, the KS--test).
+The associated test statistic evaluates the strength of the
+deviation of the empirical cumulative distribution function [cf. 
+Eq.~(\ref{klempvert})] of given random sample data, with sample 
+mean $\bar{x}_{n}$ and sample variance $s_{n}^{2}$, from the
+\texttt{cdf} of a reference Gau\ss ian normal distribution with
+parameters $\mu$ and $\sigma^{2}$ equal to these sample values [cf. 
+Eq.~(\ref{eq:gaussiancdf})].
+
+\medskip
+\noindent
+\underline{\R:} \texttt{ks.test(\textit{variable}, "pnorm")} \\
+\underline{SPSS:} Analyze $\rightarrow$ Nonparametric Tests
+$\rightarrow$ Legacy Dialogs $\rightarrow$ 1-Sample K-S \ldots: 
+Normal
+
+\medskip
+\noindent
+For sample sizes $n < 50$, however, the validity of the normality 
+assumption for the $X$-distribution may be estimated in terms of 
+the magnitudes of the \textbf{standardised skewness and excess
+kurtosis measures},
+%
+\be
+\lb{eq:g1g2ratios}
+\left|\frac{G_{1}}{\text{SE}G_{1}}\right|
+\quad\quad\text{and}\quad\quad
+\left|\frac{G_{2}}{\text{SE}G_{2}}\right| \ ,
+\ee
+%
+which are constructed from the quantities defined in
+Eqs.~(\ref{eq:sampskew})--(\ref{eq:sesamkurt}).
+At a significance level $\alpha = 0.05$, the normality assumption 
+may be maintained as long as \textit{both} measures are smaller
+than the \textbf{critical value} of~$1.96$; cf. Hair \textit{et al} 
+(2010)~\ct[p~72f]{haietal2010}.
+
+\medskip
+\noindent
+Formulated in a non-directed or a directed fashion, the starting 
+point of the $t$--test resp.~$Z$--test procedures are the
+
+\medskip
+\noindent
+\textbf{Hypotheses:}
+%
+\be
+\begin{cases}
+H_{0}: \mu=\mu_{0}
+\quad\text{or}\quad
+\mu \geq \mu_{0}
+\quad\text{or}\quad
+\mu \leq \mu_{0} \\
+H_{1}: \mu \neq \mu_{0}
+\quad\text{or}\quad
+\mu < \mu_{0}
+\quad\text{or}\quad
+\mu > \mu_{0}
+\end{cases} \ .
+\ee
+%
+To measure the deviation of the sample data from the state 
+conjectured to hold in the null hypothesis $H_{0}$, the
+difference between the sample mean $\bar{X}_{n}$ and the 
+hypothesised population mean $\mu_{0}$, normalised in analogy to 
+Eq.~(\ref{eq:standardisation}) by the \textbf{standard error}
+%
+\be
+\text{SE}\bar{X}_{n} := \frac{S_{n}}{\sqrt{n}}
+\ee
+%
+of $\bar{X}_{n}$ given in Eq.~(\ref{eq:sesammean}), serves as the 
+$\mu_{0}$--dependent
+
+\medskip
+\noindent
+\textbf{Test statistic:}
+%
+\be
+\lb{eq:ztteststat}
+\fbox{$\displaystyle
+T_{n}(X_{1}, \ldots, X_{n})
+= \frac{\bar{X}_{n}-\mu_{0}}{\text{SE}\bar{X}_{n}}
+\ \stackrel{H_{0}}{\sim}\ 
+\begin{cases}
+t(n-1) & \text{for}\quad n < 50 \\
+ & \\
+N(0;1) & \text{for}\quad n \geq 50
+\end{cases} \ ,
+$}
+\ee
+%
+which, under $H_{0}$, follows a $\boldsymbol{t}$\textbf{--test
+distribution} with $df=n-1$ degrees of freedom (cf.
+Sec.~\ref{sec:tverteil}) resp.~a \textbf{standard normal
+test distribution} (cf. Sec.~\ref{sec:normverteil}). 
+
+\medskip
+\noindent
+\textbf{Test decision:} Depending on the kind of test to be 
+performed, the rejection region for $H_{0}$ at significance level 
+$\alpha$ is given by
+%
+\begin{center}
+\begin{tabular}[h]{c|c|c|c}
+ & & & \\
+\textbf{Kind of test} & $\boldsymbol{H_{0}}$ &
+$\boldsymbol{H_{1}}$ &
+\textbf{Rejection region for} $\boldsymbol{H_{0}}$ \\
+ & & & \\
+\hline
+ & & & \\
+(a)~two-sided & $\mu=\mu_{0}$ & $\mu\neq\mu_{0}$ &
+$|t_{n}|>
+\begin{cases}
+t_{n-1;1-\alpha/2} & (t\text{--test}) \\
+z_{1-\alpha/2} & (Z\text{--test})
+\end{cases}$ \\
+ & & & \\
+\hline
+ & & & \\
+(b)~left-sided & $\mu\geq\mu_{0}$ & $\mu<\mu_{0}$ &
+$t_{n}<
+\begin{cases}
+t_{n-1;\alpha}=-t_{n-1;1-\alpha} & (t\text{--test}) \\
+z_{\alpha}=-z_{1-\alpha} & (Z\text{--test})
+\end{cases}$ \\
+ & & & \\
+\hline
+ & & & \\
+(c)~right-sided & $\mu\leq\mu_{0}$ & $\mu>\mu_{0}$ &
+$t_{n}>
+\begin{cases}
+t_{n-1;1-\alpha} & (t\text{--test}) \\
+z_{1-\alpha} & (Z\text{--test})
+\end{cases}$ \\
+ & & &
+\end{tabular}
+\end{center}
+%
+$p$--values associated with realisations $t_{n}$ of 
+(\ref{eq:ztteststat}) can be obtained from
+Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}), using
+the relevant $\boldsymbol{t}$\textbf{--test distribution} resp. the
+\textbf{standard normal test distribution}.
+
+\medskip
+\noindent
+\underline{\R:} \texttt{t.test(\textit{variable}, mu = $\mu_{0}$)},
+\\
+\texttt{t.test(\textit{variable}, mu = $\mu_{0}$,
+alternative = "less")}, \\
+\texttt{t.test(\textit{variable}, mu = $\mu_{0}$,
+alternative = "greater")} \\
+\underline{GDC:}
+mode \texttt{STAT} $\rightarrow$ \texttt{TESTS} $\rightarrow$
+\texttt{T-Test\ldots} when $n < 50$,
+resp.~mode \texttt{STAT} $\rightarrow$ \texttt{TESTS}
+$\rightarrow$ \texttt{Z-Test\ldots} when $n \geq 50$. \\
+\underline{SPSS:} Analyze $\rightarrow$ Compare Means
+$\rightarrow$ One-Sample T Test \ldots
+
+\medskip
+\noindent
+\underline{Note:} Regrettably, SPSS provides no option for 
+selecting between a ``one-tailed'' (left-/right-sided) and a 
+``two-tailed'' (two-sided) $t$--test. The default setting is for a 
+two-sided test. For the purpose of one-sided tests the $p$--value 
+output of SPSS needs to be divided by $2$.
+
+\medskip
+\noindent
+\textbf{Effect size:} The practical significance of the phenomenon investigated can be estimated from the sample mean~$\bar{x}_{n}$,
+the sample standard deviation~$s_{n}$, and the reference
+value~$\mu_{0}$ by the scale-invariant ratio
+%
+\be
+\fbox{$\displaystyle
+d := \frac{\left|\bar{x}_{n}-\mu_{0}\right|}{s_{n}} \ .
+$}
+\ee
+%
+For the interpretation of its strength Cohen 
+(1992)~\ct[Tab.~1]{coh1992} recommends the
+
+\medskip
+\noindent
+\underline{\textbf{Rule of thumb:}}\\
+$0.20 \leq d < 0.50$: small effect\\
+$0.50 \leq d < 0.80$: medium effect\\
+$0.80 \leq d$: large effect.
+
+\medskip
+\noindent
+We remark that the statistical software package~\R\ holds 
+available a routine \texttt{power.t.test(power, sig.level, delta,
+sd, $n$, alternative, type = "one.sample")} for the purpose of
+calculating any one of the parameters \texttt{power},
+\texttt{delta} or $n$ (provided all remaining parameters have been
+specified) in the context of empirical investigations employing the
+one-sample $t$--test for a population mean. One-sided tests are
+specified via the parameter setting
+\texttt{alternative = "one.sided"}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[One-sample $\chi^{2}$--test for a population 
+variance]{One-sample $\boldsymbol{\chi^{2}}$--test for a population
+variance}
+\lb{sec:onesampchi2vartest}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In analogy to the statistical significance test described in the 
+previous section \ref{sec:onesampttest}, one may likewise test 
+hypotheses on the value of an unknown population variance 
+$\sigma^{2}$ with respect to a reference value $\sigma_{0}^{2}$ 
+for a continuous one-dimensional statistical variable~$X$ which 
+satisfies in $\boldsymbol{\Omega}$ a \textbf{Gau\ss ian normal 
+distribution}, i.e., $X \sim N(\mu;\sigma^{2})$; cf. 
+Sec.~\ref{sec:normverteil}. The hypotheses may also be formulated 
+in a non-directed or directed fashion according to
+
+\medskip
+\noindent
+\textbf{Hypotheses:}
+%
+\be
+\begin{cases}
+H_{0}: \sigma^{2}=\sigma_{0}^{2}
+\quad\text{or}\quad
+\sigma^{2} \geq \sigma_{0}^{2}
+\quad\text{or}\quad
+\sigma^{2} \leq \sigma_{0}^{2} \\
+H_{1}: \sigma^{2} \neq \sigma_{0}^{2}
+\quad\text{or}\quad
+\sigma^{2} < \sigma_{0}^{2}
+\quad\text{or}\quad
+\sigma^{2} > \sigma_{0}^{2}
+\end{cases} \ .
+\ee
+%
+In the \textbf{one-sample $\boldsymbol{\chi^{2}}$--test for a 
+population variance}, the underlying $\sigma_{0}^{2}$--dependent
+
+\medskip
+\noindent
+\textbf{Test statistic:}
+%
+\be
+\lb{eq:chisqteststat}
+\fbox{$\displaystyle
+T_{n}(X_{1}, \ldots, X_{n})
+= \frac{(n-1)S_{n}^{2}}{\sigma_{0}^{2}}
+\ \stackrel{H_{0}}{\sim}\ \chi^{2}(n-1)
+$}
+\ee
+%
+is chosen to be proportional to the sample variance defined by 
+Eq.~(\ref{eq:sampvar}), and so, under $H_{0}$, follows a
+$\boldsymbol{\chi^{2}}$\textbf{--test distribution} with
+$df=n-1$ degrees of freedom; cf. Sec.~\ref{sec:chi2verteil}.
+
+\medskip
+\noindent
+\textbf{Test decision:} Depending on the kind of test to be 
+performed, the rejection region for $H_{0}$ at significance level 
+$\alpha$ is given by
+%
+\begin{center}
+\begin{tabular}[h]{c|c|c|c}
+ & & & \\
+\textbf{Kind of test} & $\boldsymbol{H_{0}}$ &
+$\boldsymbol{H_{1}}$ &
+\textbf{Rejection region for} $\boldsymbol{H_{0}}$ \\
+ & & & \\
+\hline
+ & & & \\
+(a)~two-sided & $\sigma^{2}=\sigma_{0}^{2}$ &
+$\sigma^{2}\neq\sigma_{0}^{2}$ &
+$t_{n}\begin{cases}<\chi^{2}_{n-1;\alpha/2} \\
+>\chi^{2}_{n-1;1-\alpha/2}\end{cases}$ \\
+ & & & \\
+\hline
+ & & & \\
+(b)~left-sided & $\sigma^{2}\geq\sigma_{0}^{2}$ &
+$\sigma^{2}<\sigma_{0}^{2}$ &
+$t_{n}<\chi^{2}_{n-1;\alpha}$ \\
+ & & & \\
+\hline
+ & & & \\
+(c)~right-sided & $\sigma^{2}\leq\sigma_{0}^{2}$ &
+$\sigma^{2}>\sigma_{0}^{2}$ &
+$t_{n}>\chi^{2}_{n-1;1-\alpha}$ \\
+ & & &
+\end{tabular}
+\end{center}
+%
+$p$--values associated with realisations $t_{n}$ of 
+(\ref{eq:chisqteststat}), which are to be calculated from the
+$\boldsymbol{\chi^{2}}$\textbf{--test distribution}, can be
+obtained from Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
+
+\medskip
+\noindent
+\underline{\R:} \texttt{varTest(\textit{variable},
+sigma.squared = $\sigma_{0}^{2}$)} (package: \texttt{EnvStats},
+by Millard (2013)~\ct{mil2013}), \\
+\texttt{varTest(\textit{variable},
+sigma.squared = $\sigma_{0}^{2}$, alternative = "less")}, \\
+\texttt{varTest(\textit{variable},
+sigma.squared = $\sigma_{0}^{2}$, alternative = "greater")}
+
+\medskip
+\noindent
+Regrettably, the one-sample $\chi^{2}$--test for a population 
+variance does not appear to have been implemented in the SPSS 
+software package.
+
+%\medskip
+%\noindent
+%\textbf{Effect size:} The practical significance of the phenomenon %investigated can be estimated and interpreted by means of the
+%effect size measure~$w$ defined in Eq.~(\ref{eq:eschisq});
+%cf. Cohen (1992)~\ct[Tab.~1]{coh1992}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Independent samples $t$--test for a mean]{\href{https://www.youtube.com/watch?v=3alSVL8oVMM}{Two independent samples
+$\boldsymbol{t}$--test for a population mean}}
+\lb{sec:ttestindep}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Quantitative--empirical studies are frequently interested 
+in the question as to what extent there exist significant 
+differences between two subgroups of some target 
+population~$\boldsymbol{\Omega}$ in 
+the distribution of a metrically scaled one-dimensional 
+statistical variable $X$. Given that $X$ is \textit{normally 
+distributed} in $\boldsymbol{\Omega}$ 
+(cf. Sec.~\ref{sec:normverteil}), the parametric \textbf{two 
+independent samples $\boldsymbol{t}$--test 
+for a population mean} originating from work by Student [Gosset] 
+(1908)~\ct{stu1908} provides an efficient and powerful 
+investigative tool.
+
+\medskip
+\noindent
+For independent random samples of sizes $n_{1}, n_{2} \geq 50$,
+the issue of whether there exists empirical evidence in the 
+samples \textit{against} the assumption of a normally 
+distributed~$X$ in  $\boldsymbol{\Omega}$ can again be tested for 
+by means of the \textbf{Kolmogorov--Smirnov--test}; cf. 
+Sec.~\ref{sec:onesampttest}.
+
+\medskip
+\noindent
+\underline{\R:} \texttt{ks.test(\textit{variable}, "pnorm")} \\
+\underline{SPSS:} Analyze $\rightarrow$ Nonparametric Tests
+$\rightarrow$ Legacy Dialogs $\rightarrow$ 1-Sample K-S \ldots: 
+Normal
+
+\medskip
+\noindent
+For $n_{1}, n_{2} < 50$, one may resort to a consideration of the 
+magnitudes of the \textbf{standardised skewness and excess kurtosis
+measures}, Eqs.~(\ref{eq:g1g2ratios}), to check for the validity of
+the normality assumption for the $X$-distributions. 
+
+\medskip
+\noindent
+In addition, prior to the $t$--test procedure, one needs to 
+establish whether or not the variances of~$X$ have to be viewed as 
+significantly different in the two random samples selected.
+\textbf{Levene's test} provides an empirical method to test
+$H_{0}:~\sigma_{1}^{2}=\sigma_{2}^{2}$
+against $H_{1}:~\sigma_{1}^{2}\neq\sigma_{2}^{2}$; cf. Levene 
+(1960)~\ct{lev1960}.
+
+\medskip
+\noindent
+\underline{\R:}
+\texttt{leveneTest(\textit{variable}, \textit{group
+variable})} (package: \texttt{car}, by Fox and Weisberg
+(2011)~\ct{foxwei2011})
+
+\medskip
+\noindent
+The hypotheses of a $t$--test may be formulated in a non-directed 
+fashion or in a directed one. Hence, the different kinds of 
+possible conjectures are
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for differences)
+%
+\be
+\begin{cases}
+H_{0}: \mu_{1}-\mu_{2}=0
+\quad\text{or}\quad
+\mu_{1}-\mu_{2} \geq 0
+\quad\text{or}\quad
+\mu_{1}-\mu_{2} \leq 0 \\
+H_{1}: \mu_{1}-\mu_{2} \neq 0
+\quad\text{or}\quad
+\mu_{1}-\mu_{2} < 0
+\quad\text{or}\quad
+\mu_{1}-\mu_{2} > 0
+\end{cases} \ .
+\ee
+%
+A test statistic is constructed from the difference of sample 
+means, $\bar{X}_{n_{1}}-\bar{X}_{n_{2}}$,
+%and the difference of unknown population means  
+%$(\mu_{1}-\mu_{2})$ in the two subgroups, 
+standardised by the \textbf{standard error}
+%
+\be
+\text{SE}(\bar{X}_{n_{1}}-\bar{X}_{n_{2}})
+:= \sqrt{\frac{S_{n_{1}}^{2}}{n_{1}}+\frac{S_{n_{2}}^{2}}{n_{2}}} 
+\ ,
+\ee
+%
+which derives from the associated theoretical \textbf{sampling 
+distribution} for $\bar{X}_{n_{1}}-\bar{X}_{n_{2}}$. Thus, one
+obtains the
+
+\medskip
+\noindent
+\textbf{Test statistic:} 
+%
+\be
+\lb{eq:indeptteststat}
+\fbox{$\displaystyle
+T_{n_{1},n_{2}} := \frac{\bar{X}_{n_{1}}-\bar{X}_{n_{2}}
+}{\text{SE}(\bar{X}_{n_{1}}-\bar{X}_{n_{2}})}
+\ \stackrel{H_{0}}{\sim}\ t(df) \ ,
+$}
+\ee
+%
+which, under $H_{0}$, satisfies a
+$\boldsymbol{t}$\textbf{--test distribution} (cf. 
+Sec.~\ref{sec:tverteil}) with a number of degrees of freedom 
+determined by the relations
+%
+\be
+\displaystyle
+df := \begin{cases}
+n_{1}+n_{2}-2\ , &
+\text{when}\quad \sigma_{1}^{2}=\sigma_{2}^{2} \\
+ & \\
+{\displaystyle\frac{\left(\frac{S_{n_{1}}^{2}}{n_{1}}
++\frac{S_{n_{2}}^{2}}{n_{2}}\right)^{2}}{\frac{(S_{n_{1}}^{2}/n_{1})^{2}
+}{n_{1}-1}+\frac{(S_{n_{2}}^{2}/n_{2})^{2}}{n_{2}-1}}} \ ,
+& \text{when}\quad \sigma_{1}^{2} \neq \sigma_{2}^{2}
+\end{cases} \ .
+\ee
+%
+
+\medskip
+\noindent
+\textbf{Test decision:} Depending on the kind of test to be 
+performed, the rejection region for $H_{0}$ at significance level 
+$\alpha$ is given by
+%
+\begin{center}
+\begin{tabular}[h!]{c|c|c|c}
+ & & & \\
+\textbf{Kind of test} & $\boldsymbol{H_{0}}$ &
+$\boldsymbol{H_{1}}$ &
+\textbf{Rejection region for} $\boldsymbol{H_{0}}$ \\
+ & & & \\
+\hline
+ & & & \\
+(a)~two-sided & $\mu_{1}-\mu_{2}=0$ & $\mu_{1}-\mu_{2}\neq 0$ &
+$|t_{n_{1},n_{2}}|>t_{df;1-\alpha/2}$ \\
+ & & & \\
+\hline
+ & & & \\
+(b)~left-sided & $\mu_{1}-\mu_{2}\geq 0$ & $\mu_{1}-\mu_{2}<0$ &
+$t_{n_{1},n_{2}}<t_{df;\alpha}=-t_{df;1-\alpha}$ \\
+ & & & \\
+\hline
+ & & & \\
+(c)~right-sided & $\mu_{1}-\mu_{2}\leq 0$ & $\mu_{1}-\mu_{2}>0$ &
+$t_{n_{1},n_{2}}>t_{df;1-\alpha}$ \\
+ & & &
+\end{tabular}
+\end{center}
+%
+$p$--values associated with realisations $t_{n_{1},n_{2}}$ of 
+(\ref{eq:indeptteststat}), which are to be calculated from the
+$\boldsymbol{t}$\textbf{--test distribution}, can be obtained from 
+Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
+
+\medskip
+\noindent
+\underline{\R:}
+\texttt{t.test(\textit{variable}\texttildelow\textit{group
+variable})}, \\
+\texttt{t.test(\textit{variable}\texttildelow\textit{group
+variable}, alternative = "less")}, \\
+\texttt{t.test(\textit{variable}\texttildelow\textit{group
+variable}, alternative = "greater")} \\
+\underline{GDC:} mode \texttt{STAT} $\rightarrow$ \texttt{TESTS}
+$\rightarrow$ \texttt{2-SampTTest\ldots} \\
+\underline{SPSS:} Analyze $\rightarrow$ Compare Means
+$\rightarrow$ Independent-Samples T Test \ldots
+
+\medskip
+\noindent
+\underline{Note:} Regrettably, SPSS provides no option for 
+selecting between a one-sided and a two-sided $t$--test. The 
+default setting is for a two-sided test. For the purpose of 
+one-sided tests the $p$--value output of SPSS needs to be divided 
+by $2$.
+
+\medskip
+\noindent
+\textbf{Effect size:} The practical significance of the phenomenon investigated can be estimated from the sample
+means~$\bar{x}_{n_{1}}$ and $\bar{x}_{n_{2}}$ and the pooled sample
+standard deviation
+%
+\be
+s_{\mathrm{pooled}} := \sqrt{\frac{(n_{1}-1)s_{n_{1}}^{2}
++(n_{2}-1)s_{n_{2}}^{2}}{n_{1}+n_{2}-2}}
+\ee
+%
+by the scale-invariant ratio
+%
+\be
+\fbox{$\displaystyle
+d := \frac{\left|\bar{x}_{n_{1}}-\bar{x}_{n_{2}}
+\right|}{s_{\mathrm{pooled}}} \ .
+$}
+\ee
+%
+For the interpretation of its strength Cohen 
+(1992)~\ct[Tab.~1]{coh1992} recommends the
+
+\medskip
+\noindent
+\underline{\textbf{Rule of thumb:}}\\
+$0.20 \leq d < 0.50$: small effect\\
+$0.50 \leq d < 0.80$: medium effect\\
+$0.80 \leq d$: large effect.
+
+\medskip
+\noindent
+\underline{\R:}
+\texttt{cohen.d(\textit{variable}, \textit{group
+variable}, pooled = TRUE)} (package: \texttt{effsize}, by
+Torchiano (2018)~\ct{tor2018})
+
+\medskip
+\noindent
+We remark that the statistical software package~\R\ holds 
+available a routine \texttt{power.t.test(power, sig.level, delta,
+sd, $n$, alternative)} for the purpose of calculation of any one 
+of the parameters \texttt{power}, \texttt{delta} or $n$ (provided 
+all remaining parameters have been specified) in the context of 
+empirical investigations employing the independent samples 
+$t$--test for a population mean. Equal values of $n$ are 
+required here. One-sided tests are addressed via the parameter 
+setting \texttt{alternative = "one.sided"}.
+
+\medskip
+\noindent
+When the necessary conditions for the application of the
+independent samples $t$--test are \textit{not} satisfied, the 
+following alternative test procedures (typically of a weaker test 
+power, though) for comparing two subgroups of 
+$\boldsymbol{\Omega}$ with respect to the distribution of a 
+metrically scaled variable~$X$ exist:
+%
+\begin{itemize}
+\item[(i)] at the \textbf{nominal} scale level, provided $E_{ij}
+\geq 5$ for all $i,j$, the \textbf{$\boldsymbol{\chi}^{2}$--test
+for homogeneity}; cf.  Sec.~\ref{sec:chisqhomo} below, and
+\item[(ii)] at the \textbf{ordinal} scale level, provided $n_{1}, 
+n_{2} \geq 8$, the two independent samples 
+\textbf{Mann--Whitney--$\boldsymbol{U}$--test} for a  median; cf. 
+the following Sec.~\ref{sec:utest}.
+\end{itemize}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Independent samples Mann--Whitney--$U$--test]{\href{https://www.youtube.com/watch?v=bG6xXoyEgB8}{Two independent samples
+Mann--Whitney--$\boldsymbol{U}$--test for a population median}}
+\lb{sec:utest}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The non-parametric \textbf{two independent samples 
+Mann--Whitney--$\boldsymbol{U}$--test for a population median},
+devised by the Austrian--US-American mathematician and statistician
+\href{http://en.wikipedia.org/wiki/Henry_Mann}{Henry Berthold
+Mann~(1905--2000)} and the US-American statistician
+Donald Ransom Whitney~(1915--2001) in 1947~\ct{manwhi1947}, can be 
+applied to random sample data for ordinally scaled one-dimensional 
+statistical variables~$X$, or for metrically scaled 
+one-dimensional statistical variables~$X$ which may \textit{not} be 
+reasonably assumed to be normally distributed in the target 
+population~$\boldsymbol{\Omega}$. In both situations, the method 
+employs \textbf{rank number data} (cf. Sec.~\ref{sec:2Dord}), which 
+faithfully represents the original random sample data, to 
+effectively compare the medians of~$X$ (or, rather, the mean 
+rank numbers) between two independent groups. It aims to test 
+empirically the null hypothesis $H_{0}$ of one of the following 
+pairs of non-directed or directed
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for differences)
+%
+\be
+\begin{cases}
+H_{0}: \tilde{x}_{0.5}(1) = \tilde{x}_{0.5}(2)
+\quad\text{or}\quad
+\tilde{x}_{0.5}(1) \geq \tilde{x}_{0.5}(2)
+\quad\text{or}\quad
+\tilde{x}_{0.5}(1) \leq \tilde{x}_{0.5}(2) \\
+H_{1}: \tilde{x}_{0.5}(1) \neq \tilde{x}_{0.5}(2)
+\quad\text{or}\quad
+\tilde{x}_{0.5}(1) < \tilde{x}_{0.5}(2)
+\quad\text{or}\quad
+\tilde{x}_{0.5}(1) > \tilde{x}_{0.5}(2)
+\end{cases} \ .
+\ee
+%
+
+\medskip
+\noindent
+Given two independent sets of random sample data for $X$,
+\textbf{ranks} are being introduced on the basis of an ordered
+\textbf{joint random sample} of size $n=n_{1}+n_{2}$ according to
+$x_{i}(1) \mapsto R[x_{i}(1)]$ and $x_{i}(2) \mapsto R[x_{i}(2)]$. 
+From the ranks thus assigned to the elements of each of the two 
+sets of data, one computes the
+
+\medskip
+\noindent
+$\boldsymbol{U}$\textbf{--values:}
+%
+\begin{eqnarray}
+U_{1} & := & n_{1}n_{2} + \frac{n_{1}(n_{1}+1)}{2}
+- \sum_{i=1}^{n_{1}}R[x_{i}(1)] \\
+%
+U_{2} & := & n_{1}n_{2} + \frac{n_{2}(n_{2}+1)}{2}
+- \sum_{i=1}^{n_{2}}R[x_{i}(2)] \ ,
+\end{eqnarray}
+%
+for which the identity $U_{1}+U_{2}=n_{1}n_{2}$ applies. Choose 
+$U:=\min(U_{1},U_{2})$.\footnote{Since the $U$--values are tied to 
+each other by the identity $U_{1}+U_{2}=n_{1}n_{2}$, it makes no 
+difference to this method when one chooses $U:=\max(U_{1},U_{2})$ 
+instead.} For independent random samples of sizes $n_{1}, n_{2} 
+\geq 8$ (see, e.g., Bortz (2005) \ct[p~151]{bor2005}), the 
+standardised $U$--value serves as the
+
+\medskip
+\noindent
+\textbf{Test statistic:} 
+%
+\be
+\lb{eq:uteststat}
+\fbox{$\displaystyle
+T_{n_{1},n_{2}} := \frac{U-\mu_{U}}{\text{SE}U}
+\ \stackrel{H_{0}}{\approx}\ N(0;1) \ ,
+$}
+\ee
+%
+which, under $H_{0}$, approximately satisfies a \textbf{standard
+normal test distribution}; cf. Sec.~\ref{sec:normverteil}. Here,
+$\mu_{U}$ denotes the mean of the $U$--value expected under
+$H_{0}$; it is defined in terms of the sample sizes by
+%
+\be
+\mu_{U}:=\frac{n_{1}n_{2}}{2} \ ;
+\ee
+%
+$\text{SE}U$ denotes the \textbf{standard error} of the $U$--value 
+and can be obtained, e.g., from Bortz (2005) 
+\ct[Eq.~(5.49)]{bor2005}.
+
+\medskip
+\noindent
+\textbf{Test decision:} Depending on the kind of test to be 
+performed, the rejection region for $H_{0}$ at significance level 
+$\alpha$ is given by
+%
+\begin{center}
+\begin{tabular}[h]{c|c|c|c}
+ & & & \\
+\textbf{Kind of test} & $\boldsymbol{H_{0}}$ &
+$\boldsymbol{H_{1}}$ &
+\textbf{Rejection region for} $\boldsymbol{H_{0}}$ \\
+ & & & \\
+\hline
+ & & & \\
+(a)~two-sided & $\tilde{x}_{0.5}(1) = \tilde{x}_{0.5}(2)$ & 
+$\tilde{x}_{0.5}(1) \neq \tilde{x}_{0.5}(2)$ &
+$|t_{n_{1},n_{2}}|>z_{1-\alpha/2}$ \\
+ & & & \\
+\hline
+ & & & \\
+(b)~left-sided & $\tilde{x}_{0.5}(1) \geq \tilde{x}_{0.5}(2)$ & 
+$\tilde{x}_{0.5}(1) < \tilde{x}_{0.5}(2)$ &
+$t_{n_{1},n_{2}}<z_{\alpha}=-z_{1-\alpha}$ \\
+ & & & \\
+\hline
+ & & & \\
+(c)~right-sided & $\tilde{x}_{0.5}(1) \leq \tilde{x}_{0.5}(2)$ & 
+$\tilde{x}_{0.5}(1) > \tilde{x}_{0.5}(2)$ &
+$t_{n_{1},n_{2}}>z_{1-\alpha}$ \\
+ & & &
+\end{tabular}
+\end{center}
+%
+$p$--values associated with realisations $t_{n_{1},n_{2}}$ of 
+(\ref{eq:uteststat}), which are to be calculated from the
+\textbf{standard normal test distribution}, can be obtained from 
+Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
+
+\medskip
+\noindent
+\underline{\R:}
+\texttt{wilcox.test(\textit{variable}~\texttildelow~\textit{group
+variable})}, \\
+\texttt{wilcox.test(\textit{variable}~\texttildelow~\textit{group
+variable}, alternative = "less")}, \\
+\texttt{wilcox.test(\textit{variable}~\texttildelow~\textit{group
+variable}, alternative = "greater")} \\
+\underline{SPSS:} Analyze $\rightarrow$ Nonparametric Tests
+$\rightarrow$ Legacy Dialogs $\rightarrow$ 2 Independent
+Samples \ldots: Mann-Whitney U
+
+\medskip
+\noindent
+\underline{Note:} Regrettably, SPSS provides no option for 
+selecting between a one-sided and a two-sided $U$--test. The 
+default setting is for a two-sided test. For the purpose of 
+one-sided tests the $p$--value output of SPSS needs to be divided 
+by $2$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Independent samples $F$--test for a variance]{Two
+independent samples $\boldsymbol{F}$--test for a population
+variance}
+\lb{sec:Ftestindep}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In analogy to the independent samples $t$--test for a 
+population mean of Sec.~\ref{sec:ttestindep}, one may likewise 
+investigate for a metrically scaled one-dimensional statistical 
+variable~$X$, which can be assumed to satisfy a Gau\ss ian normal 
+distribution in $\boldsymbol{\Omega}$ (cf. 
+Sec.~\ref{sec:normverteil}), whether there exists a significant 
+difference in the values of the population variance between two 
+independent random samples.\footnote{Run the 
+Kolmogorov--Smirnov--test to check 
+whether the assumption of normality of the distribution of $X$ in 
+the two random samples drawn needs to be rejected.} The parametric 
+\textbf{two independent samples $\boldsymbol{F}$--test for a 
+population variance} empirically evaluates the plausibility of the 
+null hypothesis $H_{0}$ in the non-directed resp.~directed pairs of
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for differences)
+%
+\be
+\begin{cases}
+H_{0}: \sigma_{1}^{2}=\sigma_{2}^{2}
+\quad\text{or}\quad
+\sigma_{1}^{2} \geq \sigma_{2}^{2}
+\quad\text{or}\quad
+\sigma_{1}^{2} \leq \sigma_{2}^{2} \\
+H_{1}: \sigma_{1}^{2} \neq \sigma_{2}^{2}
+\quad\text{or}\quad
+\sigma_{1}^{2} < \sigma_{2}^{2}
+\quad\text{or}\quad
+\sigma_{1}^{2} > \sigma_{2}^{2}
+\end{cases} \ .
+\ee
+%
+Dealing with independent random samples of sizes $n_{1}$ and 
+$n_{2}$, the ratio of the corresponding sample variances serves as 
+a
+
+\medskip
+\noindent
+\textbf{Test statistic:}
+%
+\be
+\lb{eq:fteststat}
+\fbox{$\displaystyle
+T_{n_{1},n_{2}} := \frac{S_{n_{1}}^{2}}{S_{n_{2}}^{2}}
+\ \stackrel{H_{0}}{\sim}\ F(n_{1}-1,n_{2}-1) \ ,
+$}
+\ee
+%
+which, under $H_{0}$, satisfies an $\boldsymbol{F}$\textbf{--test
+distribution} with $df_{1}=n_{1}-1$ and $df_{2}=n_{2}-1$ degrees of
+freedom; cf. Sec.~\ref{sec:fverteil}.
+
+\medskip
+\noindent
+\textbf{Test decision:} Depending on the kind of test to be 
+performed, the rejection region for $H_{0}$ at significance level 
+$\alpha$ is given by
+%
+\begin{center}
+\begin{tabular}[h]{c|c|c|c}
+ & & & \\
+\textbf{Kind of test} & $\boldsymbol{H_{0}}$ &
+$\boldsymbol{H_{1}}$ &
+\textbf{Rejection region for} $\boldsymbol{H_{0}}$ \\
+ & & & \\
+\hline
+ & & & \\
+(a)~two-sided & $\sigma_{1}^{2}=\sigma_{2}^{2}$ & $\sigma_{1}^{2} 
+\neq \sigma_{2}^{2}$ &
+$t_{n_{1},n_{2}}\begin{cases} < 1/f_{n_{2}-1,n_{1}-1;1-\alpha/2} \\
+> f_{n_{1}-1,n_{2}-1;1-\alpha/2} \end{cases}$ \\
+ & & & \\
+\hline
+ & & & \\
+(b)~left-sided & $\sigma_{1}^{2} \geq \sigma_{2}^{2}$ & 
+$\sigma_{1}^{2} < \sigma_{2}^{2}$ &
+$t_{n_{1},n_{2}} < 1/f_{n_{2}-1,n_{1}-1;1-\alpha}$ \\
+ & & & \\
+\hline
+ & & & \\
+(c)~right-sided & $\sigma_{1}^{2} \leq \sigma_{2}^{2}$ & 
+$\sigma_{1}^{2} > \sigma_{2}^{2}$ &
+$t_{n_{1},n_{2}} > f_{n_{1}-1,n_{2}-1;1-\alpha}$ \\
+ & & &
+\end{tabular}
+\end{center}
+%
+$p$--values associated with realisations $t_{n_{1},n_{2}}$ of 
+(\ref{eq:fteststat}), which are to be calculated from the
+$\boldsymbol{F}$\textbf{--test distribution}, can be obtained from 
+Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
+
+\medskip
+\noindent
+\underline{\R:}
+\texttt{var.test(\textit{variable}~\texttildelow~\textit{group
+variable})}, \\
+\texttt{var.test(\textit{variable}~\texttildelow~\textit{group
+variable}, alternative = "less")}, \\
+\texttt{var.test(\textit{variable}~\texttildelow~\textit{group
+variable}, alternative = "greater")} \\
+\underline{GDC:} mode \texttt{STAT} $\rightarrow$ \texttt{TESTS}
+$\rightarrow$ \texttt{2-SampFTest\ldots}
+
+\medskip
+\noindent
+Regrettably, the two-sample $F$--test for a population 
+variance does not appear to have been implemented in the SPSS 
+software package. Instead, to address quantitative issues of the 
+kind raised here, one may resort to \textbf{Levene's test}; cf. 
+Sec.~\ref{sec:ttestindep}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Dependent samples $t$--test for a mean]{\href{https://www.youtube.com/watch?v=XqaTOsBSvg0}{Two dependent samples $\boldsymbol{t}$--test
+for a population mean}}
+\lb{sec:ttestdep}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Besides investigating for significant differences in the 
+distribution of a single one-dimensional statistical variable~$X$ 
+in two or more independent subgroups of some target 
+population~$\boldsymbol{\Omega}$, many research projects are 
+interested in finding out (i)~how the distributional properties of 
+a one-dimensional statistical variable $X$ have changed within one 
+and the same random sample of $\boldsymbol{\Omega}$ in an 
+experimental before--after situation, or (ii)~how the distribution 
+of a one-dimensional statistical variable~$X$ differs between two 
+subgroups of $\boldsymbol{\Omega}$, the sample units of which 
+co-exist in a natural pairwise one-to-one correspondence to one 
+another.
+
+\medskip
+\noindent
+When the one-dimensional statistical variable~$X$ in question is 
+metrically scaled and can be assumed to satisfy a Gau\ss ian 
+normal distribution in $\boldsymbol{\Omega}$, significant 
+differences can be tested for by means of the parametric
+\textbf{two dependent samples $\boldsymbol{t}$--test for a
+population mean}. Denoting by $A$ and $B$ either temporal before
+and after instants, or partners in a set of natural pairs $(A,B)$,
+define for $X$ the metrically scaled \textbf{difference variable}
+%
+\be
+D:=X(A)-X(B) \ .
+\ee
+%
+An \textit{important test prerequisite} demands that $D$ itself may 
+be assumed \textit{normally distributed} in $\boldsymbol{\Omega}$; 
+cf. Sec.~\ref{sec:normverteil}. Whether this property holds true, 
+can be checked for $n \geq 50$ via the
+\textbf{Kolmogorov--Smirnov--test}; cf.
+Sec.~\ref{sec:onesampttest}. When $n < 50$, one may resort to a
+consideration of the magnitudes of the \textbf{standardised
+skewness and excess kurtosis measures}, Eqs.~(\ref{eq:g1g2ratios}). 
+
+\medskip
+\noindent
+With $\mu_{D}$ denoting the population mean of the difference 
+variable $D$, the
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for differences)
+%
+\be
+\begin{cases}
+H_{0}: \mu_{D}=0
+\quad\text{or}\quad
+\mu_{D} \geq 0
+\quad\text{or}\quad
+\mu_{D} \leq 0 \\
+H_{1}: \mu_{D} \neq 0
+\quad\text{or}\quad
+\mu_{D} < 0
+\quad\text{or}\quad
+\mu_{D} > 0
+\end{cases}
+\ee
+%
+can be given in a non-directed or a directed formulation. From the 
+sample mean $\bar{D}$ and its associated \textbf{standard error},
+%
+\be
+\text{SE}\bar{D} := \frac{S_{D}}{\sqrt{n}} \ ,
+\ee
+%
+which derives from the theoretical \textbf{sampling distribution}
+for $\bar{D}$, one obtains by means of standardisation according
+to Eq.~(\ref{eq:standardisation}) the
+
+\medskip
+\noindent
+\textbf{Test statistic:}
+%
+\be
+\lb{eq:deptteststat}
+\fbox{$\displaystyle
+T_{n} := \frac{\bar{D}}{\text{SE}\bar{D}}
+\ \stackrel{H_{0}}{\sim}\ t(n-1) \ ,
+$}
+\ee
+%
+which, under $H_{0}$, satisfies a $\boldsymbol{t}$\textbf{--test
+distribution} with $df=n-1$ degrees of freedom; cf.
+Sec.~\ref{sec:tverteil}.
+
+\medskip
+\noindent
+\textbf{Test decision:} Depending on the kind of test to be 
+performed, the rejection region for $H_{0}$ at significance level 
+$\alpha$ is given by
+%
+\begin{center}
+\begin{tabular}[h]{c|c|c|c}
+ & & & \\
+\textbf{Kind of test} & $\boldsymbol{H_{0}}$ &
+$\boldsymbol{H_{1}}$ &
+\textbf{Rejection region for} $\boldsymbol{H_{0}}$ \\
+ & & & \\
+\hline
+ & & & \\
+(a)~two-sided & $\mu_{D}=0$ & $\mu_{D}\neq 0$ &
+$|t_{n}|>t_{n-1;1-\alpha/2}$ \\
+ & & & \\
+\hline
+ & & & \\
+(b)~left-sided & $\mu_{D} \geq 0$ & $\mu_{D}<0$ &
+$t_{n}<t_{n-1;\alpha}=-t_{n-1;1-\alpha}$ \\
+ & & & \\
+\hline
+ & & & \\
+(c)~right-sided & $\mu_{D} \leq 0$ & $\mu_{D}>0$ &
+$t_{n}>t_{n-1;1-\alpha}$ \\
+ & & &
+\end{tabular}
+\end{center}
+%
+$p$--values associated with realisations $t_{n}$ of 
+(\ref{eq:deptteststat}), which are to be calculated from the
+$\boldsymbol{t}$\textbf{--test distribution}, can be obtained from 
+Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
+
+\medskip
+\noindent
+\underline{\R:}
+\texttt{t.test(\textit{variableA}, \textit{variableB}, 
+paired = "T")}, \\
+\texttt{t.test(\textit{variableA}, \textit{variableB},
+paired = "T", alternative = "less")}, \\
+\texttt{t.test(\textit{variableA}, \textit{variableB},
+paired = "T", alternative = "greater")} \\
+\underline{SPSS:} Analyze $\rightarrow$ Compare Means
+$\rightarrow$ Paired-Samples T Test \ldots
+
+\medskip
+\noindent
+\underline{Note:} Regrettably, SPSS provides no option for 
+selecting between a one-sided and a two-sided $t$--test. The 
+default setting is for a two-sided test. For the purpose of 
+one-sided tests the $p$--value output of SPSS needs to be divided 
+by $2$.
+
+\medskip
+\noindent
+\textbf{Effect size:} The practical significance of the phenomenon investigated can be estimated from the sample mean~$\bar{D}$ and
+the sample standard deviation~$s_{D}$ by the scale-invariant ratio
+%
+\be
+\fbox{$\displaystyle
+d := \frac{\left|\bar{D}\right|}{s_{D}} \ .
+$}
+\ee
+%
+For the interpretation of its strength Cohen 
+(1992)~\ct[Tab.~1]{coh1992} recommends the
+
+\medskip
+\noindent
+\underline{\textbf{Rule of thumb:}}\\
+$0.20 \leq d < 0.50$: small effect\\
+$0.50 \leq d < 0.80$: medium effect\\
+$0.80 \leq d$: large effect.
+
+\medskip
+\noindent
+\underline{\R:}
+\texttt{cohen.d(\textit{variable}, \textit{group
+variable}, paired = TRUE)} (package: \texttt{effsize}, by
+Torchiano (2018)~\ct{tor2018})
+
+\medskip
+\noindent
+We remark that the statistical software package~\R\ holds 
+available a routine \texttt{power.t.test(power, sig.level, delta,
+sd, $n$, alternative, type = "paired")} for the purpose of
+calculation of any one of the parameters \texttt{power},
+\texttt{delta} or $n$ (provided all remaining parameters have been
+specified) in the context of empirical investigations employing the
+dependent samples $t$--test for a population mean. One-sided tests
+are addressed via the parameter setting
+\texttt{alternative = "one.sided"}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Dependent samples Wilcoxon--test]{Two dependent
+samples Wilcoxon--test for a population median}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+When the test prerequisites of the dependent samples $t$--test 
+\textit{cannot} be met, i.e., a given metrically scaled 
+one-dimensional statistical variable~$X$ cannot be assumed to 
+satisfy a Gau\ss ian normal distribution in $\boldsymbol{\Omega}$, 
+or $X$ is an ordinally scaled one-dimensional statistical variable 
+in the first place, the non-parametric \textbf{signed ranks test} 
+published by the US-American chemist and statistician 
+\href{http://en.wikipedia.org/wiki/Frank_Wilcoxon}{Frank Wilcoxon
+(1892--1965)} in 1945 \ct{wil1945} constitutes a 
+quantitative--empirical tool for comparing the distributional 
+properties of $X$ between two dependent random samples drawn from 
+$\boldsymbol{\Omega}$. Like Mann and Whitney's $U$--test discussed 
+in Sec.~\ref{sec:utest}, it is built around the idea of \textbf{rank 
+number data} faithfully representing the original random sample 
+data; cf. Sec.~\ref{sec:2Dord}. Defining again a variable
+%
+\be
+D:=X(A)-X(B) \ ,
+\ee
+%
+with associated median $\tilde{x}_{0.5}(D)$, the null hypothesis 
+$H_{0}$ in the non-directed or directed pairs of
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for differences)
+%
+\be
+\begin{cases}
+H_{0}: \tilde{x}_{0.5}(D)=0
+\quad\text{or}\quad
+\tilde{x}_{0.5}(D) \geq 0
+\quad\text{or}\quad
+\tilde{x}_{0.5}(D) \leq 0 \\
+H_{1}: \tilde{x}_{0.5}(D) \neq 0
+\quad\text{or}\quad
+\tilde{x}_{0.5}(D) < 0
+\quad\text{or}\quad
+\tilde{x}_{0.5}(D) > 0
+\end{cases}
+\ee
+%
+needs to be subjected to a suitable significance test.
+
+\medskip
+\noindent
+For realisations $d_{i}$ ($i=1,\ldots,n$) of $D$, introduce
+\textbf{rank numbers} according to $d_{i} \mapsto R[|d_{i}|]$  for
+the ordered \textbf{absolute values} $|d_{i}|$, while keeping a 
+record of the \textbf{sign} of each $d_{i}$. Exclude from the data
+set all null differences $d_{i}=0$, leading to a sample of reduced
+size $n \mapsto n_\mathrm{red}$ . Then form the \textbf{sums of
+rank numbers} $W^{+}$ for the $d_{i}>0$ and $W^{-}$ for the
+$d_{i}<0$, respectively, which are linked to one another by the
+identity $W^{+}+W^{-}=n_\mathrm{red}(n_\mathrm{red}+1)/2$. 
+Choose~$W^{+}$.\footnote{Due to the identity
+$W^{+}+W^{-}=n_\mathrm{red}(n_\mathrm{red}+1)/2$, choosing 
+instead $W^{-}$ would make no qualitative difference to the 
+subsequent test procedure.} For reduced sample sizes $n_\mathrm{
+red}>20$ (see, e.g., Rinne (2008)~\ct[p~552]{rin2008}), one 
+employs the
+
+\medskip
+\noindent
+\textbf{Test statistic:}
+%
+\be
+\lb{eq:wilcteststat}
+\fbox{$\displaystyle
+T_{n_\mathrm{red}} := \frac{W^{+}-\mu_{W^{+}}}{\text{SE}W^{+}}
+\ \stackrel{H_{0}}{\approx}\ N(0;1) \ ,
+$}
+\ee
+%
+which, under $H_{0}$, approximately satisfies a \textbf{standard
+normal test distribution}; cf. Sec.~\ref{sec:normverteil}. Here,
+the mean $\mu_{W^{+}}$ expected under $H_{0}$ is defined in terms
+of $n_\mathrm{red}$ by
+%
+\be
+\mu_{W^{+}}:=\frac{n_\mathrm{red}(n_\mathrm{red}+1)}{4} \ ,
+\ee
+%
+while the \textbf{standard error} $\text{SE}W^{+}$ can be computed 
+from, e.g., Bortz (2005) \ct[Eq.~(5.52)]{bor2005}.
+
+\medskip
+\noindent
+\textbf{Test decision:} Depending on the kind of test to be 
+performed, the rejection region for $H_{0}$ at significance level 
+$\alpha$ is given by
+%
+\begin{center}
+\begin{tabular}[h]{c|c|c|c}
+ & & & \\
+\textbf{Kind of test} & $\boldsymbol{H_{0}}$ &
+$\boldsymbol{H_{1}}$ &
+\textbf{Rejection region for} $\boldsymbol{H_{0}}$ \\
+ & & & \\
+\hline
+ & & & \\
+(a)~two-sided & $\tilde{x}_{0.5}(D) = 0$ & $\tilde{x}_{0.5}(D)
+\neq 0$ & $|t_{n_\mathrm{red}}|>z_{1-\alpha/2}$ \\
+ & & & \\
+\hline
+ & & & \\
+(b)~left-sided & $\tilde{x}_{0.5}(D) \geq 0$ & $\tilde{x}_{0.5}(D)
+< 0$ & $t_{n_\mathrm{red}}<z_{\alpha}=-z_{1-\alpha}$ \\
+ & & & \\
+\hline
+ & & & \\
+(c)~right-sided & $\tilde{x}_{0.5}(D) \leq 0$ & $\tilde{x}_{0.5}(D)
+> $ & $t_{n_\mathrm{red}}>z_{1-\alpha}$ \\
+ & & &
+\end{tabular}
+\end{center}
+%
+$p$--values associated with realisations $t_{n_\mathrm{red}}$ of 
+(\ref{eq:wilcteststat}), which are to be calculated from the
+\textbf{standard normal test distribution}, can be obtained from 
+Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
+
+\medskip
+\noindent
+\underline{\R:}
+\texttt{wilcox.test(\textit{variableA}, \textit{variableB},
+paired = "T")}, \\
+\texttt{wilcox.test(\textit{variableA}, \textit{variableB},
+paired = "T", alternative = "less")}, \\
+\texttt{wilcox.test(\textit{variableA}, \textit{variableB},
+paired = "T", alternative = "greater")} \\
+\underline{SPSS:} Analyze $\rightarrow$ Nonparametric Tests
+$\rightarrow$ Legacy Dialogs $\rightarrow$ 2 Related
+Samples \ldots: Wilcoxon
+
+
+\medskip
+\noindent
+\underline{Note:} Regrettably, SPSS provides no option for 
+selecting between a one-sided and a two-sided Wilcoxon--test. The 
+default setting is for a two-sided test. For the purpose of 
+one-sided tests the $p$--value output of SPSS needs to be divided 
+by $2$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[$\chi^{2}$--test for homogeneity]{\href{https://www.youtube.com/watch?v=Lp2M_0_OhWM}{$\boldsymbol{\chi}^{2}$--test
+for homogeneity}}
+\lb{sec:chisqhomo}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Due to its independence of scale levels of measurement, the 
+non-parametric $\boldsymbol{\chi^{2}}$\textbf{--test for
+homogeneity} constitutes the most generally applicable statistical
+test for significant differences in the distributional properties
+of a particular one-dimensional statistical variable~$X$ between
+$k \in \mathbb{N}$ different independent subgroups of some
+population $\boldsymbol{\Omega}$. By assumption, the
+one-dimensional variable~$X$ may take values in a total of $l \in
+\mathbb{N}$ different \textbf{categories} $a_{j}$ ($j=1,\ldots,l$).
+Begin by formulating the
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for differences)
+%
+\be
+\begin{cases}
+H_{0}: X\ \text{satisfies the same distribution
+in all}\ k\ \text{subgroups of}\ \boldsymbol{\Omega} \\
+H_{1}: X\ \text{satisfies a different distribution
+in at least one subgroup of}\ \boldsymbol{\Omega}
+\end{cases} \ .
+\ee
+%
+With $O_{ij}$ denoting the \textbf{observed frequency} of category 
+$a_{j}$ in subgroup~$i$ ($i=1,\ldots,k$), and $E_{ij}$ the, under 
+$H_{0}$, \textbf{expected frequency} of category $a_{j}$ in 
+subgroup~$i$, the sum of rescaled squared \textbf{residuals} 
+$\displaystyle\frac{(O_{ij}-E_{ij})^{2}}{E_{ij}}$ provides a useful
+
+\medskip
+\noindent
+\textbf{Test statistic:}
+%
+\be
+\lb{eq:chisqhomteststat}
+\fbox{$\displaystyle
+T_{n} := \sum_{i=1}^{k}\sum_{j=1}^{l}\frac{(O_{ij}-E_{ij}
+)^{2}}{E_{ij}}
+\ \stackrel{H_{0}}{\approx}\ \chi^{2}[(k-1)\times(l-1)] \ .
+$}
+\ee
+%
+Under $H_{0}$, this test statistic satisfies approximately a 
+$\boldsymbol{\chi^{2}}$\textbf{--test distribution} with $df=(k-1)
+\times (l-1)$ degrees of 
+freedom; cf. Sec.~\ref{sec:chi2verteil}. The $E_{ij}$ are defined 
+as \textbf{projections} of the \textbf{observed 
+proportions}~$\displaystyle\frac{O_{+j}}{n}$ in the total sample  
+of size~$n:=O_{1+}+\ldots+O_{k+}$ of each of the $l$~categories 
+$a_{j}$ of $X$ into each of the $k$~subgroups of size $O_{i+}$ 
+by [cf. Eqs.~(\ref{eq:margfreq1}) and (\ref{eq:margfreq2})]
+%
+\be
+E_{ij} := O_{i+}\,\frac{O_{+j}}{n} \ .
+\ee
+%
+Note the \textit{important (!) test prerequisite} that the total 
+sample size~$n$ be such that
+%
+\be
+E_{ij} \stackrel{!}{\geq} 5
+\ee
+% 
+applies for all categories $a_{j}$ and subgroups~$i$.
+
+\medskip
+\noindent
+\textbf{Test decision:} The rejection region for $H_{0}$ at 
+significance level $\alpha$ is given by (right-sided test)
+%
+\be
+t_{n}>\chi^{2}_{(k-1)\times(l-1);1-\alpha} \ .
+\ee
+%
+By Eq.~(\ref{eq:pvalueright}), the $p$--value associated with a 
+realisation $t_{n}$ of (\ref{eq:chisqhomteststat}), which is to
+be calculated from the $\boldsymbol{\chi^{2}}$\textbf{--test
+distribution}, amounts to
+%
+\be
+p = P(T_{n}>t_{n}|H_{0}) = 1-P(T_{n}\leq t_{n}|H_{0})
+= 1-\chi^{2}\texttt{cdf}\left(0,t_{n},(k-1)\times(l-1)\right) \ .
+\ee
+%
+
+\medskip
+\noindent
+\underline{\R:} \texttt{chisq.test(\textit{group variable},
+\textit{variable})} \\
+\underline{GDC:} mode \texttt{STAT} $\rightarrow$ \texttt{TESTS}
+$\rightarrow$ \texttt{$\chi^{2}$-Test\ldots}\\
+\underline{SPSS:} Analyze $\rightarrow$ Descriptive Statistics
+$\rightarrow$ Crosstabs \ldots $\rightarrow$ Statistics \ldots:
+Chi-square
+
+\medskip
+\noindent
+Typically the power of a $\chi^{2}$--test for homogeneity is 
+weaker than for the related two procedures of comparing three or
+more independent subgroups of $\boldsymbol{\Omega}$, which will be 
+discussed in the subsequent Secs.~\ref{sec:anova} and 
+\ref{sec:kruskalwallis}.
+
+\medskip
+\noindent
+\textbf{Effect size:} The practical significance of the phenomenon investigated can be estimated and interpreted by means of the
+effect size measure~$w$ defined in Eq.~(\ref{eq:eschisq});
+cf. Cohen (1992)~\ct[Tab.~1]{coh1992}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[One-way analysis of variance (ANOVA)]{\href{https://www.youtube.com/watch?v=viiFi8zfLX0}{One-way analysis of variance (ANOVA)}}
+\lb{sec:anova}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This powerful quantitative--analytical tool has been developed in 
+the context of investigations on biometrical genetics by 
+the English statistician
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Fisher.html}{Sir
+Ronald Aylmer Fisher FRS (1890--1962)} (see Fisher 
+(1918)~\ct{fis1918}), and later extended by the
+US-American statistician
+\href{http://en.wikipedia.org/wiki/Henry_Scheffe}{Henry
+Scheff\'{e} (1907--1977)} (see Scheff\'{e} (1959)~\ct{sch1959}). 
+It is of a parametric nature and can be interpreted alternatively 
+as a method for\footnote{Only experimental designs with fixed 
+effects are considered here.}
+%
+\begin{itemize}
+\item[(i)] investigating the influence of a qualitative 
+one-dimensional statistical variable~$Y$ with $k \geq 3$ 
+categories $a_{i}$ ($i=1,\ldots,k$), generally referred to as a 
+``factor,'' on a quantitative one-dimensional statistical 
+variable~$X$, or\\[-0.5cm]
+\item[(ii)] testing for differences of the mean of a quantitative 
+one-dimensional statistical variable~$X$ between $k \geq 3$ 
+different subgroups of some target 
+population~$\boldsymbol{\Omega}$.\\[-0.5cm]
+\end{itemize}
+%
+A necessary condition for the application of the \textbf{one-way 
+analysis of variance (ANOVA)} test procedure is that the 
+quantitative one-dimensional statistical variable~$X$ to be 
+investigated may be reasonably assumed to be (a)~\textit{normally 
+distributed} (cf. Sec.~\ref{sec:normverteil}) in the $k \geq 3$ 
+subgroups of the target population~$\boldsymbol{\Omega}$ 
+considered, with, in addition, (b)~\textit{equal variances}. Both
+of these conditions also have to hold for each of a set of $k$ 
+mutually stochastically independent random variables $X_{1}, 
+\ldots, X_{k}$ representing $k$ random samples drawn independently 
+from the identified $k$ subgroups of $\boldsymbol{\Omega}$, of 
+sizes $n_{1}, \ldots, n_{k} \in \mathbb{N}$, respectively. In the 
+following, the element $X_{ij}$ of the underlying $(n \times 2)$ 
+data matrix $\boldsymbol{X}$ represents the $j$th value of $X$ in 
+the random sample drawn from the $i$th subgroup of 
+$\boldsymbol{\Omega}$, with $\bar{X}_{i}$ the corresponding
+\textbf{subgroup sample mean}. The $k$ independent random samples
+can be understood to form a \textbf{total random sample} of size 
+$\displaystyle n:=n_{1}+\ldots+n_{k} =\sum_{i=1}^{k}n_{i}$, with 
+\textbf{total sample mean} $\bar{X}_{n}$; cf.
+Eq.~(\ref{eq:sampmean}).
+
+\medskip
+\noindent
+The intention of the ANOVA procedure in the variant~(ii) stated 
+above is to empirically test the null hypothesis $H_{0}$ in the 
+set of
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for differences)
+%
+\be
+\lb{anovahyp1}
+\begin{cases}
+H_{0}: \mu_{1}=\ldots=\mu_{k}=\mu_{0} \\
+H_{1}: \mu_{i} \neq \mu_{0}\ \text{at least for one}
+\ i=1,\ldots,k
+\end{cases} \ .
+\ee
+%
+The necessary test prerequisites can be checked by (a)~the 
+\textbf{Kolmogorov--Smirnov--test} for normality of the 
+$X$-distribution in each of the $k$ subgroups of 
+$\boldsymbol{\Omega}$ (cf. Sec.~\ref{sec:onesampttest}) when 
+$n_{i} \geq 50$, or, when $n_{i} < 50$, by a consideration of the 
+magnitudes of the \textbf{standardised skewness and excess kurtosis
+measures}, Eqs.~(\ref{eq:g1g2ratios}), and likewise by
+(b)~\textbf{Levene's test} for $H_{0}: \sigma_{1}^{2} = 
+\ldots=\sigma_{k}^{2}=\sigma_{0}^{2}$ against $H_{1}$: 
+``$\sigma_{i}^{2} \neq \sigma_{0}^{2}$ at least for one 
+$i=1,\ldots,k$'' to test for equality of the variances in these
+$k$ subgroups (cf. Sec.~\ref{sec:ttestindep}).
+
+\medskip
+\noindent
+\underline{\R:}
+\texttt{leveneTest(\textit{variable}, \textit{group
+variable})} (package: \texttt{car}, by Fox and Weisberg
+(2011)~\ct{foxwei2011})
+
+\medskip
+\noindent
+The starting point of the ANOVA procedure is a simple
+algebraic decomposition of the \textbf{random sample values}
+$X_{ij}$ into three additive components according to
+%
+\be
+\lb{eq:xijdecompo}
+X_{ij} = \bar{X}_{n} + (\bar{X}_{i}-\bar{X}_{n})
++ (X_{ij}-\bar{X}_{i}) \ .
+\ee
+%
+This expresses the $X_{ij}$ in terms of the sum of the total 
+sample mean, $\bar{X}_{n}$, the deviation of the subgroup sample 
+means from the total sample mean, $(\bar{X}_{i}-\bar{X}_{n})$, and 
+the residual deviation of the sample values from their respective 
+subgroup sample means, $(X_{ij}-\bar{X}_{i})$. The decomposition 
+of the $X_{ij}$ motivates a \textbf{linear stochastic model} for
+the target population~$\boldsymbol{\Omega}$ of the 
+form\footnote{Formulated in the context of this linear stochastic 
+model, the null and research hypotheses are $H_{0}: 
+\alpha_{1}=\ldots=\alpha_{k}=0$ and $H_{1}$: at least one 
+$\alpha_{i}\neq 0$, respectively.}
+%
+\be
+\text{in}\ \boldsymbol{\Omega}: \quad
+X_{ij}=\mu_{0}+\alpha_{i}+\varepsilon_{ij}
+\ee
+%
+in order to quantify, via the $\alpha_{i}$ ($i=1,\ldots,k$), the 
+potential influence of the qualitative one-dimensional 
+variable~$Y$ on the quantitative one-dimensional variable~$X$. 
+Here $\mu_{0}$ is the \textbf{population mean} of $X$, it holds
+that $\sum_{i=1}^{k}n_{i}\alpha_{i}=0$, and it is assumed for the
+\textbf{random errors} $\varepsilon_{ij}$ that $\varepsilon_{ij} 
+\stackrel{\text{i.i.d.}}{\sim} N(0;\sigma_{0}^{2})$, i.e., that 
+they are identically normally distributed and mutually 
+stochastically independent.
+
+\medskip
+\noindent
+Having established the decomposition (\ref{eq:xijdecompo}), one 
+next turns to consider the associated set of \textbf{sums of
+squared deviations}, defined by
+%
+\bea
+\lb{eq:bss}
+\text{BSS} & := &
+\sum_{i=1}^{k}\sum_{j=1}^{n_{i}}\left(\bar{X}_{i}-\bar{X}_{n}
+\right)^{2}
+\ = \ \sum_{i=1}^{k}n_{i}\left(\bar{X}_{i}-\bar{X}_{n}\right)^{2} 
+\\
+%
+\lb{eq:rss}
+\text{RSS} & := &
+\sum_{i=1}^{k}\sum_{j=1}^{n_{i}}\left(X_{ij}-\bar{X}_{i}\right)^{2}
+\\
+%
+\lb{eq:tss}
+\text{TSS} & := &
+\sum_{i=1}^{k}\sum_{j=1}^{n_{i}}\left(X_{ij}-\bar{X}_{n}\right)^{2}
+\ ,
+\eea
+%
+where the summations are (i)~over all $n_{i}$ sample units within 
+a subgroup, and (ii)~over all of the $k$ subgroups themselves.
+The sums are referred to as, resp., (a)~the sum of squared 
+deviations between the subgroup samples (BSS), (b)~the residual 
+sum of squared deviations within the subgroup samples (RSS), and 
+(c)~the total sum of squared deviations (TSS) of the individual 
+$X_{ij}$ from the total sample mean $\bar{X}_{n}$. It is a fairly 
+elaborate though straightforward algebraic exercise to show that 
+these three squared deviation terms relate to one another 
+according to the strikingly simple and elegant identity (cf. Bosch 
+(1999)~\ct[p~220f]{bos1999})
+%
+\be
+\text{TSS} = \text{BSS} + \text{RSS} \ .
+\ee
+%
+
+\medskip
+\noindent
+Now, from the sums of squared deviations 
+(\ref{eq:bss})--(\ref{eq:tss}), one defines, resp., the 
+\textbf{total sample variance},
+%
+\be
+S_\mathrm{total}^{2} := 
+\frac{1}{n-1}\,\sum_{i=1}^{k}\sum_{j=1}^{n_{i}}
+\left(X_{ij}-\bar{X}_{n}\right)^{2}
+= \frac{\text{TSS}}{n-1} \ ,
+\ee
+%
+involving $df=n-1$ degrees of freedom, the \textbf{sample variance 
+between subgroups},
+%
+\be
+S_\mathrm{between}^{2} := 
+\frac{1}{k-1}\,\sum_{i=1}^{k}n_{i}\left(\bar{X}_{i}-\bar{X}_{n}
+\right)^{2}
+= \frac{\text{BSS}}{k-1} \ ,
+\ee
+%
+with $df=k-1$, and the \textbf{mean sample variance within
+subgroups},
+%
+\be
+S_\mathrm{within}^{2} := 
+\frac{1}{n-k}\,\sum_{i=1}^{k}\sum_{j=1}^{n_{i}}
+\left(X_{ij}-\bar{X}_{i}\right)^{2}
+= \frac{\text{RSS}}{n-k} \ ,
+\ee
+%
+for which $df=n-k$.
+
+\medskip
+\noindent
+Employing the latter two subgroup-specific dispersion measures, 
+the set of hypotheses~(\ref{anovahyp1}) may be recast into the 
+alternative form
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for differences)
+%
+\be
+\lb{anovahyp2}
+\begin{cases}
+H_{0}: {\displaystyle\frac{S_\mathrm{between}^{2}}{S_\mathrm{
+within}^{2}}} \leq 1 \\ \\
+H_{1}: {\displaystyle\frac{S_\mathrm{between}^{2}}{S_\mathrm{
+within}^{2}}} > 1 
+\end{cases} \ .
+\ee
+%
+
+\medskip
+\noindent
+Finally, as a test statistic for the ANOVA procedure one chooses 
+this very ratio of variances\footnote{This ratio is sometimes 
+given as $\displaystyle T_{n,k} := \frac{(\text{explained 
+variance})}{(\text{unexplained variance})}$, in analogy to 
+expression~(\ref{eq:linregcoeffdet}) below. Occasionally, one also 
+considers the coefficient $\displaystyle\eta^{2} := 
+\frac{\text{BSS}}{\text{TSS}}$, which, however, does not account 
+for the degrees of freedom involved. In this respect, the modified 
+coefficient $\displaystyle\tilde{\eta}{}^{2}:=\frac{S_\mathrm{
+between}^{2}}{S_\mathrm{total}^{2}}$ would constitute a more 
+sophisticated measure.} we just employed,
+%
+\[
+T_{n,k} := \frac{(\text{sample variance between 
+subgroups})}{(\text{mean sample variance within subgroups})}
+= \frac{\text{BSS}/(k-1)}{\text{RSS}/(n-k)}\ ,
+\]
+%
+expressing the size of the ``sample variance between 
+subgroups'' in terms of multiples of the ``mean sample variance 
+within subgroups''; it thus constitutes a relative measure.
+A real effect of difference between subgroups is thus given when 
+the non-negative numerator turns out to be significantly larger 
+than the non-negative denominator. Mathematically, this 
+statistical measure of deviations between the data and the null 
+hypothesis is captured by the
+
+\medskip
+\noindent
+\textbf{Test statistic:}\footnote{Note the one-to-one
+correspondence to the test statistic (\ref{eq:fteststat}) employed
+in the independent samples $F$--test for a population variance.}
+%
+\be
+\lb{eq:anovateststat}
+\fbox{$\displaystyle
+T_{n,k} := 
+\frac{S_\mathrm{between}^{2}}{S_\mathrm{within}^{2}}
+\ \stackrel{H_{0}}{\sim}\ F(k-1,n-k) \ .
+$}
+\ee
+%
+Under $H_{0}$, it satisfies an $\boldsymbol{F}$\textbf{--test
+distribution} with $df_{1}=k-1$ 
+and $df_{2}=n-k$ degrees of freedom; cf. Sec.~\ref{sec:fverteil}.
+
+\medskip
+\noindent
+It is a well-established standard in practical applications of the 
+one-way ANOVA procedure to display the results of the data 
+analysis in the form of a \textbf{summary table}, here given in 
+Tab.~\ref{tab:anovatab}.
+%
+\begin{table}
+
+%
+\begin{center}
+\begin{tabular}[h]{c|c|c|c|c}
+\underline{\textbf{ANOVA}} & sum of & df & mean & test \\
+variability & squares &   & square & statistic \\
+\hline
+between groups & $\text{BSS}$ & $k-1$ &
+$S_\mathrm{between}^{2}$ & $t_{n,k}$ \\
+within groups & $\text{RSS}$ & $n-k$ & $S_\mathrm{within}^{2}$ & \\
+\hline
+total & \text{TSS} & $n-1$ & &
+\end{tabular}
+\end{center}
+\caption{ANOVA summary table.}
+\lb{tab:anovatab}
+\end{table}
+%
+
+\medskip
+\noindent
+\textbf{Test decision:} The rejection region for $H_{0}$ at 
+significance level $\alpha$ is given by (right-sided test)
+%
+\be
+t_{n,k} > f_{k-1,n-k;1-\alpha} \ .
+\ee
+%
+With Eq.~(\ref{eq:pvalueright}), the $p$--value associated with a 
+specific realisation $t_{n,k}$ of (\ref{eq:anovateststat}), which
+is to be calculated from the $\boldsymbol{F}$\textbf{--test
+distribution}, amounts to
+%
+\be
+p = P(T_{n,k}>t_{n,k}|H_{0}) = 1-P(T_{n,k}\leq t_{n,k}|H_{0})
+= 1-F\texttt{cdf}(0,t_{n,k},k-1,n-k) \ .
+\ee
+%
+
+\medskip
+\noindent
+\underline{\R:}
+\texttt{anova( lm(\textit{variable}~\texttildelow~\textit{group
+variable}) )} (variances equal), \\
+\texttt{oneway.test(\textit{variable}~\texttildelow~\textit{group
+variable})} (variances not equal) \\
+\underline{GDC:} mode \texttt{STAT} $\rightarrow$ \texttt{TESTS}
+$\rightarrow$ \texttt{ANOVA(} \\
+\underline{SPSS:} Analyze $\rightarrow$ Compare Means
+$\rightarrow$ One-Way ANOVA \ldots
+
+\medskip
+\noindent
+\textbf{Effect size:} The practical significance of the phenomenon investigated can be estimated from the sample sums of squared 
+deviations $\text{BSS}$ and $\text{RSS}$ according to
+%
+\be
+\fbox{$\displaystyle
+f := \sqrt{\frac{\text{BSS}}{\text{RSS}}} \ .
+$}
+\ee
+%
+For the interpretation of its strength Cohen 
+(1992)~\ct[Tab.~1]{coh1992} recommends the
+
+\medskip
+\noindent
+\underline{\textbf{Rule of thumb:}}\\
+$0.10 \leq f < 0.25$: small effect\\
+$0.25 \leq f < 0.40$: medium effect\\
+$0.40 \leq f$: large effect.
+
+\medskip
+\noindent
+We remark that the statistical software package~\R\ holds 
+available a routine \texttt{power.anova.test(groups, $n$, 
+between.var, within.var, sig.level, power)} for the purpose of 
+calculation of any one of the parameters \texttt{power} or $n$
+(provided all remaining parameters have been specified) in the 
+context of empirical investigations employing the one-way ANOVA. 
+Equal values of $n$ are required here.
+
+\medskip
+\noindent
+When a one-way ANOVA yields a statistically significant result, 
+so-called \textbf{post-hoc tests} need to be run subsequently in 
+order to identify those subgroups $i$ whose means $\mu_{i}$ differ 
+most drastically from the reference value $\mu_{0}$. The
+\textbf{Student--Newman--Keuls--test} (Newman (1939)~\ct{new1939}
+and Keuls (1952)~\ct{keu1952}), e.g., successively subjects the
+pairs of subgroups with the largest differences in sample means to 
+independent samples $t$--tests; cf. Sec.~\ref{sec:ttestindep}. 
+Other useful post-hoc tests are those developed by \textbf{
+Holm--Bonferroni} (Holm (1979)~\ct{hol1979}), \textbf{Tukey} (Tukey 
+(1977)~\ct{tuk1977}), or by \textbf{Schef\-f\'{e}} (Schef\-f\'{e} 
+(1959)~\ct{sch1959}).
+
+\medskip
+\noindent
+\underline{\R:} \texttt{pairwise.t.test(\textit{variable},
+\textit{group variable}, p.adj = "bonferroni")} \\
+\underline{SPSS:} Analyze $\rightarrow$ Compare Means
+$\rightarrow$ One-Way ANOVA \ldots $\rightarrow$
+Post Hoc \ldots
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Kruskal--Wallis--test]{Kruskal--Wallis--test for a
+population median}
+\lb{sec:kruskalwallis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Finally, a feasible alternative to the one-way ANOVA, when the 
+conditions for the latter's legitimate application cannot be met,
+or one is interested in the distributional properties of a specific 
+ordinally scaled one-dimensional statistical variable~$X$, is 
+given by the non-parametric significance test devised by the 
+US-American mathematician and statistician
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Kruskal_William.html}{William Henry Kruskal (1919--2005)} and the
+US-American economist and statistician
+\href{http://en.wikipedia.org/wiki/W._Allen_Wallis}{Wilson
+Allen Wallis (1912--1998)} in 1952 \ct{kruwal1952}. The \textbf{
+Kruskal--Wallis--test} effectively serves to detect significant 
+differences for a population median of an ordinally or metrically 
+scaled one-dimensional statistical variable~$X$ between $k \geq 3$ 
+independent subgroups of some target 
+population~$\boldsymbol{\Omega}$. To be investigated empirically 
+is the null hypothesis $H_{0}$ in the pair of mutually exclusive
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for differences)
+%
+\be
+\begin{cases}
+H_{0}: \tilde{x}_{0.5}(1) =
+\ldots = \tilde{x}_{0.5}(k) \\
+H_{1}: \text{at least one}\ \tilde{x}_{0.5}(i)\ 
+(i=1,\ldots,k)\ \text{is different from
+the other group medians}
+\end{cases} \ .
+\ee
+%
+Introduce \textbf{rank numbers} according to $x_{j}(1) \mapsto 
+R[x_{j}(1)]$, \ldots, and $x_{j}(k) \mapsto R[x_{j}(k)]$ within 
+the random samples drawn independently from each of the $k \geq 3$ 
+subgroups of $\boldsymbol{\Omega}$ on the basis of an ordered
+\textbf{joint random sample} of size $\displaystyle 
+n:=n_{1}+\ldots+n_{k}=\sum_{i=1}^{k}n_{i}$; cf. 
+Sec.~\ref{sec:2Dord}. Then form the \textbf{sum of rank numbers}
+for each random sample separately, i.e.,
+%
+\be
+R_{+i} := \sum_{j=1}^{n_{i}}R[x_{j}(i)]
+\qquad (i=1,\ldots,k) \ .
+\ee
+%
+Provided the sample sizes satisfy the condition $n_{i} \geq 5$ for 
+all $k \geq 3$ independent random samples (hence, $n \geq 
+15$), the test procedure can be based on the
+
+\medskip
+\noindent
+\textbf{Test statistic:}
+%
+\be
+\lb{eq:kruwalteststat}
+\fbox{$\displaystyle
+T_{n,k} := \left[\frac{12}{n(n+1)}
+\sum_{i=1}^{k}\frac{R_{+i}^{2}}{n_{i}}\right]
+- 3(n+1)
+\ \stackrel{H_{0}}{\approx}\ \chi^{2}(k-1) \ ,
+$}
+\ee
+%
+which, under $H_{0}$, approximately satisfies a 
+$\boldsymbol{\chi^{2}}$\textbf{--test distribution} with $df=k-1$
+degrees of freedom (cf. Sec.~\ref{sec:chi2verteil}); see, e.g.,
+Rinne (2008)~\ct[p~553]{rin2008}.
+
+\medskip
+\noindent
+\textbf{Test decision:}  The rejection region for $H_{0}$ at 
+significance level $\alpha$ is given by (right-sided test)
+%
+\be
+t_{n,k}>\chi^{2}_{k-1;1-\alpha} \ .
+\ee
+%
+By Eq.~(\ref{eq:pvalueright}), the $p$--value associated with a
+realisation $t_{n,k}$ of (\ref{eq:kruwalteststat}), which is to be
+calculated from the $\boldsymbol{\chi^{2}}$\textbf{--test
+distribution}, amounts to
+%
+\be
+p = P(T_{n,k}>t_{n,k}|H_{0}) = 1-P(T_{n,k}\leq t_{n,k}|H_{0})
+= 1-\chi^{2}\texttt{cdf}(0,t_{n,k},k-1) \ .
+\ee
+%
+
+\medskip
+\noindent
+\underline{\R:}
+\texttt{kruskal.test(\textit{variable}~\texttildelow~\textit{group
+variable})} \\
+\underline{SPSS:} Analyze $\rightarrow$ Nonparametric Tests
+$\rightarrow$ Legacy Dialogs $\rightarrow$ K Independent Samples
+\ldots: Kruskal-Wallis H
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

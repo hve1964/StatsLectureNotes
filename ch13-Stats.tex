@@ -1,0 +1,1014 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: ch13-Stats.tex
+%  Title:
+%  Version: 20.06.2019 (hve)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Bivariate methods of statistical data analysis]{Bivariate
+methods of statistical data analysis: testing for association}
+\lb{ch13}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Recognising patterns of regularity in the variability of data sets 
+for given (observable) statistical variables, and explaining them 
+in terms of \textbf{causal relationships} in the context of a 
+suitable \textbf{theoretical model}, is one of the main objectives
+of any empirical scientific discipline, and thus motivation for 
+corresponding \textbf{research}; see, e.g., Penrose 
+(2004)~\ct{pen2004}. Causal relationships are intimately related 
+to \textbf{interactions} between objects or agents of the physical 
+or/and of the social kind. A \textit{necessary} (though not 
+sufficient) \textit{condition} on the way to theoretically
+fathoming causal relationships is to establish empirically the
+existence of significant \textbf{statistical associations} between
+the variables in question. \textbf{Replication} of positive
+observational or experimental results of this kind, when
+accomplished, yields strong support in favour of this idea.
+Regrettably, however, the existence of causal relationships between
+two statistical variables \textit{cannot} be established with
+absolute certainty by empirical means; compelling theoretical
+arguments need to stand in. Causal relationships between
+statistical variables imply an unambiguous distinction between
+\textbf{independent variables} and \textbf{dependent variables}. In
+the following, we will discuss the principles of the simplest three inferential statistical methods within the \textbf{frequentist
+framework}, each associated with specific \textbf{null hypothesis
+significance tests}, that provide empirical checks of the
+aforementioned necessary condition in the \textbf{bivariate case}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Correlation analysis and linear regression]{\href{https://www.youtube.com/watch?v=aLcTqycIXgU}{Correlation analysis and
+linear regression}}
+\lb{sec:correl}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------
+\subsection[$t$--test for a correlation]{$\boldsymbol{t}$--test 
+for a correlation}
+\lb{subsec:correlttest}
+%------------------------------------------------------------------
+The parametric \textbf{correlation analysis} presupposes a
+metrically scaled two-dimensional statistical variable $(X,Y)$ 
+that can be assumed to satisfy a \textbf{bivariate normal 
+distribution} in some target population~$\boldsymbol{\Omega}$. Its 
+aim is to investigate whether or not the components $X$ and $Y$ 
+feature a quantitative--statistical association of a
+\textit{linear} nature, given a data matrix $\boldsymbol{X} \in 
+\mathbb{R}^{n \times 2}$ obtained from a random sample of 
+size~$n$. Formulated in terms of the \textbf{population correlation 
+coefficient} $\rho$ according to 
+\href{http://en.wikipedia.org/wiki/Auguste_Bravais}{Auguste
+Bravais (1811--1863)} and
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Pearson.html}
+{Karl Pearson FRS (1857--1936)}, the method tests $H_{0}$ against 
+$H_{1}$ in one of the alternative pairs of
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for association)
+%
+\be
+\lb{eq:correlanahypo}
+\begin{cases}
+H_{0}: \rho = 0
+\quad\text{or}\quad
+\rho \geq 0
+\quad\text{or}\quad
+\rho \leq 0 \\
+H_{1}: \rho \neq 0
+\quad\text{or}\quad
+\rho < 0
+\quad\text{or}\quad
+\rho > 0
+\end{cases} \ ,
+\ee
+%
+with $-1 \leq \rho \leq +1$.
+
+\medskip
+\noindent
+For sample sizes~$n \geq 50$, the assumption of normality of the 
+marginal $X$- and $Y$-distributions in a given random sample 
+$\boldsymbol{S_{\Omega}}$:~$(X_{1}, \ldots, X_{n};\-Y_{1}, \ldots, 
+Y_{n})$ drawn from $\boldsymbol{\Omega}$ can again be tested by 
+means of the \textbf{Kolmogorov--Smirnov--test}; cf. 
+Sec.~\ref{sec:onesampttest}. For sample sizes $n < 50$, on the 
+other hand, the magnitudes of the \textbf{standardised skewness and
+excess kurtosis measures}, Eqs.~(\ref{eq:g1g2ratios}), can be
+considered instead. A \textbf{scatter plot} of the bivariate raw
+sample data $\{(x_{i},y_{i})\}_{i=1,\ldots,n}$ displays
+characteristic features of the \textbf{joint
+$\boldsymbol{(X,Y)}$-distribution}.
+
+\medskip
+\noindent
+\underline{\R:} \texttt{ks.test(\textit{variable}, "pnorm")} \\
+\underline{SPSS:} Analyze $\rightarrow$ Nonparametric Tests
+$\rightarrow$ Legacy Dialogs $\rightarrow$ 1-Sample K-S \ldots: 
+Normal
+
+\medskip
+\noindent
+Normalising the \textbf{sample correlation coefficient} $r$ of 
+Eq.~(\ref{eq:correl}) by its \textbf{standard error},
+%
+\be
+\text{SE}r :=\sqrt{\frac{1-r^{2}}{n-2}} \ ,
+\ee
+%
+the latter of which can be derived from the corresponding 
+theoretical \textbf{sampling distribution} for~$r$, presently
+yields the (see, e.g., Toutenburg (2005)~\ct[Eq.~(7.18)]{tou2005})
+
+\medskip
+\noindent
+\textbf{Test statistic:}
+%
+\be
+\lb{eq:correlteststat}
+\fbox{$\displaystyle
+T_{n} := \frac{r}{\text{SE}r} \ \stackrel{H_{0}}{\sim}\ t(n-2) \ ,
+$}
+\ee
+%
+which, under $H_{0}$, satisfies a $\boldsymbol{t}$\textbf{--test
+distribution} with $df=n-2$ degrees of freedom; cf.
+Sec.~\ref{sec:tverteil}.
+
+\medskip
+\noindent
+\textbf{Test decision:} Depending on the kind of test to be 
+performed, the rejection region for $H_{0}$ at significance level 
+$\alpha$ is given by
+%
+\begin{center}
+\begin{tabular}[h]{c|c|c|c}
+ & & & \\
+\textbf{Kind of test} & $\boldsymbol{H_{0}}$ &
+$\boldsymbol{H_{1}}$ &
+\textbf{Rejection region for} $\boldsymbol{H_{0}}$ \\
+ & & & \\
+\hline
+ & & & \\
+(a)~two-sided & $\rho=0$ & $\rho \neq 0$ &
+$|t_{n}|>t_{n-2;1-\alpha/2}$ \\
+ & & & \\
+\hline
+ & & & \\
+(b)~left-sided & $\rho \geq 0$ & $\rho<0$ &
+$t_{n}<t_{n-2;\alpha}=-t_{n-2;1-\alpha}$ \\
+ & & & \\
+\hline
+ & & & \\
+(c)~right-sided & $\rho \leq 0$ & $\rho>0$ &
+$t_{n}>t_{n-2;1-\alpha}$ \\
+ & & &
+\end{tabular}
+\end{center}
+%
+$p$--values associated with realisations $t_{n}$ of 
+(\ref{eq:correlteststat}), which are to be calculated from the
+$\boldsymbol{t}$\textbf{--test distribution}, can  be obtained from 
+Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
+
+\medskip
+\noindent
+\underline{\R:} \texttt{cor.test(\textit{variable1},
+\textit{variable2})}, \\
+\texttt{cor.test(\textit{variable1}, \textit{variable2}, 
+alternative = "less")}, \\
+\texttt{cor.test(\textit{variable1}, \textit{variable2}, 
+alternative = "greater")} \\
+\underline{SPSS:} Analyze $\rightarrow$ Correlate
+$\rightarrow$ Bivariate \ldots: Pearson
+
+\medskip
+\noindent
+\textbf{Effect size:} The practical significance of the phenomenon investigated can be estimated directly from the absolute value of
+the scale-invariant sample correlation coefficient~$r$ according to
+Cohen's (1992)~\ct[Tab.~1]{coh1992}
+
+\medskip
+\noindent
+\underline{\textbf{Rule of thumb:}}\\
+$0.10 \leq |r| < 0.30$: small effect\\
+$0.30 \leq |r| < 0.50$: medium effect\\
+$0.50 \leq |r|$: large effect.
+
+\medskip
+\noindent
+It is generally recommended to handle significant test results of 
+\textbf{correlation analyses} for metrically scaled two-dimensional
+statistical variables $(X,Y)$ with some care, due to the 
+possibility of \textbf{spurious correlations} induced by additional 
+\textbf{control variables} $Z, \ldots$, acting hidden in the 
+background. To exclude this possibility, a correlation analysis 
+should, e.g., be repeated for homogeneous subgroups of the 
+sample~$\boldsymbol{S_{\Omega}}$. Some rather curious and 
+startling cases of spurious correlations have been collected at 
+the website
+\href{http://www.tylervigen.com/}{\texttt{www.tylervigen.com}}.
+
+%------------------------------------------------------------------
+\subsection[$F$--test of a regression 
+model]{$\boldsymbol{F}$--test of a regression model}
+\lb{subsec:correlFtest}
+%------------------------------------------------------------------
+When a correlation in the joint distribution of a metrically 
+scaled two-dimensional statistical variable~$(X,Y)$, significant 
+in~$\boldsymbol{\Omega}$ at level~$\alpha$, proves to be 
+\textit{strong}, i.e., when the magnitude of $\rho$ takes a value
+in the interval
+%
+\[
+0.71 \leq |\rho| \leq 1.0 \ ,
+\]
+%
+it is meaningful to ask which \textit{linear} quantitative model 
+best represents the detected linear statistical association; 
+cf.~Pearson (1903)~\ct{pea1903}. To this end, \textbf{simple linear 
+regression} seeks to devise a \textbf{linear stochastic regression 
+model} for the target population~$\boldsymbol{\Omega}$ of the form
+%
+\be
+\lb{eq:linregmod}
+\text{in}\ \boldsymbol{\Omega}: \quad
+Y_{i} = \alpha + \beta x_{i} + \varepsilon_{i}
+\qquad (i=1, \ldots,n) \ ,
+\ee
+%
+which, for instance, assigns $X$ the role of an \textbf{independent 
+variable} (and so its values $x_{i}$ can be considered prescribed 
+by the modeller) and $Y$ the role of a \textbf{dependent variable}; 
+such a model is essentially \textbf{univariate} in nature. The
+\textbf{regression coefficients} $\alpha$ and $\beta$ denote the 
+unknown $\boldsymbol{y}$\textbf{--intercept} and \textbf{slope} of
+the model in $\boldsymbol{\Omega}$. For the \textbf{random errors} 
+$\varepsilon_{i}$ it is assumed that
+%
+\be
+\lb{eq:linregassump}
+\varepsilon_{i} \stackrel{\text{i.i.d.}}{\sim} N(0;\sigma^{2}) \ ,
+\ee
+%
+meaning they are identically normally distributed (with zero mean 
+and constant variance~$\sigma^{2}$) and mutually stochastically 
+independent. With respect to the bivariate random sample 
+$\boldsymbol{S_{\Omega}}$:~$(X_{1}, \ldots, X_{n};\-Y_{1}, \ldots, 
+Y_{n})$, the supposed linear relationship between $X$ and $Y$ is 
+expressed by
+%
+\be
+\text{in}\ \boldsymbol{S_{\Omega}}: \quad
+y_{i} = a + b x_{i} + e_{i} \qquad (i=1, \ldots,n) \ .
+\ee
+%
+So-called \textbf{residuals} are then defined according to
+%
+\be
+e_{i} := y_{i}-\hat{y}_{i} = y_{i} - a - b x_{i} \qquad (i=1, 
+\ldots,n) \ ,
+\ee
+%
+which, for given values of $x_{i}$, encode the differences between 
+the observed realisations $y_{i}$ of $Y$ and the corresponding (by
+the linear regression model) predicted values $\hat{y}_{i}$
+of $Y$. Given the assumption expressed in
+Eq.~(\ref{eq:linregassump}), the residuals must satisfy the
+condition $\displaystyle\sum_{i=1}^{n}e_{i}=0$.
+
+\medskip
+\noindent
+Next, introduce \textbf{sums of squared deviations} for the
+$Y$-data, in line with the ANOVA procedure of Sec.~\ref{sec:anova},
+i.e.,
+%
+\bea
+\lb{eq:tssreg}
+\text{TSS} & := & \sum_{i=1}^{n}(y_{i}-\bar{y})^{2} \\
+%
+\lb{eq:rssreg}
+\text{RSS} & := & \sum_{i=1}^{n}(y_{i}-\hat{y}_{i})^{2}
+\ = \ \sum_{i=1}^{n}e_{i}^{2} \ .
+\eea
+%
+In terms of these quantities, the \textbf{coefficient of 
+determination} of Eq.~(\ref{eq:linregcoeffdetdescr}) for assessing 
+the \textbf{goodness-of-the-fit} of a regression model can be
+expressed by
+%
+\be
+\lb{eq:linregcoeffdet}
+B = \frac{\text{TSS}-\text{RSS}}{\text{TSS}}
+= \frac{(\text{total variance of}\ Y)-(\text{unexplained variance 
+of}\ Y)}{(\text{total variance of}\ Y)} \ .
+\ee
+%
+This normalised measure expresses the proportion of variability in 
+a data set of $Y$ which can be explained by the corresponding 
+variability of $X$ through the \textbf{best-fit regression model}. 
+The range of $B$ is $0 \leq B \leq 1$.
+
+\medskip
+\noindent
+In the methodology of a \textbf{regression analysis} within the
+\textbf{frequentist framework}, the first issue to be addressed is
+to test the significance of the overall \textbf{simple linear
+regression model}~(\ref{eq:linregmod}), i.e., to test $H_{0}$
+against $H_{1}$ in the set of
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for differences)
+%
+\be
+\lb{linreganovahyp1}
+\begin{cases}
+H_{0}: \beta = 0 \\
+H_{1}: \beta \neq 0
+\end{cases} \ .
+\ee
+%
+Exploiting the goodness-of-the-fit aspect of the regression model 
+as quantified by $B$ in Eq.~(\ref{eq:linregcoeffdet}), one 
+arrives via division by the \textbf{standard error} of $B$,
+%
+\be
+\lb{eq:sersq}
+\text{SE}B := \frac{1-B}{n-2} \ ,
+\ee
+%
+which derives from the theoretical \textbf{sampling distribution}
+for $B$, at the (see, e.g., Hatzinger and Nagel 
+(2013)~\ct[Eq.~(7.8)]{hatnag2013})
+
+\medskip
+\noindent
+\textbf{Test statistic:}\footnote{Note that with the identity 
+$B=r^{2}$ of Eq.~(\ref{eq:linregrsq}), which applies in simple 
+linear regression, this is just the square of the test 
+statistic~(\ref{eq:correlteststat}).}
+%
+\be
+\lb{eq:linregteststat}
+\fbox{$\displaystyle
+T_{n} := \frac{B}{\text{SE}B}\ \stackrel{H_{0}}{\sim}\ F(1,n-2) \ .
+$}
+\ee
+%
+Under $H_{0}$, this satisfies an $\boldsymbol{F}$\textbf{--test
+distribution} with $df_{1}=1$ and $df_{2}=n-2$ degrees of freedom;
+cf. Sec.~\ref{sec:fverteil}.
+
+\medskip
+\noindent
+\textbf{Test decision:} The rejection region for $H_{0}$ at 
+significance level $\alpha$ is given by (right-sided test)
+%
+\be
+t_{n} > f_{1,n-2;1-\alpha} \ .
+\ee
+%
+With Eq.~(\ref{eq:pvalueright}), the $p$--value associated with a 
+specific realisation $t_{n}$ of (\ref{eq:linregteststat}), which is
+to be calculated from the $\boldsymbol{F}$\textbf{--test
+distribution}, amounts 
+to
+%
+\be
+p = P(T_{n}>t_{n}|H_{0}) = 1-P(T_{n}\leq t_{n}|H_{0})
+= 1-F\texttt{cdf}(0,t_{n},1,n-2) \ .
+\ee
+%
+
+%------------------------------------------------------------------
+\subsection[$t$--test for the regression 
+coefficients]{$\boldsymbol{t}$--test for the regression 
+coefficients}
+%------------------------------------------------------------------
+The second issue to be addressed in a systematic \textbf{regression 
+analysis} within the \textbf{frequentist framework} is to test
+statistically which of the regression coefficients in the
+model~(\ref{eq:linregmod}) are significantly different from zero.
+In the case of simple linear regression, though, the matter for the coefficient $\beta$ is settled already 
+by the \textbf{$\boldsymbol{F}$--test} of the regression model just 
+outlined, resp.~the \textbf{$\boldsymbol{t}$--test} for $\rho$ 
+described in Sec.~\ref{subsec:correlttest}; see, e.g., Levin 
+\textit{et al} (2010)~\ct[p~389f]{levetal2009}. In this sense, a 
+further test of statistical significance is redundant in the case 
+of simple linear regression. However, when extending the concept 
+of \textbf{regression analysis} to the more involved case of
+\textbf{multivariate data}, a quantitative approach frequently
+employed in the research literature of the \textbf{Social Sciences}
+and \textbf{Economics}, this question attains relevance in its own
+right. In this context, the \textbf{linear stochastic regression
+model} for the dependent variable $Y$ to be assessed is of the
+general form (cf. Yule (1897)~\ct{yul1897})
+%
+\be
+\lb{eq:multlinregmod}
+\text{in}\ \boldsymbol{\Omega}: \quad
+Y_{i} = \alpha + \beta_{1}x_{i1} + \ldots
++ \beta_{k}x_{ik} + \varepsilon_{i}
+\qquad (i=1, \ldots,n) \ ,
+\ee
+%
+containing a total of $k$ uncorrelated independent variables and 
+$k+1$ regression coefficients, as well as a random error term. A 
+\textbf{multiple linear regression model} to be estimated from data 
+of a corresponding random sample from $\boldsymbol{\Omega}$ of 
+size~$n$ thus entails $n-k-1$ degrees of freedom; cf. 
+Hair \textit{et al} (2010)~\ct[p~176]{haietal2010}. In view of this 
+prospect, we continue with our methodological considerations.
+
+\medskip
+\noindent
+First of all, \textbf{unbiased maximum likelihood point estimators} 
+for the regression coefficients $\alpha$ and $\beta$ in 
+Eq.~(\ref{eq:linregmod}) are obtained from application to the data 
+of Gau\ss' method of \textbf{minimising the sum of squared
+residuals} (RSS) (cf. Gau\ss~(1809)~\ct{gau1809} and
+Ch.~\ref{ch5}),
+%
+\[
+\text{minimise}\left(\text{RSS}=\sum_{i=1}^{n}e_{i}^{2}\right) \ ,
+\]
+%
+yielding solutions
+%
+\be
+\lb{eq:linregab}
+b = \frac{S_{Y}}{s_{X}}\,r
+\qquad\text{and}\qquad
+a=\bar{Y}-b\bar{x} \ .
+\ee
+%
+The equation of the \textbf{best-fit simple linear regression
+model} is thus given by
+%
+\be
+\fbox{$\displaystyle
+\lb{eq:linregmodelstand}
+\hat{y}=\bar{Y}+\frac{S_{Y}}{s_{X}}\,r\,(x-\bar{x}) \ ,
+$}
+\ee
+%
+and can be employed for purposes of predicting values of~$Y$ from 
+given values of $X$ in the empirical interval $[x_{(1)},x_{(n)}]$.
+
+\medskip
+\noindent
+Next, the \textbf{standard errors} associated with the values of
+the maximum likelihood point estimators $a$ and $b$ in 
+Eq.~(\ref{eq:linregab}) are derived from the corresponding 
+theoretical \textbf{sampling distributions} and amount to (cf.,
+e.g., Hartung \textit{et al} (2005)~\ct[p~576ff]{haretal2005})
+%
+\bea
+\lb{eq:seregcoeffa}
+\text{SE}a & := & 
+\sqrt{\frac{1}{n}+\frac{\bar{x}}{(n-1)s_{X}^{2}}}\,\text{SE}e \\
+%
+\lb{eq:seregcoeffb}
+\text{SE}b & := & 
+\frac{\text{SE}e}{\sqrt{n-1}\,s_{X}} \ ,
+\eea
+%
+where the \textbf{standard error of the residuals} $e_{i}$ is
+defined by
+%
+\be
+\text{SE}e := 
+\sqrt{\frac{{\displaystyle\sum_{i=1}^{n}
+(Y_{i}-\hat{Y}_{i})^{2}}}{n-2}} \ .
+\ee
+%
+
+\medskip
+\noindent
+We now describe the test procedure for the \textbf{regression 
+coefficient}~$\beta$. To be tested is $H_{0}$ against $H_{1}$ in 
+one of the alternative pairs of
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for differences)
+%
+\be
+\begin{cases}
+H_{0}: \beta=0
+\quad\text{or}\quad
+\beta \geq 0
+\quad\text{or}\quad
+\beta \leq 0 \\
+H_{1}: \beta \neq 0
+\quad\text{or}\quad
+\beta < 0
+\quad\text{or}\quad
+\beta > 0
+\end{cases} \ .
+\ee
+%
+Dividing the \textbf{sample regression slope} $b$ by its
+\textbf{standard error}~(\ref{eq:seregcoeffb}) yields the
+
+\medskip
+\noindent
+\textbf{Test statistic:}
+%
+\be
+\lb{eq:linregbteststat}
+\fbox{$\displaystyle
+T_{n} := \frac{b}{\text{SE}b} \ \stackrel{H_{0}}{\sim}\ t(n-2) \ ,
+$}
+\ee
+%
+which, under $H_{0}$, satisfies a $\boldsymbol{t}$\textbf{--test
+distribution} with $df=n-2$ degrees of freedom; cf.
+Sec.~\ref{sec:tverteil}.
+
+\medskip
+\noindent
+\textbf{Test decision:} Depending on the kind of test to be 
+performed, the rejection region for $H_{0}$ at significance level 
+$\alpha$ is given by
+%
+\begin{center}
+\begin{tabular}[h]{c|c|c|c}
+ & & & \\
+\textbf{Kind of test} & $\boldsymbol{H_{0}}$ &
+$\boldsymbol{H_{1}}$ &
+\textbf{Rejection region for} $\boldsymbol{H_{0}}$ \\
+ & & & \\
+\hline
+ & & & \\
+(a)~two-sided & $\beta = 0$ & $\beta \neq 0$ &
+$|t_{n}|>t_{n-2;1-\alpha/2}$ \\
+ & & & \\
+\hline
+ & & & \\
+(b)~left-sided & $\beta \geq 0$ & $\beta < 0$ &
+$t_{n}<t_{n-2;\alpha}=-t_{n-2;1-\alpha}$ \\
+ & & & \\
+\hline
+ & & & \\
+(c)~right-sided & $\beta \leq 0$ & $\beta > 0$ &
+$t_{n}>t_{n-2;1-\alpha}$ \\
+ & & &
+\end{tabular}
+\end{center}
+%
+$p$--values associated with realisations $t_{n}$ of 
+(\ref{eq:linregbteststat}), which are to be calculated from the
+$\boldsymbol{t}$\textbf{--test distribution}, can be obtained from 
+Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}). We emphasise 
+once more that for simple linear regression the test procedure 
+just described is equivalent to the \textbf{correlation analysis}
+of Sec.~\ref{subsec:correlttest}.
+
+\medskip
+\noindent
+An analogous \textbf{$\boldsymbol{t}$--test} needs to be run to
+check whether the \textbf{regression coefficient} $\alpha$ is
+non-zero, too, using the ratio $\displaystyle\frac{a}{\text{SE}a}$
+as a test statistic. However, in particular when the origin of $X$
+is \textit{not} contained in the empirical interval 
+$[x_{(1)},x_{(n)}]$, the null hypothesis $H_{0}: \alpha=0$ is a 
+meaningless statement.
+
+\medskip
+\noindent
+\underline{\R:}
+\texttt{regMod <- lm(\textit{variable:y}~\texttildelow~\textit{variable:x})} \\
+\texttt{summary(regMod)} \\
+\underline{GDC:} mode \texttt{STAT} $\rightarrow$ \texttt{TESTS}
+$\rightarrow$ \texttt{LinRegTTest\ldots} \\
+\underline{SPSS:} Analyze $\rightarrow$ Regression
+$\rightarrow$ Linear \ldots\ldots
+
+\medskip
+\noindent
+\underline{Note:} Regrettably, SPSS provides no option for 
+selecting between a one-sided and a two-sided $t$--test. The 
+default setting is for a two-sided test. For the purpose of 
+one-sided tests the $p$--value output of SPSS needs to be divided 
+by $2$.
+
+\medskip
+\noindent
+The extent to which the prerequisites of a regression analysis as 
+stated in Eq.~(\ref{eq:linregassump}) are satisfied can be 
+assessed by means of an \textbf{analysis of the residuals}:
+%
+\begin{itemize}
+
+\item[(i)] for $n \geq 50$, \textbf{normality} of the distribution
+of \textbf{residuals} $e_{i}$ ($i=1, \ldots, n$) can be checked by
+means of a \textbf{Kolmogorov--Smirnov--test}; cf. 
+Sec.~\ref{sec:onesampttest}; otherwise, when $n < 50$, resort to a 
+consideration of the magnitudes of the \textbf{standardised
+skewness and excess kurtosis measures}, Eqs.~(\ref{eq:g1g2ratios});
+
+\item[(ii)] \textbf{homoscedasticity} of the $e_{i}$ ($i=1, \ldots, 
+n$), i.e., whether or not they can be assumed to have constant 
+variance, can be investigated qualitatively in terms of a
+\textbf{scatter plot} that marks the standardised~$e_{i}$ (along
+the vertical axis) against the corresponding predicted 
+$Y$-values~$\hat{y}_{i}$ ($i=1, \ldots, n$) (along the horizontal 
+axis). An elliptically shaped envelope of the cloud of data points 
+thus obtained indicates that homoscedasticity applies.
+\end{itemize}
+%
+
+\medskip
+\noindent
+Simple linear regression analysis can be easily modified to 
+provide a tool to test bivariate empirical data 
+$\{(x_{i},y_{i})\}_{i=1,\ldots,n}$ for positive metrically scaled 
+statistical variables~$(X,Y)$ for an association in the form of a 
+\textbf{Pareto distribution}; cf. Sec.~\ref{sec:paretodistr}. To
+begin with, the original data is subjected to logarithmic 
+transformations in order to obtain data for the \textbf{logarithmic 
+quantities} $\ln(y_{i})$ resp.~$\ln(x_{i})$. Subsequently, a 
+correlation analysis can be performed on the transformed data. 
+Given there exists a functional relationship between the original 
+$Y$ and $X$ of the form $y=Kx^{-(\gamma+1)}$, the logarithmic 
+quantities are related by
+%
+\be
+\ln(y) = \ln(K) - (\gamma+1)\times\ln(x) \ ,
+\ee
+%
+i.e., one finds a \textit{straight line relationship} between 
+$\ln(y)$ and $\ln(x)$ with negative slope equal to $-(\gamma+1)$.
+
+\medskip
+\noindent
+To conclude this section, we like to draw the reader's attention 
+to a remarkable statistical phenomenon that was discovered, and 
+emphatically addressed, by the English empiricist 
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Galton.html}{Sir
+Francis Galton FRS (1822--1911)}, following years of intense 
+research during the late $19^\mathrm{th}$ Century; see Galton 
+(1886)~\ct{gal1886}, and also Kahneman (2011)~\ct[Ch.~17]{kah2011}.
+\textbf{Regression toward the mean} is best demonstrated on the
+basis of the standardised version of the best-fit simple linear 
+regression model of Eq.~(\ref{eq:linregmodelstand}), namely
+%
+\be
+\lb{eq:regmean}
+\hat{z}_{Y} = rz_{X} \ .
+\ee
+%
+For bivariate metrically scaled random sample data that exhibits a 
+non-perfect positive correlation (i.e., $0 < r < 1$), one observes
+that, on average, large (small) $z_{X}$-values (i.e., values that
+are far from their mean; that are, perhaps, even outliers) pair
+with smaller (larger) $z_{Y}$-values (i.e., values that are closer
+to their mean; that are more mediocre). Since this phenomenon 
+persists after the roles of $X$ and $Y$ in the regression model 
+have been switched, this is clear evidence that \textbf{regression 
+toward the mean} is a manifestation of \textbf{randomness}, and 
+\textit{not} of \textbf{causality} (which requires an unambiguous 
+temporal order between a cause and an effect). Incidently,
+\textbf{regression toward the mean} ensures that many physical and
+social processes cannot become unstable.
+
+\medskip
+\noindent
+Ending this section we point out that in reality a lot of the
+processes studied in the \textbf{Natural Sciences} and in the
+\textbf{Social Sciences} prove to be of an inherently
+\textbf{non-linear nature};
+see e.g. Gleick (1987)~\ct{gle1987}, Penrose (2004)~\ct{pen2004},
+and Smith (2007)~\ct{smi2007}. On the one hand, this increases the
+level of complexity involved in the analysis of data, on the other, 
+non-linear processes offer the reward of a plethora of interesting 
+and intriguing (dynamical) phenomena.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[Rank correlation analysis]{Rank correlation analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+When the two-dimensional statistical variable~$(X,Y)$ is 
+metrically scaled but may \textit{not} be assumed bivariate
+normally distributed in the target
+population~$\boldsymbol{\Omega}$, or when
+$(X,Y)$ is ordinally scaled in the first place, the standard tool 
+for testing for a statistical association between the 
+components~$X$ and $Y$ is the parametric \textbf{rank correlation 
+analysis} developed by the English psychologist and statistician
+\href{http://en.wikipedia.org/wiki/Charles_Edward_Spearman}{Charles
+Edward Spearman FRS (1863--1945)} in 1904~\ct{spe1904}. This 
+approach, like the univariate test procedures of Mann and Whitney, 
+Wilcoxon, and Kruskal and Wallis discussed in Ch.~\ref{ch12}, is 
+again fundamentally rooted in the concept of \textbf{rank numbers} 
+representing statistical data which possess a natural order, 
+introduced in Sec.~\ref{sec:2Dord}.
+
+\medskip
+\noindent
+Following the translation of the original data pairs into 
+corresponding \textbf{rank number pairs},
+%
+\be
+(x_{i},y_{i}) \mapsto [R(x_{i}),R(y_{i})] \qquad (i=1,\ldots,n) \ ,
+\ee
+%
+the objective is to subject $H_{0}$ in the alternative sets of
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for association)
+%
+\be
+\begin{cases}
+H_{0}: \rho_{S} = 0
+\quad\text{or}\quad
+\rho_{S} \geq 0
+\quad\text{or}\quad
+\rho_{S} \leq 0 \\
+H_{1}: \rho_{S} \neq 0
+\quad\text{or}\quad
+\rho_{S} < 0
+\quad\text{or}\quad
+\rho_{S} > 0
+\end{cases} \ ,
+\ee
+%
+with $\rho_{S}$ ($-1 \leq \rho_{S} \leq +1$) the \textbf{population 
+rank correlation coefficient}, to a test of statistical 
+significance at level $\alpha$. Provided the size of the random 
+sample is such that $n \geq 30$ (see, e.g., Bortz 
+(2005)~\ct[p~233]{bor2005}), by dividing the \textbf{sample rank 
+correlation coefficient}~$r_{S}$ of Eq.~(\ref{eq:rankcorrelcoeff}) 
+by its \textbf{standard error}
+%
+\be
+\lb{eq:sers}
+\text{SE}r_{S} := \sqrt{\frac{1-r_{S}^{2}}{n-2}}
+\ee
+%
+derived from the theoretical \textbf{sampling distribution}
+for~$r_{S}$, one obtains a suitable
+
+\medskip
+\noindent
+\textbf{Test statistic:}
+%
+\be
+\lb{eq:rankcorrelteststat}
+\fbox{$\displaystyle
+T_{n} := \frac{r_{S}}{\text{SE}r_{S}} \ \stackrel{H_{0}}{\approx}\ 
+t(n-2) \ .
+$}
+\ee
+%
+Under $H_{0}$, this approximately satisfies a
+$\boldsymbol{t}$\textbf{--test distribution} 
+with $df=n-2$ degrees of freedom; cf. Sec.~\ref{sec:tverteil}.
+
+\medskip
+\noindent
+\textbf{Test decision:} Depending on the kind of test to be 
+performed, the rejection region for $H_{0}$ at significance level 
+$\alpha$ is given by
+%
+\begin{center}
+\begin{tabular}[h]{c|c|c|c}
+ & & & \\
+\textbf{Kind of test} & $\boldsymbol{H_{0}}$ &
+$\boldsymbol{H_{1}}$ &
+\textbf{Rejection region for} $\boldsymbol{H_{0}}$ \\
+ & & & \\
+\hline
+ & & & \\
+(a)~two-sided & $\rho_{S}=0$ & $\rho_{S} \neq 0$ &
+$|t_{n}|>t_{n-2;1-\alpha/2}$ \\
+ & & & \\
+\hline
+ & & & \\
+(b)~left-sided & $\rho_{S} \geq 0$ & $\rho_{S}<0$ &
+$t_{n}<t_{n-2;\alpha}=-t_{n-2;1-\alpha}$ \\
+ & & & \\
+\hline
+ & & & \\
+(c)~right-sided & $\rho_{S} \leq 0$ & $\rho_{S}>0$ &
+$t_{n}>t_{n-2;1-\alpha}$ \\
+ & & &
+\end{tabular}
+\end{center}
+%
+$p$--values associated with realisations $t_{n}$ of 
+(\ref{eq:rankcorrelteststat}), which are to be calculated from the
+$\boldsymbol{t}$\textbf{--test distribution}, can be obtained from 
+Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
+
+\medskip
+\noindent
+\underline{\R:} \texttt{cor.test(\textit{variable1},
+\textit{variable2}, method = "spearman")}, \\
+\texttt{cor.test(\textit{variable1}, \textit{variable2}, 
+method = "spearman", alternative = "less")}, \\
+\texttt{cor.test(\textit{variable1}, \textit{variable2}, 
+method = "spearman", alternative = "greater")} \\
+\underline{SPSS:} Analyze $\rightarrow$ Correlate
+$\rightarrow$ Bivariate \ldots: Spearman
+
+\medskip
+\noindent
+\textbf{Effect size:} The practical significance of the phenomenon investigated can be estimated directly from the absolute value of
+the scale-invariant sample rank correlation coefficient~$r_{S}$
+according to (cf. Cohen (1992)~\ct[Tab.~1]{coh1992})
+
+\medskip
+\noindent
+\underline{\textbf{Rule of thumb:}}\\
+$0.10 \leq |r_{S}| < 0.30$: small effect\\
+$0.30 \leq |r_{S}| < 0.50$: medium effect\\
+$0.50 \leq |r_{S}|$: large effect.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[$\chi^{2}$--test for
+independence]{\href{https://www.youtube.com/watch?v=uo2kjAPkYXQ}{$\boldsymbol{\chi}^{2}$--test for independence}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The non-parametric \textbf{$\boldsymbol{\chi}^{2}$--test for 
+independence} constitutes the most generally applicable 
+significance test for bivariate statistical associations. Due to 
+its formal indifference to the scale level of measurement of the
+two-dimensional statistical variable~$(X,Y)$ involved in an
+investigation, it may be used for statistical analysis of any kind
+of pairwise combinations between nominally, ordinally and
+metrically scaled components. The advantage of generality of the
+method is paid for at the price of a generally weaker test power.
+
+\medskip
+\noindent
+Given qualitative and/or quantitative statistical variables~$X$ 
+and $Y$ that take values in a spectrum of $k$ mutually exclusive 
+categories $a_{1}, \ldots, a_{k}$ resp.~$l$ mutually exclusive 
+categories $b_{1}, \ldots, b_{l}$, the intention is to subject 
+$H_{0}$ in the pair of alternative
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for association)
+%
+\be
+\begin{cases}
+H_{0}: \text{There does not exist a statistical association 
+between}\ X\ \text{and}\ Y\ \text{in}\ \boldsymbol{\Omega} \\
+H_{1}: \text{There does exist a statistical association between}\ 
+X\ \text{and}\ Y\ \text{in}\ \boldsymbol{\Omega}
+\end{cases}
+\ee
+%
+to a convenient empirical significance test at level $\alpha$.
+
+\medskip
+\noindent
+A conceptual issue that requires special attention along the way
+%in testing for association between variables
+is the definition of a reasonable \textbf{zero point} on the
+\textbf{scale of statistical dependence} of statistical variables
+$X$ and $Y$ (which one aims to establish). This problem is solved
+by recognising that a common feature of sample data for statistical 
+variables of all scale levels of measurement is the information
+residing in the distribution of (relative) frequencies over (all
+possible combinations of) categories, and drawing an analogy to the
+concept of stochastic independence of two events as expressed in
+\textbf{Probability Theory} by Eq.~(\ref{eq:stochindep2}). In this
+way, by definition, we refer to variables $X$ and $Y$ as being
+mutually \textbf{statistically independent} provided that the
+bivariate relative frequencies $h_{ij}$ of \textit{all}
+combinations of categories $(a_{i},b_{j})$ are numerically equal to
+the products of the univariate marginal relative frequencies
+$h_{i+}$ of $a_{i}$ and $h_{+j}$ of $b_{j}$ (cf.
+Sec.~\ref{sec:konttaf}), i.e.,
+%
+\be
+h_{ij} = h_{i+}h_{+j} \ .
+\ee
+%
+Translated into the language of random sample variables, 
+viz.~introducing \textbf{sample observed frequencies}, this 
+operational \textbf{independence condition} is re-expressed by 
+$O_{ij} = E_{ij}$, where the $O_{ij}$ denote the bivariate
+\textbf{observed frequencies} of the category combinations
+$(a_{i},b_{j})$ in a \textbf{cross tabulation} underlying a
+specific random sample of size $n$, and the quantities $E_{ij}$,
+which are defined in terms of (i)~the univariate sum $O_{i+}$ of
+observed frequencies in row $i$, see Eq.~(\ref{eq:margfreq1}),
+(ii)~the univariate sum $O_{+j}$ of observed frequencies in column
+$j$, see Eq.~(\ref{eq:margfreq2}), and (iii)~the sample size $n$ by 
+$\displaystyle E_{ij}:=\frac{O_{i+}O_{+j}}{n}$, are interpreted as 
+the \textbf{expected frequencies} of $(a_{i},b_{j})$, given that
+$X$ and $Y$ are statistically independent. Expressing differences 
+between observed and (under independence) expected frequencies via 
+the \textbf{residuals} $O_{ij} -  E_{ij}$, the hypotheses may be 
+reformulated as
+
+\medskip
+\noindent
+\textbf{Hypotheses:} \hfill (test for association)
+%
+\be
+\begin{cases}
+H_{0}: O_{ij} - E_{ij} = 0 \qquad\text{for all}
+\ i = 1, \ldots, k \ \text{and}
+\ j = 1, \ldots, l \\
+H_{1}: O_{ij} - E_{ij} \neq 0 \qquad\text{for at least one}
+\ i \ \text{and}\ j
+\end{cases} \ .
+\ee
+%
+
+\medskip
+\noindent
+For the subsequent test procedure to be reliable, it is
+\textit{very important (!)} that the empirical prere\-quisite
+%
+\be
+E_{ij} \stackrel{!}{\geq} 5
+\ee
+%  
+holds for all values of $i=1\ldots,k$ and $j=1,\ldots,l$,
+such that one avoids the possibility of individual rescaled 
+squared residuals $\displaystyle 
+\frac{(O_{ij}-E_{ij})^{2}}{E_{ij}}$ becoming artificially 
+magnified. The latter constitute the core of the
+
+\medskip
+\noindent
+\textbf{Test statistic:}
+%
+\be
+\lb{eq:chisqindepteststat}
+\fbox{$\displaystyle
+T_{n} := \sum_{i=1}^{k}\sum_{j=1}^{l}\frac{(O_{ij}-E_{ij}
+)^{2}}{E_{ij}}
+\ \stackrel{H_{0}}{\approx}\ \chi^{2}[(k-1)\times(l-1)] \ ,
+$}
+\ee
+%
+which, under $H_{0}$, approximately satisfies a 
+$\boldsymbol{\chi^{2}}$\textbf{--test distribution} with $df=(k-1)
+\times (l-1)$ degrees of freedom; cf. Sec.~\ref{sec:chi2verteil}.
+
+\medskip
+\noindent
+\textbf{Test decision:} The rejection region for $H_{0}$ at 
+significance level $\alpha$ is given by (right-sided test)
+%
+\be
+t_{n}>\chi^{2}_{(k-1)\times(l-1);1-\alpha} \ .
+\ee
+%
+By Eq.~(\ref{eq:pvalueright}), the $p$--value associated with a 
+realisation $t_{n}$ of (\ref{eq:chisqindepteststat}), which is to
+be calculated from the $\boldsymbol{\chi^{2}}$\textbf{--test
+distribution}, amounts to
+%
+\be
+p = P(T_{n}>t_{n}|H_{0}) = 1-P(T_{n}\leq t_{n}|H_{0})
+= 1-\chi^{2}\texttt{cdf}\left(0,t_{n},(k-1)\times(l-1)\right) \ .
+\ee
+%
+
+\medskip
+\noindent
+\underline{\R:} \texttt{chisq.test(\textit{row variable},
+\textit{column variable})} \\
+\underline{GDC:} mode \texttt{STAT} $\rightarrow$ \texttt{TESTS}
+$\rightarrow$ \texttt{$\chi^{2}$-Test\ldots} \\
+\underline{SPSS:} Analyze $\rightarrow$ Descriptive Statistics
+$\rightarrow$ Crosstabs \ldots $\rightarrow$ Statistics \ldots:
+Chi-square
+
+\medskip
+\noindent
+The $\chi^{2}$--test for independence can establish the 
+\textbf{existence} of a significant association in the joint
+distribution of a two-dimensional statistical variable~$(X,Y)$. 
+The \textbf{strength} of the association, on the other hand, 
+may be measured in terms of \textbf{Cram\'{e}r's} $\boldsymbol{V}$
+(Cram\'{e}r (1946)~\ct{cra1946}), which has a normalised range of 
+values given by $0 \leq V \leq 1$; cf. Eq.~(\ref{eq:cramv}) and 
+Sec.~\ref{sec:2Dnom}. Low values of $V$ in the case of significant 
+associations between components $X$ and $Y$ typically indicate the 
+statistical influence of additional \textbf{control variables}.
+
+\medskip
+\noindent
+\underline{\R:} \texttt{assocstats(\textit{contingency table})}
+(package: \texttt{vcd}, by Meyer \textit{et al}
+(2017)~\ct{meyetal2017}) \\
+\underline{SPSS:} Analyze $\rightarrow$ Descriptive Statistics
+$\rightarrow$ Crosstabs \ldots $\rightarrow$ Statistics \ldots:
+Phi and Cramer's V
+
+\medskip
+\noindent
+\textbf{Effect size:} The practical significance of the phenomenon investigated can be estimated and interpreted by means of the
+effect size measure~$w$ defined in Eq.~(\ref{eq:eschisq});
+cf. Cohen (1992)~\ct[Tab.~1]{coh1992}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

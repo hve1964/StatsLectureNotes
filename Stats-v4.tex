@@ -1,0 +1,162 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File name: Stats-v4.tex
+%  Title: Foundations of Descriptive and Inferential Statistics
+%  Author: Henk van Elst (parcIT GmbH, Koeln, Germany)
+%  Version: 08.06.2019
+%  First version: 21.05.2008
+%  Completion of first version: 25.09.2012, 11:57 h (hve)
+%  Completion of second version: 08.02.2013, 16:23 h (hve)
+%  Completion of third version: 28.08.2013, 09:19 h (hve)
+%  Completion of fourth version: 30.08.2015, 16:31 h (hve)
+%  arXiv:1302.2525v4 [stat.AP]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,12pt,twoside]{book}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{amssymb,amsmath,amsfonts,amsthm}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{textcomp}
+\usepackage{listings}
+\lstset{language = R, basicstyle = \small\ttfamily}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\topskip 5mm
+\topmargin 0mm
+\headheight 0mm
+\textwidth 16.5cm
+\textheight 22.5cm
+%\footskip 1cm
+\oddsidemargin 0mm
+\evensidemargin 0mm
+\pagestyle{headings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\def\vec#1{\mbox{\boldmath$#1$}}
+\def\hsp5{\hspace{5mm}}
+\def\lb{\label}
+\def\bi{\bibitem}
+\def\ct{\cite}
+\def\ptl{\partial}
+\def\ti{\tilde}
+%\def\stc{{\stackrel{\ast}{C}}}
+\newcommand{\R}{\textsf{R}}
+\newcommand{\sfrac}[2]{{\textstyle{#1\over#2}}}
+\def\case#1/#2{\textstyle\frac{#1}{#2}}
+\newcommand{\leftout}[1]{}
+%margin note
+%\newcommand{\mnote}[1]{}        %no Marginal Note
+\newcommand{\mnote}[1]{\marginpar{\raggedright\tiny\em
+$\!\!\!\!\!\!\,\bullet$ #1}}       %Marginal Note
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\enl}{\\\hfill\rule{0pt}{0pt}} % extra newline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\includeonly{
+		abstr-Stats,
+		intro,
+    ch1-Stats,
+    ch2-Stats,
+    ch3-Stats,
+    ch4-Stats,
+    ch5-Stats,
+    ch6-Stats,
+    ch7-Stats,
+    ch8-Stats,
+    ch9-Stats,
+    ch10-Stats,
+    ch11-Stats,
+    ch12-Stats,
+    ch13-Stats,
+    app1-Stats,
+    app2-Stats,
+    app3-Stats,
+    app4-Stats,
+    ref-Stats
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\hskip6cm
+%\begin{minipage}{0cm}
+%\scalebox{1}{
+%%\includegraphics[angle=0,width=8cm]{Karlshochschule_logo}}
+%\includegraphics[angle=0,width=10cm]{Karlshochschule_logo.pdf}}
+%\end{minipage}
+
+\vspace*{1cm}
+\begin{center}
+{\Huge\sc
+                    Foundations of \\
+                    Descriptive and Inferential \\
+                    Statistics
+\par}
+\par\vfill\vfill\vfill
+              Lecture notes for a quantitative–methodological
+							module at the Bachelor degree (B.Sc.) level
+\par\vfill
+										%Modules
+\par\vfill
+                    %\ldots
+ 
+\par\vfill\vfill\vfill\vfill
+
+                    {\large\sc Henk van Elst}
+
+\par\vfill
+
+                 August 30, 2019
+\par\vfill\vfill
+
+                 parcIT GmbH \\
+								 Erftstra\ss e 15 \\
+								 50672 K\"{o}ln \\
+                 Germany
+\par\vfill
+                 E--Mail: \texttt{Henk.van.Elst@parcIT.de}
+\par\vfill\vfill
+                 E--Print: 
+\href{http://arxiv.org/abs/1302.2525}{arXiv:1302.2525v4 [stat.AP]}
+\par\vfill\vfill
+								 \copyright\ 2008--2019 Henk van Elst 
+\end{center}
+\vspace*{1cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sloppy
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \renewcommand{\thepage}{}                 % no page numbering
+\include{abstr-Stats}
+      \newpage \thispagestyle{empty}
+\tableofcontents
+      \newpage \thispagestyle{empty}
+      \cleardoublepage \pagenumbering{arabic}
+      % start page 1 (default)
+\include{intro}
+\include{ch1-Stats}
+\include{ch2-Stats}
+\include{ch3-Stats}
+\include{ch4-Stats}
+\include{ch5-Stats}
+\include{ch6-Stats}
+\include{ch7-Stats}
+\include{ch8-Stats}
+\include{ch9-Stats}
+\include{ch10-Stats}
+\include{ch11-Stats}
+\include{ch12-Stats}
+\include{ch13-Stats}
+\include{app1-Stats}
+\include{app2-Stats}
+\include{app3-Stats}
+\include{app4-Stats}
+\include{ref-Stats}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
