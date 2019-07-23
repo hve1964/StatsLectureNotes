@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  File name: ch5-Stats.tex
 %  Title:
-%  Version: 20.06.2019 (hve)
+%  Version: 23.07.2019 (hve)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter[Descriptive linear regression analysis]{\href{https://www.youtube.com/watch?v=uMpJZ2g0e3E}{Descriptive linear regression analysis}}
@@ -30,13 +30,14 @@ can be expressed in mathematical terms by
 %
 \be
 \fbox{$\displaystyle
+\lb{eq:descriptlinreg}
 \hat{y}=a+bx \ ,
 $}
 \ee
 %
 with unknown regression coefficients
 \textbf{$\boldsymbol{y}$-intercept} $a$ and \textbf{slope} $b$.
-Gau\ss' method works as follows.
+Gau\ss' \textbf{method of least squares} works as follows.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section[Method of least squares]{Method of least squares}
@@ -109,14 +110,15 @@ a=\bar{y}-b\bar{x} \ .
 $}
 \ee
 %
-These values are referred to as the \textbf{least square
+These values are referred to as the \textbf{least squares
 estimators} for $a$ and $b$. Note that they are exclusively
 expressible in terms of familiar univariate and bivariate measures characterising the joint distribution for $(X,Y)$.
 
 \medskip
 \noindent
-With the solutions $a$ and $b$ of Eq.~(\ref{eq:abestimators}), the 
-resultant \textbf{best-fit linear model} is thus given by
+With the solutions $a$ and $b$ of Eq.~(\ref{eq:abestimators})
+inserted in Eq.~(\ref{eq:descriptlinreg}), the resultant
+\textbf{best-fit linear model} is given by
 %
 %
 \be
@@ -149,8 +151,8 @@ $\rightarrow$ Linear \ldots
 \end{center}
 \caption{Example of a best-fit linear model obtained by the method
 of least squares for the case of the bivariate joint distribution
-featured in Fig-~\ref{fig:scatterplot}. The least square estimators
-for the $y$-intercept and the slope take values
+featured in Fig-~\ref{fig:scatterplot}. The least squares
+estimators for the $y$-intercept and the slope take values
 $a = 69.41~\text{ppb}$ and
 $b = 0.20~(\text{ppb}/\text{°F})$, respectively. \newline
 \underline{\R:} \newline
@@ -168,7 +170,7 @@ $b = 0.20~(\text{ppb}/\text{°F})$, respectively. \newline
 \noindent
 Note that Eq.~(\ref{eq:linregmodel}) may be re-expressed in terms 
 of the corresponding $Z$ scores of $X$ and $\hat{Y}$, according to
-Eq.~(\ref{eq:standardisationdiscriptive}), to yield
+Eq.~(\ref{eq:standardisationdiscriptive}). This yields
 %
 \be
 \left(\frac{\hat{y}-\bar{y}}{s_{Y}}\right)
