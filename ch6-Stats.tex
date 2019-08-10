@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  File name: ch6-Stats.tex
 %  Title:
-%  Version: 09.08.2019 (hve)
+%  Version: 10.08.2019 (hve)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter[Elements of probability theory]{Elements of probability
@@ -718,16 +718,28 @@ Presbyterian minister
 \href{http://www-history.mcs.st-and.ac.uk/Biographies/Bayes.html}{Thomas Bayes (1702--1761)}; see the posthumous publication Bayes 
 (1763)~\ct{bay1763}. For a random experiment with probability space
 $\left(\boldsymbol{\Omega}, {\cal P}, P\right)$, it states that,
-given (i)~random events $A_{1}, \ldots, A_{m} \in 
+given
+
+%
+\begin{itemize}
+
+\item[(i)] random events $A_{1}, \ldots, A_{m} \in 
 {\cal P}(\boldsymbol{\Omega})$ which constitute a finite
 \textbf{complete partition} of $\boldsymbol{\Omega}$ into $m \in
-\mathbb{N}$ \textbf{pairwise disjoint events}, (ii)~$P(A_{i}) > 0$
+\mathbb{N}$ \textbf{pairwise disjoint events},
+
+\item[(ii)] $P(A_{i}) > 0$
 for all $i = 1, \ldots, m$, with $\displaystyle
-\sum_{i=1}^{m}P(A_{i}) = 1$, and (iii)~a random event $B \in
-{\cal P}(\boldsymbol{\Omega})$ with $\displaystyle 
+\sum_{i=1}^{m}P(A_{i}) = 1$ by Eq.~(\ref{eq:axiom2}), and
+
+\item[(iii)] a random event $B \in {\cal P}(\boldsymbol{\Omega})$
+with $\displaystyle 
 P(B)\stackrel{\text{Eq.~\ref{eq:totalprob}}}{=}\sum_{i=1}^{m}
-P(B|A_{i})P(A_{i}) > 0$ that is known to have occurred, the
-identity
+P(B|A_{i})P(A_{i}) > 0$ that is known to have occurred,
+
+\end{itemize}
+%
+the identity
 %
 \be
 \lb{eq:bayes}
@@ -738,10 +750,10 @@ $}
 \ee
 %
 applies. This form of the theorem was given by Laplace
-(1812)~\ct{lap1812}. By Kolmogorov's second axiom,
-Eq.~(\ref{eq:axiom2}), it necessarily follows that $\displaystyle
-\sum_{i=1}^{m}P(A_{i}|B) = 1$. Again, the content of \textbf{Bayes'
-theorem} may be conveniently visualised by means of a Venn diagram.
+(1774)~\ct{lap1774}. By Eq.~(\ref{eq:axiom2}), it necessarily
+follows that $\displaystyle \sum_{i=1}^{m}P(A_{i}|B) = 1$. Again,
+the content of \textbf{Bayes' theorem} may be conveniently
+visualised by means of a Venn diagram.
 
 \medskip
 \noindent
