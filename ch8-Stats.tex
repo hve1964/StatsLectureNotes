@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  File name: ch8-Stats.tex
 %  Title:
-%  Version: 09.07.2019 (hve)
+%  Version: 11.08.2019 (hve)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter[Standard univariate probability distributions]{Standard 
@@ -141,7 +141,7 @@ X \sim B(1;p) \ ,
 \ee
 %
 depends on a single free parameter, the probability $p \in [0;1]$
-for the event $X=1$.
+for the event $X = x = 1$.
 
 \medskip
 \noindent
@@ -224,7 +224,7 @@ X \sim B(n;p) \ ,
 \ee
 %
 again with $p \in [0;1]$ the probability for a single event 
-$X_{i}=1$.
+$X_{i} = x_{i} = 1$.
 
 \medskip
 \noindent
@@ -338,7 +338,7 @@ X \sim H(n,M,N) \ .
 \ee
 %
 In particular, this model forms the mathematical basis of the 
-internationally popular National Lotteries ``6 out of 49,'' in 
+internationally popular National Lottery ``6 out of 49,'' in 
 which case there are $M=6$ winning numbers amongst a total of 
 $N=49$ numbers, and $X \in \left\{0, 1, \ldots, 6\right\}$ counts 
 the total of correctly guessed winning numbers on an individual 
@@ -374,7 +374,7 @@ $}
 \ee
 %
 its graph is shown in Fig.~\ref{fig:hypergeomprob} below for 
-the National Lotteries example, so $n=6$, $M=6$ and $N=49$.
+the National Lottery example, so $n=6$, $M=6$ and $N=49$.
 %
 \begin{figure}[!htb]
 \begin{center}
@@ -570,7 +570,7 @@ f_{X}(x) =
 $}
 \ee
 %
-its graph is shown in Fig.~\ref{fig:unifpdf} below for three 
+its graph is shown in Fig.~\ref{fig:unifpdf} below for four
 different combinations of the parameters $a$ and $b$.
 %
 \begin{figure}[!htb]
@@ -1080,7 +1080,7 @@ EXCEL, or from OpenOffice.
 
 \medskip
 \noindent
-Note that for $n \geq 50$ a $\chi^{2}(n)$--distribution may be 
+Note that for $n \geq 50$ a $\chi^{2}$--distribution may be 
 approximated reasonably well by a normal distribution, $N(n,2n)$. 
 This is a reflection of the \textbf{central limit theorem}, to be 
 discussed in Sec.~\ref{sec:zentrgrenz} below.
@@ -1105,8 +1105,8 @@ The non-reproductive one-parameter
 $\boldsymbol{t}$\textbf{--distribution with} $\boldsymbol{n}$
 \textbf{degrees of freedom} was discovered by the English
 statistician
-\href{http://www-history.mcs.st-and.ac.uk/Biographies/Gosset.html}{William Sealy Gosset (1876--1937)}. Somewhat irritating the 
-scientific community, he published his findings under the 
+\href{http://www-history.mcs.st-and.ac.uk/Biographies/Gosset.html}{William Sealy Gosset (1876--1937)}. Intending to some extent to irritate
+the scientific community, he published his findings under the 
 pseudonym of ``Student;'' cf. Student (1908)~\ct{stu1908}. 
 Consider two stochastically independent one-dimensional random 
 variables, $Z \sim N(0;1)$ and $X \sim \chi^{2}(n)$, satisfying 
@@ -1179,12 +1179,12 @@ may be obtained from \R, some GDCs, EXCEL, or from OpenOffice.
 
 \medskip
 \noindent
-Note that for $n \geq 50$ a $t(n)$--distribution may be 
+Note that for $n \geq 50$ a $t$--distribution may be 
 approximated reasonably well by the standard normal distribution, 
 $N(0;1)$. Again, this is a manifestation of the \textbf{central
 limit theorem}, to be discussed in Sec.~\ref{sec:zentrgrenz} below.
-For $n=1$, a $t(n)$--distribution amounts to a special case ($a=1$,
-$b=0$) of the Cauchy distribution; cf.
+For $n=1$, a $t$--distribution amounts to the special case
+$a=1$, $b=0$ of the Cauchy distribution; cf.
 Sec.~\ref{sec:cauchyverteil}.
 
 \medskip
@@ -1513,8 +1513,8 @@ general importance in a given population. According to Pareto's
 empirical findings, typically 80\% of such an asset are owned by 
 just 20\% of the population considered (and vice versa); cf. 
 Pareto (1896)~\ct{par1896}.\footnote{See also footnote 2 in 
-Sec.~\ref{subsec:gini}.} The 80/20 rule applies exactly for a 
-value of the power-law index of ${\displaystyle\gamma = 
+Sec.~\ref{subsec:gini}.} The \textbf{80/20 rule} applies exactly
+for a value of the power-law index of ${\displaystyle\gamma = 
 \frac{\ln(5)}{\ln(4)}} \approx 1.16$. It is a prominent example of 
 the phenomenon of \textbf{universality}, frequently observed in the 
 mathematical modelling of quantitative--empirical relationships 
@@ -1952,7 +1952,7 @@ f_{X}(x) = \frac{1}{\pi}\,\frac{a}{a^{2}+(x-b)^{2}} \ ,
 $}
 \ee
 %
-its graph is shown in Fig.~\ref{fig:capdf} below for two 
+its graph is shown in Fig.~\ref{fig:capdf} below for four 
 particular cases.
 %
 \begin{figure}[!htb]
@@ -2094,7 +2094,7 @@ $Z_{n}$), it holds that
 \lim_{n \to \infty}{\cal F}_{n}(z_{n}) = \Phi(z) \ ,
 \ee
 %
-i.e., the limit of the sequence of probabiity distributions ${\cal 
+i.e., the limit of the sequence of probability distributions ${\cal 
 F}_{n}(z_{n})$ for the standardised summation random variables 
 $Z_{n}$ is constituted by the \textbf{standard normal distribution} 
 $N(0;1)$, discussed in Sec.~\ref{sec:normverteil}; cf. Lindeberg 
