@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  File name: ch11-Stats.tex
 %  Title:
-%  Version: 20.06.2019 (hve)
+%  Version: 12.08.2019 (hve)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter[Null hypothesis significance testing]{\href{https://www.youtube.com/watch?v=jnLHSyYQ1LE}{Null hypothesis significance testing}}
@@ -17,8 +17,8 @@ firmly rooted in the ideas of \textbf{critical rationalism} and
 emphatically by the Austro--British 
 philosopher \href{http://en.wikipedia.org/wiki/Karl_Popper}{Sir 
 Karl Raimund Popper CH FRS FBA (1902--1994)}; see, e.g., Popper 
-(2002)~\ct{pop2002}. The systematic procedure for null hypothesis
-significance testing on the grounds of observational
+(2002)~\ct{pop2002}. The systematic procedure for \textbf{null
+hypothesis significance testing} on the grounds of observational
 \textbf{evidence}, as practiced today within the
 \textbf{frequentist framework} as a standardised method of
 probability-based \textbf{decision-making}, was developed during
@@ -41,8 +41,8 @@ in the following.
 \section[General procedure]{General procedure}
 \lb{sec:testgen}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The central aim of null hypothesis significance testing is to 
-separate, as reliably as possible, \textbf{true effects} in a
+The central aim of \textbf{null hypothesis significance testing} is
+to separate, as reliably as possible, \textbf{true effects} in a
 \textbf{target population} $\boldsymbol{\Omega}$ of statistical
 units concerning distributional properties of, or relations
 between, selected \textbf{statistical variables} $X, Y, \ldots, Z$
@@ -86,8 +86,8 @@ not--reject.''
 The question arises as to \textit{which kinds of quantitative 
 problems can be efficiently settled by statistical means}?
 With respect to a given target population $\boldsymbol{\Omega}$, 
-in the simplest kinds of applications of null hypothesis
-significance testing, one may (a)~\textbf{test for differences} in
+in the simplest kinds of applications of \textbf{null hypothesis
+significance testing}, one may (a)~\textbf{test for differences} in
 the distributional properties of a single one-dimensional
 statistical variable $X$ between a number of subgroups of
 $\boldsymbol{\Omega}$, necessitating \textbf{univariate methods} of
@@ -177,7 +177,7 @@ $\boldsymbol{S_{\Omega}}$:~$(X_{1}, \ldots, X_{n})$, the latter of
 which constitutes the required observational
 \textbf{evidence}.%\\[-5mm]
 
-\item Derivation a \textbf{test decision} on the basis of the 
+\item Derivation of a \textbf{test decision} on the basis of the 
 following alternative criteria: when for the realisation 
 $t_{n}(x_{1}, \ldots, x_{n})$ of the test statistic $T_{n}(X_{1}, 
 \ldots, X_{n})$, resp.~the $p$--value (to be defined in 
@@ -201,10 +201,11 @@ $\boldsymbol{p}\text{{\bf--value}} \geq \alpha, \text{then}
 
 \medskip
 \noindent
-A fitting metaphor for the six-step procedure for null hypothesis significance testing just described is that of a statistical long
-jump competition. The issue here is to find out whether actual
-empirical data deviates sufficiently strongly from the
-``no effect'' reference state conjectured in the
+A fitting metaphor for the six-step procedure for \textbf{null
+hypothesis significance testing} just described is that of a
+statistical long jump competition. The issue here is to find out
+whether actual empirical data deviates sufficiently strongly from
+the ``no effect'' reference state conjectured in the
 given \textbf{null hypothesis}~$H_{0}$, so as to land in the 
 corresponding \textbf{rejection region}~$B_{\alpha}$ within the 
 spectrum of values of the \textbf{test 
@@ -225,13 +226,13 @@ significance level), this means that most likely it has come about
 \textit{not by chance} due to the sampling methodology. A different 
 matter altogether is whether such an effect also possesses
 \textbf{practical significance}, so that, for instance, management 
-decisions ought to be adapted to it. Practical significance of
-an observed effect can be evaluated, e.g., with the standardised
-and scale-invariant \textbf{effect size} measures proposed by Cohen
-(1992, 2009)~\ct{coh1992,coh2009}. Addressing the \textbf{practical
-significance} of an observed effect should be commonplace in any
-report on inferential statistical data analysis; see also Sullivan
-and R Feinn (2012)~\ct{sulfei2012}.
+decisions ought to be adapted to it. \textbf{Practical
+significance} of an observed effect can be evaluated, e.g., with
+the standardised and scale-invariant \textbf{effect size} measures
+proposed by Cohen (1992, 2009)~\ct{coh1992,coh2009}. Addressing
+the \textbf{practical significance} of an observed effect should be 
+commonplace in any report on inferential statistical data analysis;
+see also Sullivan and R Feinn (2012)~\ct{sulfei2012}.
 
 \medskip
 \noindent
@@ -344,8 +345,8 @@ does neither require the prior specification of a significance
 level~$\alpha$, nor the introduction of a test statistic 
 $T_{n}(X_{1}, \ldots, X_{n})$ with a partner test distribution for
 the empirical testing of a (null) hypothesis. As described in
-detail by Jaynes (2003)~\ct{jay2003}, Sivia and Skilling 
-(2006)~\ct{sivski2006}, Gelman \textit{et al}
+detail by Jeffreys (1939)~\ct{jef1939}, Jaynes (2003)~\ct{jay2003},
+Sivia and Skilling (2006)~\ct{sivski2006}, Gelman \textit{et al}
 (2014)~\ct{geletal2014} or McElreath (2016)~\ct{mce2016}, here
 \textbf{statistical inference} is practiced entirely on the basis
 of a \textbf{posterior probability distribution}
@@ -359,9 +360,10 @@ distribution} is computed in particular from the product between
 the \textbf{likelihood function} $P(\text{data}|\text{hypothesis}, 
 I)$ of the data, given the hypothesis and $I$, and the
 \textbf{prior probability distribution} $P(\text{hypothesis}, I)$ 
-encoding the researcher's initial \textbf{degree-of-belief} in the 
-truth content of the hypothesis on the backdrop of $I$. That is 
-(see Sivia and Skilling (2006)~\ct[p~6]{sivski2006}),
+encoding the researcher's initial reasonable
+\textbf{degree-of-belief} in the truth content of the hypothesis on
+the backdrop of $I$. That is (see Sivia and Skilling
+(2006)~\ct[p~6]{sivski2006}),
 %
 \be
 P(\text{hypothesis}|\text{data}, I) \propto 
