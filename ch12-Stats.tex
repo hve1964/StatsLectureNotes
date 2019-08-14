@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  File name: ch12-Stats.tex
 %  Title:
-%  Version: 13.08.2019 (hve)
+%  Version: 14.08.2019 (hve)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter[Univariate methods of statistical data
@@ -255,9 +255,10 @@ t_{n}>\chi^{2}_{k-1-r;1-\alpha} \ .
 \ee
 %
 By Eq.~(\ref{eq:pvalueright}), the $p$--value associated with a 
-realisation $t_{n}$ of (\ref{eq:chisqgofteststat}), which is to be
-calculated from the
-$\boldsymbol{\chi^{2}}$\textbf{--test distribution}, amounts to
+realisation $t_{n}$ of the \textbf{test
+statistic}~(\ref{eq:chisqgofteststat}), which is to be calculated
+from the $\boldsymbol{\chi^{2}}$\textbf{--test distribution},
+amounts to
 %
 \be
 p = P(T_{n}>t_{n}|H_{0}) = 1-P(T_{n}\leq t_{n}|H_{0})
@@ -479,8 +480,8 @@ z_{1-\alpha} & (Z\text{--test})
 \end{tabular}
 \end{center}
 %
-$p$--values associated with realisations $t_{n}$ of 
-(\ref{eq:ztteststat}) can be obtained from
+$p$--values associated with realisations $t_{n}$ of the
+\textbf{test statistic}~(\ref{eq:ztteststat}) can be obtained from
 Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}), using
 the relevant $\boldsymbol{t}$\textbf{--test distribution} resp. the
 \textbf{standard normal test distribution}.
@@ -634,8 +635,9 @@ $t_{n}>\chi^{2}_{n-1;1-\alpha}$ \\
 \end{tabular}
 \end{center}
 %
-$p$--values associated with realisations $t_{n}$ of 
-(\ref{eq:chisqteststat}), which are to be calculated from the
+$p$--values associated with realisations $t_{n}$ of the
+\textbf{test statistic}~(\ref{eq:chisqteststat}), which are to be
+calculated from the
 $\boldsymbol{\chi^{2}}$\textbf{--test distribution}, can be
 obtained from Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
 
@@ -823,8 +825,9 @@ $t_{n_{1},n_{2}}>t_{df;1-\alpha}$ \\
 \end{tabular}
 \end{center}
 %
-$p$--values associated with realisations $t_{n_{1},n_{2}}$ of 
-(\ref{eq:indeptteststat}), which are to be calculated from the
+$p$--values associated with realisations $t_{n_{1},n_{2}}$ of the
+\textbf{test statistic}~(\ref{eq:indeptteststat}), which are to be
+calculated from the
 $\boldsymbol{t}$\textbf{--test distribution}, can be obtained from 
 Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
 
@@ -1050,8 +1053,9 @@ $t_{n_{1},n_{2}}>z_{1-\alpha}$ \\
 \end{tabular}
 \end{center}
 %
-$p$--values associated with realisations $t_{n_{1},n_{2}}$ of 
-(\ref{eq:uteststat}), which are to be calculated from the
+$p$--values associated with realisations $t_{n_{1},n_{2}}$ of the
+\textbf{test statistic}~(\ref{eq:uteststat}), which are to be
+calculated from the
 \textbf{standard normal test distribution}, can be obtained from 
 Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
 
@@ -1171,8 +1175,9 @@ $t_{n_{1},n_{2}} > f_{n_{1}-1,n_{2}-1;1-\alpha}$ \\
 \end{tabular}
 \end{center}
 %
-$p$--values associated with realisations $t_{n_{1},n_{2}}$ of 
-(\ref{eq:fteststat}), which are to be calculated from the
+$p$--values associated with realisations $t_{n_{1},n_{2}}$ of the
+\textbf{test statistic}~(\ref{eq:fteststat}), which are to be
+calculated from the
 $\boldsymbol{F}$\textbf{--test distribution}, can be obtained from 
 Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
 
@@ -1320,8 +1325,9 @@ $t_{n}>t_{n-1;1-\alpha}$ \\
 \end{tabular}
 \end{center}
 %
-$p$--values associated with realisations $t_{n}$ of 
-(\ref{eq:deptteststat}), which are to be calculated from the
+$p$--values associated with realisations $t_{n}$ of the
+\textbf{test statistic}~(\ref{eq:deptteststat}), which are to be
+calculated from the
 $\boldsymbol{t}$\textbf{--test distribution}, can be obtained from 
 Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
 
@@ -1507,7 +1513,8 @@ $\boldsymbol{H_{1}}$ &
 \end{center}
 %
 $p$--values associated with realisations $t_{n_\mathrm{red}}$ of 
-(\ref{eq:wilcteststat}), which are to be calculated from the
+the \textbf{test statistic}~(\ref{eq:wilcteststat}), which are to
+be calculated from the
 \textbf{standard normal test distribution}, can be obtained from 
 Eqs.~(\ref{eq:pvaluetwo})--(\ref{eq:pvalueright}).
 
@@ -1614,7 +1621,8 @@ t_{n}>\chi^{2}_{(k-1)\times(l-1);1-\alpha} \ .
 \ee
 %
 By Eq.~(\ref{eq:pvalueright}), the $p$--value associated with a 
-realisation $t_{n}$ of (\ref{eq:chisqhomteststat}), which is to
+realisation $t_{n}$ of the \textbf{test
+statistic}~(\ref{eq:chisqhomteststat}), which is to
 be calculated from the $\boldsymbol{\chi^{2}}$\textbf{--test
 distribution}, amounts to
 %
@@ -1960,7 +1968,8 @@ t_{n,k} > f_{k-1,n-k;1-\alpha} \ .
 \ee
 %
 With Eq.~(\ref{eq:pvalueright}), the $p$--value associated with a 
-specific realisation $t_{n,k}$ of (\ref{eq:anovateststat}), which
+specific realisation $t_{n,k}$ of the \textbf{test
+statistic}~(\ref{eq:anovateststat}), which
 is to be calculated from the $\boldsymbol{F}$\textbf{--test
 distribution}, amounts to
 %
@@ -2119,7 +2128,8 @@ t_{n,k}>\chi^{2}_{k-1;1-\alpha} \ .
 \ee
 %
 By Eq.~(\ref{eq:pvalueright}), the $p$--value associated with a
-realisation $t_{n,k}$ of (\ref{eq:kruwalteststat}), which is to be
+realisation $t_{n,k}$ of the \textbf{test
+statistic}~(\ref{eq:kruwalteststat}), which is to be
 calculated from the $\boldsymbol{\chi^{2}}$\textbf{--test
 distribution}, amounts to
 %
