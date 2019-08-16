@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  File name: ch12-Stats.tex
 %  Title:
-%  Version: 14.08.2019 (hve)
+%  Version: 16.08.2019 (hve)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter[Univariate methods of statistical data
@@ -223,17 +223,18 @@ $}
 in terms of a sum of rescaled squared residuals 
 $\displaystyle\frac{(O_{i}-E_{i})^{2}}{E_{i}}$,\footnote{As the
 $E_{i}$ ($i=1\ldots,k$) amount to count data with unknown maximum
-counts according to the Poisson distribution discussed in
-Sec.~\ref{sec:poissonverteil}, their standard deviations are
-$\sqrt{E_{i}}$ and so their variances $E_{i}$; cf. Jeffreys
-(1939)~\ct[p~106]{jef1939}.} which, under $H_{0}$, approximately
-follows a $\boldsymbol{\chi^{2}}$\textbf{--test distribution} with 
-$df=k-1-r$ degrees of freedom (cf. Sec.~\ref{sec:chi2verteil}); 
-$r$ denotes the number of free parameters of the reference 
-distribution $F_{0}(x)$ which need to be estimated from the random 
-sample data. For this test procedure to be reliable, it is 
-\textit{important (!)} that the size $n$ of the random sample be 
-chosen such that the condition
+counts, the probability distribution relevant to model variation is
+the Poisson distribution discussed in
+Sec.~\ref{sec:poissonverteil}. Hence, the standard deviations are
+equal to~$\sqrt{E_{i}}$, and so the variances equal to~$E_{i}$; cf.
+Jeffreys (1939)~\ct[p~106]{jef1939}.} which, under $H_{0}$,
+approximately follows a $\boldsymbol{\chi^{2}}$\textbf{--test
+distribution} with $df=k-1-r$ degrees of freedom (cf.
+Sec.~\ref{sec:chi2verteil}); $r$~denotes the number of free
+parameters of the reference distribution $F_{0}(x)$ which need to
+be estimated from the random sample data. For this test procedure
+to be reliable, it is \textit{important (!)} that the size $n$ of
+the random sample be chosen such that the condition
 %
 \be
 E_{i} \stackrel{!}{\geq} 5
